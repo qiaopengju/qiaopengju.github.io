@@ -4,4 +4,6 @@ db.json
 *.log
 node_modules/
 public/
+source/img/
 .deploy*/
+makefile
