@@ -1,5 +1,5 @@
 ---
-title: C++ notes
+title: C++ note
 hide: false
 math: false
 date: 2021-03-23 23:54:32
