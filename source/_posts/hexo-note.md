@@ -8,6 +8,7 @@ categories: Blog
 tags:
 index_img:
 banner_img:
+comment: true
 excerpt: Here are some hexo notes.
 sticky: 100
 ---

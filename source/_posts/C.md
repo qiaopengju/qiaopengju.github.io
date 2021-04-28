@@ -7,6 +7,7 @@ categories: Language
 tags:
 index_img:
 banner_img:
+comment: true
 excerpt: 随便记的C++笔记
 ---
 
