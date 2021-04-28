@@ -7,7 +7,12 @@ categories: Language
 tags:
 index_img:
 banner_img:
+excerpt: 在使用Google Flutter时学习Dart的笔记，主要有：function、operator，control flow statements，class
 ---
+
+​	
+
+<!-- more -->
 
 ### Functions
 
