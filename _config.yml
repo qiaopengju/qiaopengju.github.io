@@ -110,7 +110,8 @@ deploy:
 live2d:
   enable: true
   scriptFrom: local
-  pluginRootPath: node_modules/
+    #pluginRootPath: node_modules/
+  pluginRootPath: live2dw/
   pluginJsPath: lib/
   pluginModelPath: assets/
   tagMode: false
@@ -123,6 +124,6 @@ live2d:
     height: 300
   mobile:
     show: true
-    scale: 0.5
+      #scale: 0.5
   react:
     opacity: 0.7
