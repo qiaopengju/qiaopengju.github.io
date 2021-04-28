@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="樵鹏举">
+  <meta name="description" content="Lecture notes：体系结构概述、指令系统、流水线技术、指令集并行及限制、存储系统、多线程和多处理器">
   <meta name="author" content="樵鹏举">
   <meta name="keywords" content="">
   
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/default_loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      1.9k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      20
        分钟
     </span>
   
@@ -248,133 +248,108 @@
             <h1 style="display: none">计算机系统结构</h1>
             
             <div class="markdown-body">
-              <h2 id="第1章-概述"><a class="markdownIt-Anchor" href="#第1章-概述"></a> 第1章 概述</h2>
-<h4 id="flynns-分类市场分类"><a class="markdownIt-Anchor" href="#flynns-分类市场分类"></a> Flynn’s 分类，市场分类</h4>
-<blockquote></blockquote>
-<h4 id="系统结构的原始定义和现在的定义"><a class="markdownIt-Anchor" href="#系统结构的原始定义和现在的定义"></a> 系统结构的原始定义和现在的定义</h4>
-<blockquote>
-<h5 id="原始定义"><a class="markdownIt-Anchor" href="#原始定义"></a> 原始定义</h5>
+              <p>​    </p>
+<!-- more -->
+<h2 id="第1章-概述"><a href="#第1章-概述" class="headerlink" title="第1章 概述"></a>第1章 概述</h2><h4 id="Flynn’s-分类，市场分类"><a href="#Flynn’s-分类，市场分类" class="headerlink" title="Flynn’s 分类，市场分类"></a>Flynn’s 分类，市场分类</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="系统结构的原始定义和现在的定义"><a href="#系统结构的原始定义和现在的定义" class="headerlink" title="系统结构的原始定义和现在的定义"></a>系统结构的原始定义和现在的定义</h4><blockquote>
+<p><strong>原始定义:</strong></p>
 <p>程序员看见的系统属性，即结构及行为，区分数据流动和控制逻辑，及物理实现</p>
-<hr />
-<h5 id="现在定义"><a class="markdownIt-Anchor" href="#现在定义"></a> 现在定义</h5>
+<p><strong>现在定义:</strong></p>
 <p>是在满足功能、性能和价格目标的条件下，设计、选择和互连硬件部件构成计算机。</p>
 </blockquote>
-<h4 id="了解实现技术-功耗-成本的趋势可靠性"><a class="markdownIt-Anchor" href="#了解实现技术-功耗-成本的趋势可靠性"></a> 了解实现技术、功耗、成本的趋势，可靠性</h4>
-<blockquote>
+<h4 id="了解实现技术、功耗、成本的趋势，可靠性"><a href="#了解实现技术、功耗、成本的趋势，可靠性" class="headerlink" title="了解实现技术、功耗、成本的趋势，可靠性"></a>了解实现技术、功耗、成本的趋势，可靠性</h4><blockquote>
 <ul>
 <li>摩尔定律</li>
 <li>带宽增加速度与响应时间改进的平方成比例</li>
 <li>带宽改进优于时延</li>
 <li>多核有更高的功率利用率</li>
 <li>模块可用性：</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">无</mi><mi mathvariant="normal">故</mi><mi mathvariant="normal">障</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><mrow><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">故</mi><mi mathvariant="normal">障</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">隔</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{平均无故障时间}{平均故障间隔时间}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.739em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.394em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">平</span><span class="mord cjk_fallback mtight">均</span><span class="mord cjk_fallback mtight">故</span><span class="mord cjk_fallback mtight">障</span><span class="mord cjk_fallback mtight">间</span><span class="mord cjk_fallback mtight">隔</span><span class="mord cjk_fallback mtight">时</span><span class="mord cjk_fallback mtight">间</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">平</span><span class="mord cjk_fallback mtight">均</span><span class="mord cjk_fallback mtight">无</span><span class="mord cjk_fallback mtight">故</span><span class="mord cjk_fallback mtight">障</span><span class="mord cjk_fallback mtight">时</span><span class="mord cjk_fallback mtight">间</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></li>
+<li>$\frac{平均无故障时间}{平均故障间隔时间}$</li>
 </ul>
 </blockquote>
-<h4 id="性能评价指标响应时间-cpu时间-吞吐量"><a class="markdownIt-Anchor" href="#性能评价指标响应时间-cpu时间-吞吐量"></a> 性能评价指标:响应时间、CPU时间、吞吐量</h4>
-<blockquote></blockquote>
-<h4 id="性能评价方法基准测试程序spec测试程序集及指标-spec-ratio-spec-mark"><a class="markdownIt-Anchor" href="#性能评价方法基准测试程序spec测试程序集及指标-spec-ratio-spec-mark"></a> 性能评价方法:基准测试程序，SPEC测试程序集及指标( SPEC Ratio、 Spec mark )</h4>
-<blockquote>
-<h5 id="spec"><a class="markdownIt-Anchor" href="#spec"></a> SPEC:</h5>
+<h4 id="性能评价指标-响应时间、CPU时间、吞吐量"><a href="#性能评价指标-响应时间、CPU时间、吞吐量" class="headerlink" title="性能评价指标:响应时间、CPU时间、吞吐量"></a>性能评价指标:响应时间、CPU时间、吞吐量</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="性能评价方法"><a href="#性能评价方法" class="headerlink" title="性能评价方法:"></a>性能评价方法:</h4><blockquote>
+<p>基准测试程序，SPEC测试程序集及指标( SPEC Ratio、 Spec mark ) </p>
+</blockquote>
+<h5 id="SPEC"><a href="#SPEC" class="headerlink" title="SPEC:"></a>SPEC:</h5><blockquote>
 <p>提供基于现有应用程序的一套标准化源代码作为基准测试程序(SM为SPEC速率的几何平均值)</p>
 <ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>M</mi><mo>=</mo><mroot><mrow><msubsup><mo>∏</mo><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mi>S</mi><mi>P</mi><mi>E</mi><mi>C</mi><mi>R</mi><mi>a</mi><mi>t</mi><mi>i</mi><msub><mi>o</mi><mi>i</mi></msub></mrow><mi>n</mi></mroot></mrow><annotation encoding="application/x-tex">SM = \sqrt[n] {\prod_{i-1}^{n} SPECRatio_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.84em;vertical-align:-0.6318745000000001em;"></span><span class="mord sqrt"><span class="root"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5610305999999999em;"><span style="top:-2.8457505999999997em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size6 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2081255em;"><span class="svg-align" style="top:-3.8em;"><span class="pstrut" style="height:3.8em;"></span><span class="mord" style="padding-left:1em;"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∏</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.35804100000000005em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.1681254999999995em;"><span class="pstrut" style="height:3.8em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.8800000000000001em;"><svg width='400em' height='1.8800000000000001em' viewBox='0 0 400000 1944' preserveAspectRatio='xMinYMin slice'><path d='M1001,80H400000v40H1013.1s-83.4,268,-264.1,840c-180.7,
-572,-277,876.3,-289,913c-4.7,4.7,-12.7,7,-24,7s-12,0,-12,0c-1.3,-3.3,-3.7,-11.7,
--7,-25c-35.3,-125.3,-106.7,-373.3,-214,-744c-10,12,-21,25,-33,39s-32,39,-32,39
-c-6,-5.3,-15,-14,-27,-26s25,-30,25,-30c26.7,-32.7,52,-63,76,-91s52,-60,52,-60
-s208,722,208,722c56,-175.3,126.3,-397.3,211,-666c84.7,-268.7,153.8,-488.2,207.5,
--658.5c53.7,-170.3,84.5,-266.8,92.5,-289.5c4,-6.7,10,-10,18,-10z
-M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6318745000000001em;"><span></span></span></span></span></span></span></span></span></li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>P</mi><mi>E</mi><mi>C</mi><mi>R</mi><mi>a</mi><mi>t</mi><mi>i</mi><msub><mi>o</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mi mathvariant="normal">参</mi><mi mathvariant="normal">考</mi><mi mathvariant="normal">计</mi><mi mathvariant="normal">算</mi><mi mathvariant="normal">机</mi><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><mrow><mi>A</mi><mi mathvariant="normal">机</mi><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">SPECRatio_i = \frac{参考计算机执行时间}{A机执行时间}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.739em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.394em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord cjk_fallback mtight">机</span><span class="mord cjk_fallback mtight">执</span><span class="mord cjk_fallback mtight">行</span><span class="mord cjk_fallback mtight">时</span><span class="mord cjk_fallback mtight">间</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">参</span><span class="mord cjk_fallback mtight">考</span><span class="mord cjk_fallback mtight">计</span><span class="mord cjk_fallback mtight">算</span><span class="mord cjk_fallback mtight">机</span><span class="mord cjk_fallback mtight">执</span><span class="mord cjk_fallback mtight">行</span><span class="mord cjk_fallback mtight">时</span><span class="mord cjk_fallback mtight">间</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></li>
+<li>$SM = \sqrt[n] {\prod_{i-1}^{n} SPECRatio_i}$</li>
+<li>$SPECRatio_i = \frac{参考计算机执行时间}{A机执行时间}$</li>
 </ul>
-<hr />
-<h5 id="tpc"><a class="markdownIt-Anchor" href="#tpc"></a> TPC:</h5>
+</blockquote>
+<h5 id="TPC"><a href="#TPC" class="headerlink" title="TPC:"></a>TPC:</h5><blockquote>
 <p>测试每秒处理的事务数</p>
 </blockquote>
-<h4 id="量化amdahl定律cpu时间计算"><a class="markdownIt-Anchor" href="#量化amdahl定律cpu时间计算"></a> 量化:Amdahl定律，CPU时间计算</h4>
-<blockquote>
-<p>**CPU时间：**执行一组指令用的时间</p>
+<h4 id="量化-Amdahl定律，CPU时间计算"><a href="#量化-Amdahl定律，CPU时间计算" class="headerlink" title="量化:Amdahl定律，CPU时间计算"></a>量化:Amdahl定律，CPU时间计算</h4><blockquote>
+<p><strong>CPU时间：</strong>执行一组指令用的时间</p>
 <ul>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>I</mi><mi>n</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>u</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi mathvariant="normal">_</mi><mi>N</mi><mi>u</mi><mi>m</mi><mo>∗</mo><mover accent="true"><mrow><mi>I</mi><mi>n</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>u</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi mathvariant="normal">_</mi><mi>T</mi><mi>i</mi><mi>m</mi><mi>e</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">Instruction\_Num * \overline{Instruction\_Time}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.99333em;vertical-align:-0.31em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">u</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.19333em;vertical-align:-0.31em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">u</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.31em;"><span></span></span></span></span></span></span></span></span></p>
+<li><p>$Instruction_Num * \overline{Instruction_Time}$</p>
 </li>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>I</mi><mi>n</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>u</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi mathvariant="normal">_</mi><mi>T</mi><mi>i</mi><mi>m</mi><mi>e</mi></mrow><mo stretchy="true">‾</mo></mover><mo>=</mo><mi>C</mi><mi>P</mi><mi>I</mi><mo>∗</mo><mi>C</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>C</mi><mi>y</mi><mi>c</mi><mi>l</mi><mi>e</mi><mi mathvariant="normal">_</mi><mi>T</mi><mi>i</mi><mi>m</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">\overline{Instruction\_Time}=CPI * Clock\_Cycle\_Time</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19333em;vertical-align:-0.31em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">u</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.31em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span></span></span></span></p>
+<li><p>$\overline{Instruction_Time}=CPI * Clock_Cycle_Time$</p>
 </li>
 </ul>
-<hr />
 <p><strong>Amdahl定律</strong></p>
 <ul>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mi>e</mi></msub><mo stretchy="false">(</mo><mi mathvariant="normal">加</mi><mi mathvariant="normal">速</mi><mi mathvariant="normal">比</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi mathvariant="normal">改</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">后</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">性</mi><mi mathvariant="normal">能</mi><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mi mathvariant="normal">未</mi><mi mathvariant="normal">改</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">未</mi><mi mathvariant="normal">改</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">性</mi><mi mathvariant="normal">能</mi><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mi mathvariant="normal">改</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">后</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">S_e(加速比) = \frac{改进后的性能/(未改进执行时间)}{未改进的性能/(改进后的执行时间)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">速</span><span class="mord cjk_fallback">比</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">未</span><span class="mord cjk_fallback mtight">改</span><span class="mord cjk_fallback mtight">进</span><span class="mord cjk_fallback mtight">的</span><span class="mord cjk_fallback mtight">性</span><span class="mord cjk_fallback mtight">能</span><span class="mord mtight">/</span><span class="mopen mtight">(</span><span class="mord cjk_fallback mtight">改</span><span class="mord cjk_fallback mtight">进</span><span class="mord cjk_fallback mtight">后</span><span class="mord cjk_fallback mtight">的</span><span class="mord cjk_fallback mtight">执</span><span class="mord cjk_fallback mtight">行</span><span class="mord cjk_fallback mtight">时</span><span class="mord cjk_fallback mtight">间</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">改</span><span class="mord cjk_fallback mtight">进</span><span class="mord cjk_fallback mtight">后</span><span class="mord cjk_fallback mtight">的</span><span class="mord cjk_fallback mtight">性</span><span class="mord cjk_fallback mtight">能</span><span class="mord mtight">/</span><span class="mopen mtight">(</span><span class="mord cjk_fallback mtight">未</span><span class="mord cjk_fallback mtight">改</span><span class="mord cjk_fallback mtight">进</span><span class="mord cjk_fallback mtight">执</span><span class="mord cjk_fallback mtight">行</span><span class="mord cjk_fallback mtight">时</span><span class="mord cjk_fallback mtight">间</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<li><p>$S_e(加速比) = \frac{改进后的性能/(未改进执行时间)}{未改进的性能/(改进后的执行时间)}$</p>
 </li>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">改</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">后</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">改</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">部</mi><mi mathvariant="normal">分</mi><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><mrow><mi mathvariant="normal">加</mi><mi mathvariant="normal">速</mi><mi mathvariant="normal">比</mi></mrow></mfrac><mo>+</mo><mi mathvariant="normal">不</mi><mi mathvariant="normal">可</mi><mi mathvariant="normal">改</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">部</mi><mi mathvariant="normal">分</mi><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><annotation encoding="application/x-tex">改进后的执行时间 = \frac{改进部分执行时间}{加速比}+不可改进部分执行时间</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mord cjk_fallback">改</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">后</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">执</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.92833em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.394em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">加</span><span class="mord cjk_fallback mtight">速</span><span class="mord cjk_fallback mtight">比</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">改</span><span class="mord cjk_fallback mtight">进</span><span class="mord cjk_fallback mtight">部</span><span class="mord cjk_fallback mtight">分</span><span class="mord cjk_fallback mtight">执</span><span class="mord cjk_fallback mtight">行</span><span class="mord cjk_fallback mtight">时</span><span class="mord cjk_fallback mtight">间</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">可</span><span class="mord cjk_fallback">改</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">部</span><span class="mord cjk_fallback">分</span><span class="mord cjk_fallback">执</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span></p>
+<li><p>$改进后的执行时间 = \frac{改进部分执行时间}{加速比}+不可改进部分执行时间$</p>
 </li>
 </ul>
-<hr />
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">F_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：改进部分所占执行时间比例</p>
+<p>$F_e$：改进部分所占执行时间比例</p>
 <ul>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>n</mi></msub><mo>=</mo><msub><mi>T</mi><mn>0</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>F</mi><mi>e</mi></msub><mo>+</mo><mfrac><msub><mi>F</mi><mi>e</mi></msub><msub><mi>S</mi><mi>e</mi></msub></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T_n = T_0(1 - F_e + \frac{F_e}{S_e})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.3335309999999998em;vertical-align:-0.44509999999999994em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8884309999999999em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.05764em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></p>
-</li>
-<li>
-<p>改进后系统加速比为：</p>
-</li>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mrow><mn>1</mn><mo>−</mo><msub><mi>F</mi><mi>e</mi></msub><mo>+</mo><mfrac><msub><mi>F</mi><mi>e</mi></msub><msub><mi>S</mi><mi>e</mi></msub></mfrac></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{1 - F_e + \frac{F_e}{S_e}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.664023em;vertical-align:-0.8189150000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.521885em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.95445em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.23056em;"><span style="top:-2.3em;margin-left:-0.05764em;margin-right:0.1em;"><span class="pstrut" style="height:2.5em;"></span><span class="mord mathdefault mtight">e</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.466357142857143em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.23056em;"><span style="top:-2.3em;margin-left:-0.13889em;margin-right:0.1em;"><span class="pstrut" style="height:2.5em;"></span><span class="mord mathdefault mtight">e</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4868571428571429em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8189150000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
-</li>
+<li>$T_n = T_0(1 - F_e + \frac{F_e}{S_e})$</li>
+<li>改进后系统加速比为：</li>
+<li>$\frac{1}{1 - F_e + \frac{F_e}{S_e}}$</li>
 </ul>
 </blockquote>
-<h4 id="了解性价比桌面机服务器"><a class="markdownIt-Anchor" href="#了解性价比桌面机服务器"></a> 了解性价比:桌面机，服务器</h4>
-<blockquote></blockquote>
-<h2 id="第2章-指令系统"><a class="markdownIt-Anchor" href="#第2章-指令系统"></a> 第2章 指令系统</h2>
-<h4 id="指令集系统结构分类及特点"><a class="markdownIt-Anchor" href="#指令集系统结构分类及特点"></a> 指令集系统结构分类及特点</h4>
-<blockquote>
+<h4 id="了解性价比-桌面机，服务器"><a href="#了解性价比-桌面机，服务器" class="headerlink" title="了解性价比:桌面机，服务器"></a>了解性价比:桌面机，服务器</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h2 id="第2章-指令系统"><a href="#第2章-指令系统" class="headerlink" title="第2章 指令系统"></a>第2章 指令系统</h2><h4 id="指令集系统结构分类及特点"><a href="#指令集系统结构分类及特点" class="headerlink" title="指令集系统结构分类及特点"></a>指令集系统结构分类及特点</h4><blockquote>
 <p>堆栈、累加器、通用寄存器</p>
 </blockquote>
-<h4 id="通用寄存器系统结构的分类及特点"><a class="markdownIt-Anchor" href="#通用寄存器系统结构的分类及特点"></a> 通用寄存器系统结构的分类及特点</h4>
-<blockquote>
+<h4 id="通用寄存器系统结构的分类及特点"><a href="#通用寄存器系统结构的分类及特点" class="headerlink" title="通用寄存器系统结构的分类及特点"></a>通用寄存器系统结构的分类及特点</h4><blockquote>
 <ul>
-<li>
-<p>r-m</p>
+<li><p>r-m</p>
 </li>
-<li>
-<p>r-r/load-store</p>
+<li><p>r-r/load-store</p>
 </li>
 </ul>
 </blockquote>
-<h4 id="存储器寻址基本单位-小端与大端模式-对齐访问"><a class="markdownIt-Anchor" href="#存储器寻址基本单位-小端与大端模式-对齐访问"></a> 存储器寻址:基本单位、小端与大端模式、对齐访问</h4>
-<blockquote></blockquote>
-<h4 id="最常用寻址方式"><a class="markdownIt-Anchor" href="#最常用寻址方式"></a> 最常用寻址方式</h4>
-<blockquote></blockquote>
-<h4 id="常用操作数类型"><a class="markdownIt-Anchor" href="#常用操作数类型"></a> 常用操作数类型</h4>
-<blockquote>
+<h4 id="存储器寻址-基本单位、小端与大端模式、对齐访问"><a href="#存储器寻址-基本单位、小端与大端模式、对齐访问" class="headerlink" title="存储器寻址:基本单位、小端与大端模式、对齐访问"></a>存储器寻址:基本单位、小端与大端模式、对齐访问</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="最常用寻址方式"><a href="#最常用寻址方式" class="headerlink" title="最常用寻址方式"></a>最常用寻址方式</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="常用操作数类型"><a href="#常用操作数类型" class="headerlink" title="常用操作数类型"></a>常用操作数类型</h4><blockquote>
 <ul>
 <li>用操作码编码指定</li>
 <li>用硬件解释字段表示数据类型</li>
 </ul>
 </blockquote>
-<h4 id="常用指令操作"><a class="markdownIt-Anchor" href="#常用指令操作"></a> 常用指令操作</h4>
-<blockquote></blockquote>
-<h4 id="常用指令系统编码方式"><a class="markdownIt-Anchor" href="#常用指令系统编码方式"></a> 常用指令系统编码方式</h4>
-<blockquote>
+<h4 id="常用指令操作"><a href="#常用指令操作" class="headerlink" title="常用指令操作"></a>常用指令操作</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="常用指令系统编码方式"><a href="#常用指令系统编码方式" class="headerlink" title="常用指令系统编码方式"></a>常用指令系统编码方式</h4><blockquote>
 <ul>
 <li>变长编码：代码长度可以减少</li>
 <li>定长编码：性能提高，利用流水线</li>
 <li>混合方法：折中方式</li>
 </ul>
 </blockquote>
-<h4 id="mips系统结构的指令格式-寻址方式特点"><a class="markdownIt-Anchor" href="#mips系统结构的指令格式-寻址方式特点"></a> MIPS系统结构的指令格式、寻址方式特点。</h4>
-<blockquote>
+<h4 id="MIPS系统结构的指令格式、寻址方式特点。"><a href="#MIPS系统结构的指令格式、寻址方式特点。" class="headerlink" title="MIPS系统结构的指令格式、寻址方式特点。"></a>MIPS系统结构的指令格式、寻址方式特点。</h4><blockquote>
 <p>32位定长指令</p>
 </blockquote>
-<h2 id="第3章-流水线技术"><a class="markdownIt-Anchor" href="#第3章-流水线技术"></a> 第3章 流水线技术</h2>
-<h4 id="流水线定义"><a class="markdownIt-Anchor" href="#流水线定义"></a> 流水线定义</h4>
-<blockquote>
+<h2 id="第3章-流水线技术"><a href="#第3章-流水线技术" class="headerlink" title="第3章 流水线技术"></a>第3章 流水线技术</h2><h4 id="流水线定义"><a href="#流水线定义" class="headerlink" title="流水线定义"></a>流水线定义</h4><blockquote>
 <p>利用执行指令操作间的并行性，实现多条指令重叠执行的技术</p>
 </blockquote>
-<h4 id="流水线的三种冒险及解决方法"><a class="markdownIt-Anchor" href="#流水线的三种冒险及解决方法"></a> 流水线的三种冒险及解决方法</h4>
-<blockquote>
+<h4 id="流水线的三种冒险及解决方法"><a href="#流水线的三种冒险及解决方法" class="headerlink" title="流水线的三种冒险及解决方法"></a>流水线的三种冒险及解决方法</h4><blockquote>
 <p><strong>控制冒险</strong></p>
 <ul>
 <li>WB先写，ID后读</li>
@@ -382,7 +357,6 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 <li>增加硬件资源或功能部件完全流水</li>
 <li>停顿流水线</li>
 </ul>
-<hr />
 <p><strong>数据冒险</strong></p>
 <ul>
 <li>WB先写，ID后读</li>
@@ -390,7 +364,6 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 <li>Load数据冒险</li>
 <li>停顿</li>
 </ul>
-<hr />
 <p><strong>控制冒险</strong></p>
 <ul>
 <li>停顿流水线</li>
@@ -399,12 +372,13 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 <li>转移延迟</li>
 </ul>
 </blockquote>
-<h4 id="流水线模型机指令系统-无相关流水线模型机多条指令执行过程流水线模型机的控制信号的产生"><a class="markdownIt-Anchor" href="#流水线模型机指令系统-无相关流水线模型机多条指令执行过程流水线模型机的控制信号的产生"></a> 流水线模型机指令系统、无相关流水线模型机多条指令执行过程，流水线模型机的控制信号的产生</h4>
-<blockquote></blockquote>
-<h4 id="流水线模型机中结构相关处理数据前推-load前推实现-控制相关处理指令执行的时序图"><a class="markdownIt-Anchor" href="#流水线模型机中结构相关处理数据前推-load前推实现-控制相关处理指令执行的时序图"></a> 流水线模型机中结构相关处理，数据前推、load前推实现， 控制相关处理，指令执行的时序图</h4>
-<blockquote></blockquote>
-<h4 id="精确异常与非精确异常"><a class="markdownIt-Anchor" href="#精确异常与非精确异常"></a> 精确异常与非精确异常</h4>
-<blockquote>
+<h4 id="流水线模型机指令系统、无相关流水线模型机多条指令执行过程，流水线模型机的控制信号的产生"><a href="#流水线模型机指令系统、无相关流水线模型机多条指令执行过程，流水线模型机的控制信号的产生" class="headerlink" title="流水线模型机指令系统、无相关流水线模型机多条指令执行过程，流水线模型机的控制信号的产生"></a>流水线模型机指令系统、无相关流水线模型机多条指令执行过程，流水线模型机的控制信号的产生</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="流水线模型机中结构相关处理，数据前推、load前推实现，-控制相关处理，指令执行的时序图"><a href="#流水线模型机中结构相关处理，数据前推、load前推实现，-控制相关处理，指令执行的时序图" class="headerlink" title="流水线模型机中结构相关处理，数据前推、load前推实现， 控制相关处理，指令执行的时序图"></a>流水线模型机中结构相关处理，数据前推、load前推实现， 控制相关处理，指令执行的时序图</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="精确异常与非精确异常"><a href="#精确异常与非精确异常" class="headerlink" title="精确异常与非精确异常"></a>精确异常与非精确异常</h4><blockquote>
 <p><strong>精确异常</strong></p>
 <ul>
 <li>异常发生之前的指令正常结束，之后的指令暂停，并在处理完异常之后能重新启动。</li>
@@ -413,14 +387,12 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 <li>一条指令将离开流水线，检测异常向量</li>
 <li>若多个异常，响应最早流水段的异常</li>
 </ul>
-<hr />
 <p><strong>非精确异常</strong></p>
 <ul>
 <li>异常乱序</li>
 </ul>
 </blockquote>
-<h4 id="经典5段流水线扩展浮点流水线涉及到的写冲突-相关及处理"><a class="markdownIt-Anchor" href="#经典5段流水线扩展浮点流水线涉及到的写冲突-相关及处理"></a> 经典5段流水线扩展浮点流水线，涉及到的写冲突、相关及处理</h4>
-<blockquote>
+<h4 id="经典5段流水线扩展浮点流水线，涉及到的写冲突、相关及处理"><a href="#经典5段流水线扩展浮点流水线，涉及到的写冲突、相关及处理" class="headerlink" title="经典5段流水线扩展浮点流水线，涉及到的写冲突、相关及处理"></a>经典5段流水线扩展浮点流水线，涉及到的写冲突、相关及处理</h4><blockquote>
 <p>除法部件不参与流水线</p>
 <p>RAW</p>
 <ul>
@@ -432,8 +404,7 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 </ul>
 <p>WAR</p>
 </blockquote>
-<h4 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h4>
-<blockquote>
+<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><blockquote>
 <ul>
 <li>忽略这个异常</li>
 <li>缓存结果，cpu执行完之前不改变任何状态(中间寄存器或历史文件未来文件)</li>
@@ -441,12 +412,8 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 <li></li>
 </ul>
 </blockquote>
-<h2 id="第4章-指令级并行及限制"><a class="markdownIt-Anchor" href="#第4章-指令级并行及限制"></a> 第4章 指令级并行及限制</h2>
-<h4 id="静态调度的循环展开方法名相关寄存器换名编译器实现"><a class="markdownIt-Anchor" href="#静态调度的循环展开方法名相关寄存器换名编译器实现"></a> 静态调度的循环展开方法，名相关，寄存器换名(编译器实现)</h4>
-<blockquote></blockquote>
-<h4 id="动态调度记分牌算法-tomasulo算法"><a class="markdownIt-Anchor" href="#动态调度记分牌算法-tomasulo算法"></a> 动态调度，记分牌算法， Tomasulo算法</h4>
-<blockquote>
-<h4 id="记分牌"><a class="markdownIt-Anchor" href="#记分牌"></a> 记分牌</h4>
+<h2 id="第4章-指令级并行及限制"><a href="#第4章-指令级并行及限制" class="headerlink" title="第4章 指令级并行及限制"></a>第4章 指令级并行及限制</h2><h4 id="静态调度的循环展开方法，名相关，寄存器换名-编译器实现"><a href="#静态调度的循环展开方法，名相关，寄存器换名-编译器实现" class="headerlink" title="静态调度的循环展开方法，名相关，寄存器换名(编译器实现)"></a>静态调度的循环展开方法，名相关，寄存器换名(编译器实现)</h4><h4 id="动态调度，记分牌算法，-Tomasulo算法"><a href="#动态调度，记分牌算法，-Tomasulo算法" class="headerlink" title="动态调度，记分牌算法， Tomasulo算法"></a>动态调度，记分牌算法， Tomasulo算法</h4><blockquote>
+<p><strong>记分牌</strong></p>
 <ul>
 <li><strong>IS</strong>: <code>无WAW &amp; 无结构冒险</code></li>
 <li><strong>RO</strong>：<code>源操作数就绪 &amp; 无 RAW</code></li>
@@ -454,11 +421,8 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 <li><strong>WR</strong>：<code>无WAR</code></li>
 <li>等待此寄存器的R即为yes</li>
 </ul>
-<hr />
-<h4 id="tomasulo"><a class="markdownIt-Anchor" href="#tomasulo"></a> <strong>Tomasulo</strong></h4>
-<ul>
-<li><strong>IS</strong></li>
-</ul>
+<p><strong>Tomasulo</strong></p>
+<p><strong>IS</strong></p>
 <p>进入条件：<code>有空闲保留栈/缓冲</code></p>
 <p>浮点操作：</p>
 <ul>
@@ -468,23 +432,14 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 </ul>
 <p>存取操作</p>
 <ul>
-<li>
-<p>若地址基址寄存器有效写<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">V_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，否则将产生基址寄存器的部件写<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">Q_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></p>
-</li>
-<li>
-<p>本保留栈busy</p>
-</li>
-<li>
-<p>A存偏移</p>
-<ul>
+<li>若地址基址寄存器有效写$V_j$，否则将产生基址寄存器的部件写$Q_j$</li>
+<li>本保留栈busy</li>
+<li>A存偏移</li>
 <li>取：将取缓冲送至寄存器表</li>
-<li>存：若存结果有效写<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">V_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，否则写<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Q</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">Q_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>存：若存结果有效写$V_k$，否则写$Q_k$</li>
 </ul>
-</li>
-<li>
+<hr>
 <p><strong>EXE</strong></p>
-</li>
-</ul>
 <p>进入条件：<code>源操作数就绪 &amp; 基址寄存器有效(LD|SD) &amp; 到达缓冲队首(LD|SD)</code></p>
 <p>浮点操作：</p>
 <ul>
@@ -492,16 +447,13 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 </ul>
 <p>存取操作</p>
 <ul>
-<li>
-<p>计算A</p>
-<ul>
+<li>计算A<ul>
 <li>取：读数</li>
 </ul>
 </li>
-<li>
-<p><strong>WR</strong></p>
-</li>
 </ul>
+<hr>
+<p><strong>WR</strong></p>
 <p>进入条件：<code>CDB空闲 &amp; 结果有效 &amp; 要存入的数据准备好</code></p>
 <ul>
 <li>写寄存器/存储器</li>
@@ -509,76 +461,59 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 <li>找源操作是本保留栈的将数据填入</li>
 </ul>
 </blockquote>
-<h4 id="动态转移预测bpbbtb前瞻执行的-基本概念"><a class="markdownIt-Anchor" href="#动态转移预测bpbbtb前瞻执行的-基本概念"></a> 动态转移预测，BPB，BTB，前瞻执行的 基本概念</h4>
-<blockquote>
+<h4 id="动态转移预测，BPB，BTB，前瞻执行的-基本概念"><a href="#动态转移预测，BPB，BTB，前瞻执行的-基本概念" class="headerlink" title="动态转移预测，BPB，BTB，前瞻执行的 基本概念"></a>动态转移预测，BPB，BTB，前瞻执行的 基本概念</h4><blockquote>
 <p>branch prediction buffer：减少判断跳转的停顿</p>
 <p>branch target buffer：记录转移地址在buffer中，转移成功，直接取buffer中的目标地址</p>
 <p>前瞻执行：ROB存放未确认结果</p>
 </blockquote>
-<h2 id="第5章-存储系统"><a class="markdownIt-Anchor" href="#第5章-存储系统"></a> 第5章 存储系统</h2>
-<h4 id="cache存储器的三种映像方式全相联-直接映像组相联"><a class="markdownIt-Anchor" href="#cache存储器的三种映像方式全相联-直接映像组相联"></a> Cache存储器的三种映像方式(全相联、直接映像，组相联)</h4>
-<blockquote></blockquote>
-<h4 id="物理地址与cache地址的映射计算"><a class="markdownIt-Anchor" href="#物理地址与cache地址的映射计算"></a> 物理地址与Cache地址的映射计算</h4>
-<blockquote></blockquote>
-<h4 id="cache的映像规则块标识替换算法写策略"><a class="markdownIt-Anchor" href="#cache的映像规则块标识替换算法写策略"></a> Cache的映像规则，块标识，替换算法，写策略</h4>
-<blockquote>
+<h2 id="第5章-存储系统"><a href="#第5章-存储系统" class="headerlink" title="第5章 存储系统"></a>第5章 存储系统</h2><h4 id="Cache存储器的三种映像方式-全相联、直接映像，组相联"><a href="#Cache存储器的三种映像方式-全相联、直接映像，组相联" class="headerlink" title="Cache存储器的三种映像方式(全相联、直接映像，组相联)"></a>Cache存储器的三种映像方式(全相联、直接映像，组相联)</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="物理地址与Cache地址的映射计算"><a href="#物理地址与Cache地址的映射计算" class="headerlink" title="物理地址与Cache地址的映射计算"></a>物理地址与Cache地址的映射计算</h4><blockquote>
+<p>​    </p>
+</blockquote>
+<h4 id="Cache的映像规则，块标识，替换算法，写策略"><a href="#Cache的映像规则，块标识，替换算法，写策略" class="headerlink" title="Cache的映像规则，块标识，替换算法，写策略"></a>Cache的映像规则，块标识，替换算法，写策略</h4><blockquote>
 <p><code>写策略</code></p>
 <ul>
 <li>写直达：缺失时<strong>不按写分配</strong></li>
 <li>写回：缺失时<strong>写分配</strong></li>
 </ul>
 </blockquote>
-<h4 id="cache性能优化的方法"><a class="markdownIt-Anchor" href="#cache性能优化的方法"></a> Cache性能优化的方法</h4>
-<blockquote>
-<p><code>减少缺失率</code><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">^4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="Cache性能优化的方法"><a href="#Cache性能优化的方法" class="headerlink" title="Cache性能优化的方法"></a>Cache性能优化的方法</h4><blockquote>
+<p><code>减少缺失率</code>$^4$</p>
 <ul>
-<li>
-<p>增加块大小</p>
+<li><p>增加块大小</p>
 </li>
-<li>
-<p>增大cache容量</p>
+<li><p>增大cache容量</p>
 </li>
-<li>
-<p>更高相联度</p>
+<li><p>更高相联度</p>
 </li>
-<li>
-<p>编译优化</p>
+<li><p>编译优化</p>
 </li>
 </ul>
-<hr />
-<p><code>减少缺失代价</code><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></p>
+<p><code>减少缺失代价</code>$^5$</p>
 <ul>
-<li>
-<p>多级caches</p>
+<li><p>多级caches</p>
 </li>
-<li>
-<p>关键字优先</p>
+<li><p>关键字优先</p>
 </li>
-<li>
-<p>读缺失优于写缺失</p>
+<li><p>读缺失优于写缺失</p>
 </li>
-<li>
-<p>合并写缓冲</p>
+<li><p>合并写缓冲</p>
 </li>
-<li>
-<p>牺牲缓冲</p>
+<li><p>牺牲缓冲</p>
 </li>
 </ul>
-<hr />
-<p><code>并行减少缺失率与缺失代价</code><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></p>
+<p><code>并行减少缺失率与缺失代价</code>$^3$</p>
 <ul>
-<li>
-<p>非阻塞caches</p>
+<li><p>非阻塞caches</p>
 </li>
-<li>
-<p>硬件预取</p>
+<li><p>硬件预取</p>
 </li>
-<li>
-<p>编译预取</p>
+<li><p>编译预取</p>
 </li>
 </ul>
-<hr />
-<p><code>减少命中时间</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></p>
+<p><code>减少命中时间</code> $^5$</p>
 <ul>
 <li>小和简单的caches</li>
 <li>避免地址转换</li>
@@ -587,42 +522,37 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 <li>踪迹 caches</li>
 </ul>
 </blockquote>
-<h4 id="主存储器优化性能的技术"><a class="markdownIt-Anchor" href="#主存储器优化性能的技术"></a> 主存储器优化性能的技术</h4>
-<blockquote>
+<h4 id="主存储器优化性能的技术"><a href="#主存储器优化性能的技术" class="headerlink" title="主存储器优化性能的技术"></a>主存储器优化性能的技术</h4><blockquote>
 <ul>
 <li>增加带宽</li>
-<li>交叉访问存储器</li>
+<li>交叉访问存储器 </li>
 </ul>
 </blockquote>
-<h4 id="虚拟存储器基本概念页式虚拟存储器映像规则查找方法替换算法写策略快表tlb的结构与作用-虚拟存储器与cache的综合"><a class="markdownIt-Anchor" href="#虚拟存储器基本概念页式虚拟存储器映像规则查找方法替换算法写策略快表tlb的结构与作用-虚拟存储器与cache的综合"></a> 虚拟存储器基本概念，页式虚拟存储器，映像规则，查找方法，替换算法，写策略，快表TLB的结构与作用 虚拟存储器与cache的综合</h4>
-<blockquote>
+<h4 id="虚拟存储器基本概念，页式虚拟存储器，映像规则，查找方法，替换算法，写策略，快表TLB的结构与作用-虚拟存储器与cache的综合"><a href="#虚拟存储器基本概念，页式虚拟存储器，映像规则，查找方法，替换算法，写策略，快表TLB的结构与作用-虚拟存储器与cache的综合" class="headerlink" title="虚拟存储器基本概念，页式虚拟存储器，映像规则，查找方法，替换算法，写策略，快表TLB的结构与作用 虚拟存储器与cache的综合"></a>虚拟存储器基本概念，页式虚拟存储器，映像规则，查找方法，替换算法，写策略，快表TLB的结构与作用 虚拟存储器与cache的综合</h4><blockquote>
 <ul>
 <li>全相联</li>
 <li></li>
 </ul>
 </blockquote>
-<h2 id="第6章-多线程和多处理器"><a class="markdownIt-Anchor" href="#第6章-多线程和多处理器"></a> 第6章 多线程和多处理器</h2>
-<h4 id="ilp与tlp的基本概念"><a class="markdownIt-Anchor" href="#ilp与tlp的基本概念"></a> ILP与TLP的基本概念</h4>
-<blockquote>
+<h2 id="第6章-多线程和多处理器"><a href="#第6章-多线程和多处理器" class="headerlink" title="第6章 多线程和多处理器"></a>第6章 多线程和多处理器</h2><h4 id="ILP与TLP的基本概念"><a href="#ILP与TLP的基本概念" class="headerlink" title="ILP与TLP的基本概念"></a>ILP与TLP的基本概念</h4><blockquote>
 <p>ILP：指令级并行</p>
 <p>TLP：线程级并行</p>
 </blockquote>
-<h4 id="超标量-粗粒度-细粒度和smt的基本概念"><a class="markdownIt-Anchor" href="#超标量-粗粒度-细粒度和smt的基本概念"></a> 超标量、粗粒度、细粒度和SMT的基本概念。</h4>
-<blockquote>
+<h4 id="超标量、粗粒度、细粒度和SMT的基本概念。"><a href="#超标量、粗粒度、细粒度和SMT的基本概念。" class="headerlink" title="超标量、粗粒度、细粒度和SMT的基本概念。"></a>超标量、粗粒度、细粒度和SMT的基本概念。</h4><blockquote>
 <p>超标量：单线程</p>
 <p>粗粒度：仅在长空闲周期才切换线程</p>
 <p>细粒度：可在每个周期切换线程</p>
 <p>同时多线程：SMT，一个周期内发射不同线程的指令</p>
 </blockquote>
-<h4 id="多处理器的两种分类结构"><a class="markdownIt-Anchor" href="#多处理器的两种分类结构"></a> 多处理器的两种分类结构。</h4>
-<blockquote>
+<h4 id="多处理器的两种分类结构。"><a href="#多处理器的两种分类结构。" class="headerlink" title="多处理器的两种分类结构。"></a>多处理器的两种分类结构。</h4><blockquote>
 <ul>
 <li>集中共享存储器架构</li>
 <li>分布式存储器架构</li>
 </ul>
 </blockquote>
-<h4 id="同构多核与异构多核的基本概念"><a class="markdownIt-Anchor" href="#同构多核与异构多核的基本概念"></a> 同构多核与异构多核的基本概念。</h4>
-<blockquote></blockquote>
+<h4 id="同构多核与异构多核的基本概念。"><a href="#同构多核与异构多核的基本概念。" class="headerlink" title="同构多核与异构多核的基本概念。"></a>同构多核与异构多核的基本概念。</h4><blockquote>
+<p>​    </p>
+</blockquote>
 
             </div>
             <hr>
@@ -660,8 +590,8 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/04/22/Dart/">
-                        <span class="hidden-mobile">Dart</span>
+                      <a href="/2019/06/11/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                        <span class="hidden-mobile">编译原理</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -820,6 +750,45 @@ M1001 80H400000v40H1013z'/></svg></span></span></span><span class="vlist-s">​<
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 

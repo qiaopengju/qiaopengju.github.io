@@ -1,0 +1,1561 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Lecture note：DBS概念、关系数据模型、关系代数、SQL数据库安全、数据库恢复、事务的并发控制、数据库设计理论、规范化、数据库设计">
+  <meta name="author" content="樵鹏举">
+  <meta name="keywords" content="">
+  
+  <title>数据库 - QiaoPengju</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/default_loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>QiaoPengju's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/to-do-list/">
+                <i class="iconfont icon-plan"></i>
+                To Do List
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default_post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数据库">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-06-19 23:52" pubdate>
+        June 19, 2018 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      72
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据库</h1>
+            
+            <div class="markdown-body">
+              <p>​    </p>
+<!-- more -->
+<h2 id="数据库系统相关概念"><a href="#数据库系统相关概念" class="headerlink" title="数据库系统相关概念"></a>数据库系统相关概念</h2><p>数据：符号序列，是计算机能够识别、存储、处理的描述。</p>
+<p>信息：数据的含义</p>
+<p>数据处理：数据—&gt;信息的过程</p>
+<p>数据库：长期存储在计算机内，有组织，可共享的大量数据的集合</p>
+<p>数据库管理系统（DBMS)：用户与数据库之间的管理软件。它提供了：</p>
+<blockquote>
+<p>数据定义功能（数据定义语言DDL）</p>
+<p>数据操纵功能（数据操纵语言DML)</p>
+<p>数据控制语言（数据控制语言DCL)</p>
+<p>数据组织、存储、管理功能</p>
+<p>数据库建立维护功能</p>
+</blockquote>
+<p>数据库系统的组成</p>
+<blockquote>
+<p>硬件系统</p>
+<p>数据库集合</p>
+<p>系统软件</p>
+<p>数据库管理员</p>
+<p>用户</p>
+</blockquote>
+<p>数据库系统有如下功能：</p>
+<blockquote>
+<p>定义数据库</p>
+<p>查询数据库</p>
+<p>更新数据库</p>
+<p>多用户访问</p>
+<p>存储大量数据</p>
+</blockquote>
+<p>数据库系统特点</p>
+<blockquote>
+<p>数据结构不是面向单一应用，而是面向全组织</p>
+<p>数据冗余小、易扩充</p>
+<p>数据独立程序</p>
+<p>统一的数据管理功能</p>
+<ul>
+<li><p>数据安全控制</p>
+</li>
+<li><p>数据完整性控制</p>
+</li>
+<li><p>数据的并发控制（解决多用户情况）</p>
+</li>
+</ul>
+</blockquote>
+<p>数据库管理阶段</p>
+<blockquote>
+<p>人工管理阶段</p>
+<p>文件系统阶段</p>
+<p>数据库系统阶段</p>
+</blockquote>
+<p>模型</p>
+<blockquote>
+<p>概念模型: 按照用户需求对数据库和信息进行建模，涉及实体、属性、联系等概念</p>
+<ul>
+<li><p>实体：客观存在且可相互区分的事物</p>
+</li>
+<li><p>属性：实体具有的特性</p>
+</li>
+<li><p>联系：实体之间的关联关系。联系涉及的概念：</p>
+<p> 1.度：参与联系的实体的个数。</p>
+<p> 2.角色名称：实体在联系中扮演的角色</p>
+<p> 3.递归关系：同一实体以不同的角色名称参与到同一联系中</p>
+<p> 4.基数比：一对一、一对多、多对多</p>
+<p> 5.联系约束：约束参与联系的实体的集合，分为:</p>
+<ul>
+<li>基数比</li>
+<li>参与约束</li>
+</ul>
+</li>
+</ul>
+<p>  6.参与约束：每个实体所能参与联系的最小个数</p>
+<ul>
+<li>完全参与约束也称存在依赖，每个实体都要遵循</li>
+<li>部分参与约束</li>
+</ul>
+<p><strong>数据模型</strong></p>
+<p>数据模型的基本要素</p>
+<ul>
+<li>数据结构</li>
+<li>数据操作</li>
+<li>数据完整性约束</li>
+</ul>
+<p>数据的逻辑模型，省略数据存储的细节，主要用于DBMS的实现，分以下类别：</p>
+<ul>
+<li><p>层次模型（实体之间联系用<strong>树</strong>形结构表示）</p>
+</li>
+<li><p>网状模型（实体之间的联系用<strong>有向图</strong>表示）</p>
+</li>
+<li>关系模型（实体之间的联系由<strong>表</strong>来表示）</li>
+<li>面向对象模型（把实体表示为类，对象中包含了对象内元素的联系和对象之间的联系）</li>
+</ul>
+<p>物理模型</p>
+<ul>
+<li>数据在计算机中存储的具体细节，能够由DBMS理解的模式</li>
+</ul>
+</blockquote>
+<p>三层模式结构</p>
+<ul>
+<li><p>外部层含外模式(视图)</p>
+<p>外部层包含很多外模式，描述特定的数据库</p>
+</li>
+<li><p>概念层含概念模式(关系)</p>
+<p>概念层有一个概念模式也称模式，描述数据逻辑，实体、数据类型、用户操作、约束、安全性和完整性信息</p>
+</li>
+<li><p>内部层含内模式(索引)</p>
+<p>内部层有一个内模式，描述数据库物理储存结构</p>
+</li>
+</ul>
+<ul>
+<li><p>数据库语言</p>
+<ul>
+<li><p>数据查询语言（DQL): 数据查询</p>
+</li>
+<li><p>数据定义语言（DDL): 定义数据结构，创建、修改、删除数据库</p>
+</li>
+<li><p>数据操纵语言（DML): 追加、插入、删除、修改、检索数据</p>
+</li>
+<li><p>数据控制语言（DCL): 控制数据库权限、事务发生时间、监视数据库</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>SQL：关系数据库的标准语言，非过程化。</p>
+<p>数据库管理员（DBA)的职责</p>
+<ul>
+<li>定义并存储数据库内容</li>
+<li>监督和控制数据库使用</li>
+<li>负责数据库的日常维护</li>
+<li>必要时重组、改进数据库</li>
+</ul>
+<h2 id="关系数据模型"><a href="#关系数据模型" class="headerlink" title="关系数据模型"></a>关系数据模型</h2><p>关系数据模型主要由：关系数据结构、关系数据操作、关系完整性约束组成。</p>
+<p>关系需要满足的条件、性质：</p>
+<ul>
+<li>每一列都不可再分（原子性）</li>
+<li>属性名不可重复</li>
+<li>表中元组的顺序可以调换</li>
+<li>同一属性名下的属性应该在同一域中，是同一数据类型</li>
+<li>元组不能重复</li>
+</ul>
+<p>关系的类型：</p>
+<ul>
+<li>基本关系：实际存在的表，是数据的逻辑表示</li>
+<li>查询表：查询结果对应的表</li>
+<li>视图表：是基本表或其他视图表导出的虚表，不存储数据</li>
+</ul>
+<p>元组：关系的一行</p>
+<p>属性：关系的一列</p>
+<p>域：属性的取值范围，是一组具有相同数据类型的值的集合</p>
+<p>基数：域中包含值的个数</p>
+<p>度：表长</p>
+<p>分量：元组中的一个属性值</p>
+<p>键：唯一区分不同元组的属性或属性的集合</p>
+<p>候选键：唯一区分不同元组的属性或属性的集合</p>
+<p>主键：候选键中选取的一个作为关系的主键</p>
+<blockquote>
+<p>主键唯一</p>
+<p>每个关系必须有且只有一个主键</p>
+</blockquote>
+<p>外键：属性（属性组）F不是关系R的键，但F却是关系S的主键，则属性F是关系R的外键。</p>
+<blockquote>
+<p>关系R：参照关系</p>
+<p>关系S：被参照关系</p>
+<p>R和S可以是同一个关系</p>
+<p>S的主键和F必须在同一域上</p>
+</blockquote>
+<p><strong>关系</strong></p>
+<blockquote>
+<p>笛卡尔积有意义的子集，是一张2维表</p>
+</blockquote>
+<p>关系模式：一般表示为：</p>
+<blockquote>
+<p>R(U,D,DOM,F)</p>
+<p>R:关系名</p>
+<p>U:属性名</p>
+<p>D:U中属性的域</p>
+<p>DOM:属性向域的映射集合</p>
+<p>F:数据依赖关系的集合</p>
+<p>关系完整性：</p>
+<ul>
+<li>实体完整性：主键唯一且非空</li>
+<li>参照完整性：外键要么为空，要么是另一个关系的主键</li>
+<li>用户自定义完整性、</li>
+<li>（空值）</li>
+</ul>
+</blockquote>
+<p>数据操作（为集合操作的方式）</p>
+<blockquote>
+<p>关系代数：代数方式</p>
+<p>关系演算：逻辑方式</p>
+</blockquote>
+<h2 id="关系代数-抽象"><a href="#关系代数-抽象" class="headerlink" title="关系代数(抽象 )"></a>关系代数(抽象 )</h2><p>关系运算符：</p>
+<blockquote>
+<p>集合运算符</p>
+<p>比较运算符</p>
+<p>关系运算符</p>
+<p>逻辑运算符</p>
+</blockquote>
+<p>关系代数的操作：</p>
+<blockquote>
+<p>集合运算：并、差、交、笛卡尔积</p>
+<p>关系运算：投影、选择、连接、除、更名</p>
+<p>扩展的关系运算：广义投影、聚集函数、分组、递归闭包</p>
+</blockquote>
+<p><strong><em>专门的关系运算</em></strong></p>
+<blockquote>
+<p>选择运算($\sigma$)：选择符合条件的元组组成新的关系。取R中符合条件的元组：</p>
+<p>$\sigma_{条件}(R)$</p>
+<p>投影运算($\pi$)：选择符合条件的属性组成新的关系。取关系R的第i、j列：</p>
+<p>$\pi_{i,j}(R)$</p>
+<p>连接运算($\infin$)</p>
+<p>自然连接：$R_1\infin R_2$</p>
+<ul>
+<li>计算关系间的笛卡尔积<ul>
+<li>选择在两个关系中属性相等的元组</li>
+</ul>
+</li>
+<li><p>删除重复属性</p>
+<p>外连接</p>
+<p>条件连接：$R|\times|S_{条件}$</p>
+</li>
+<li><p>$\sigma_{条件}(R\times S)$</p>
+</li>
+</ul>
+<p>除运算($\div$)</p>
+<p> $A(x, y)\div B(y,z)$</p>
+<ul>
+<li>找出x的域，对应每一个x取值，求出对应的象集t</li>
+<li>求出投影$\pi_y(R_2)$</li>
+<li>找出t中包含投影的值，即为除运算结果</li>
+</ul>
+<p>更名运算($\rho$)</p>
+<p> $\rho_{新表名(新属性名)(R)}$</p>
+</blockquote>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>sql提供的功能</p>
+<ul>
+<li>数据定义功能（DDL）</li>
+<li>数据操纵功能（DML）</li>
+<li>数据控制功能（DCL)</li>
+<li>数据查询功能（DQL)</li>
+</ul>
+<p>sql的特点</p>
+<ul>
+<li>非过程化语言</li>
+<li>统一的语言</li>
+<li>面向集合的操作方式</li>
+<li>可独立使用又可嵌入主语言使用</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作对象</th>
+<th style="text-align:center">创建</th>
+<th style="text-align:center">修改</th>
+<th style="text-align:center">删除</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数据库</td>
+<td style="text-align:center">create database</td>
+<td style="text-align:center">alter database</td>
+<td style="text-align:center">drop database</td>
+</tr>
+<tr>
+<td style="text-align:center">表</td>
+<td style="text-align:center">create table</td>
+<td style="text-align:center">alter table</td>
+<td style="text-align:center">drop table</td>
+</tr>
+<tr>
+<td style="text-align:center">视图</td>
+<td style="text-align:center">create view</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">drop view</td>
+</tr>
+<tr>
+<td style="text-align:center">索引</td>
+<td style="text-align:center">create index</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">drop index</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在表中插入元组：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">INSERT INTO &lt;table&gt;[(属性列表)] VALUES(属性值列表);<br>INSERT INTO &lt;table&gt;[(属性列表)] 子查询;<br></code></pre></td></tr></table></figure>
+<p>更新表数据：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">UPDATE &lt;table&gt;<br>SET &lt;属性列&gt;&#x3D;&lt;表达式&gt;[,&lt;属性列2&gt;&#x3D;&lt;&gt;, ...]<br>WHERE &lt;条件&gt;<br></code></pre></td></tr></table></figure>
+<p>删除表元组</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DELETE FROM &lt;table&gt; [WHERE &lt;元组选择条件&gt;]<br></code></pre></td></tr></table></figure>
+<p>修改表的命令：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALETR TABLE table_name<br>	[ADD &lt;新列名&gt; &lt;数据类型&gt; &lt;约束&gt;<br>	|ALTER COLUMN &lt;列名&gt; &lt;数据类型&gt;<br>	|DROP COLUMN &lt;列名&gt;<br>	|ADD CONSTRAINT &lt;约束名&gt; &lt;约束定义&gt;<br>	|MODIFY CONSTRAINT &lt;列名&gt; &lt;约束定义&gt;<br>	|DROP CONSTRAINT &lt;约束名&gt;]; <br></code></pre></td></tr></table></figure>
+<p>查询表的命令：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT [DISTINCT|ALL] &lt;*|属性列[AS 新的列名]&gt;<br>	&lt;FROM&gt; &lt;表名|视图名|&gt; [别名]<br>	[INTO &lt;新表名&gt;]<br>	[WHERE &lt;条件&gt;]<br>	[GROUP BY &lt;分组依据&gt;]<br>	[HAVING &lt;分组选择条件&gt;]<br>	[ORDER BY &lt;排序依据&gt;[ASC|DESC]];<br></code></pre></td></tr></table></figure>
+<p>WHERE后接判断：</p>
+<blockquote>
+<p>属性 <strong>[NOT] BETWEEN</strong> constant1 <strong>AND</strong> constant2</p>
+<p>属性 <strong>[NOT] LIKE</strong> 字符串或通配符</p>
+<p>属性 <strong>IS [NOT] NULL</strong></p>
+<p>属性|常量 <strong>[NOT] IN</strong> (SELECT 子句)|元组</p>
+<p><strong>[NOT] EXITS</strong> (SELECT 子句) </p>
+</blockquote>
+<p><strong>LIKE</strong> 匹配的通配符</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">_</td>
+<td style="text-align:center">匹配任意一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:center">匹配任意长度字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">查询一定范围字符(类似正则表达式)</td>
+</tr>
+<tr>
+<td style="text-align:center"><sup><a href="#fn_" id="reffn_"></a></sup></td>
+<td style="text-align:center">[]的非</td>
+</tr>
+<tr>
+<td style="text-align:center">字符串本身含有’_’、’%’</td>
+<td style="text-align:center">使用<strong>ESCAPE</strong> ‘string’或 <strong>‘\’</strong> 转义</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>聚集函数（只能出现在select、having中，不能在where中出现）</p>
+<blockquote>
+<p>出现在分组依据中的属性名不能出现在聚集函数中</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">聚集函数使用</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">count(*)</td>
+<td style="text-align:center">统计属性元组个数</td>
+</tr>
+<tr>
+<td style="text-align:center">count([DISTINCT] 属性名)</td>
+<td style="text-align:center">统计属性名下[不重复]的非空分量个数</td>
+</tr>
+<tr>
+<td style="text-align:center">sum([DISTINCT] 属性名)</td>
+<td style="text-align:center">对属性名下所有[不重复]分量求和</td>
+</tr>
+<tr>
+<td style="text-align:center">avg([DISTINCT] 属性名)</td>
+<td style="text-align:center">对属性名下所有[不重复]分量均值</td>
+</tr>
+<tr>
+<td style="text-align:center">max(属性名)</td>
+<td style="text-align:center">求属性列下最大值</td>
+</tr>
+<tr>
+<td style="text-align:center">min(属性名)</td>
+<td style="text-align:center">求属性列下最小值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>分组</p>
+<blockquote>
+<p>除聚集函数之外，select中出现的属性必须来自group by中的属性列</p>
+</blockquote>
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p>连接操作执行的方法：</p>
+<ul>
+<li>循环嵌套法</li>
+<li>排序合并法</li>
+<li>索引连接法</li>
+</ul>
+<p>连接方式</p>
+<ul>
+<li><p>内连接</p>
+<ol>
+<li><strong>FROM</strong> table1 <strong>JOIN</strong> table2 <strong>ON</strong> &lt;连接条件&gt;</li>
+<li><strong>WHERE</strong> &lt;连接条件&gt;</li>
+<li>自然连接</li>
+</ol>
+</li>
+<li><p>自连接</p>
+<blockquote>
+<p>同一张表内子表之间的连接查询</p>
+</blockquote>
+</li>
+<li><p>外连接</p>
+<ol>
+<li><p>SQL SERVER</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT &lt;查询列表&gt;<br>[INTO &lt;新表名&gt;]<br>FROM &lt;table1|view1&gt; [AS new_name1]<br>	&lt;LEFT|RIGHT|FULL&gt;[OUTER] JOIN&gt;<br>	&lt;table2|view2&gt; [AS new_name2]<br>ON &lt;连接条件&gt;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>WHERE</strong> A <strong>(+)=</strong> B #ORACLE数据库左外连接</p>
+</li>
+<li><p><strong>WHERE</strong> A <strong>=(+)</strong> B #ORACLE数据库右外连接</p>
+</li>
+</ol>
+<ul>
+<li><p>LEFT OUTER JOIN: 左外连接</p>
+<p>输出左表所有记录列值，右表输出与左表向匹配的记录，没有输出NULL</p>
+</li>
+<li><p>RIGHT OUTER JOIN：右外连接</p>
+<p>输出右表所有记录列值，左表输出与右表向匹配的记录，没有输出NULL</p>
+</li>
+<li><p>FULL OUTER JOIN：全连接</p>
+<p>$left_outer_join \cup right_outer_join$</p>
+</li>
+</ul>
+<p><strong>TOP</strong>限制结果集</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT TOP n [WITH TIES] &lt;column_name&gt;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用 <strong>WITH TIES</strong>会将并列值捆绑，同时输出，并算作同一排名</li>
+</ul>
+</blockquote>
+<p><strong>ANY ALL</strong></p>
+<blockquote>
+<p>ANY: 至少一个值要满足条件</p>
+<p>ALL：所有值都满足条件</p>
+<ul>
+<li>eg.找出年龄大于所有女性的男性客户</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select name, age<br>from user<br>where sex&#x3D;&#39;male&#39; and age &gt; ALL(select age from user where sex&#x3D;&#39;female&#39;); <br></code></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>定义</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE VIEW &lt;view_name&gt; [(view list)]<br>AS &lt;子查询&gt;<br>[&lt;WITH CHECK OPTION&gt;];<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>以下情况需要指定view list：</p>
+<ul>
+<li>子查询中有聚集函数或者列表达式</li>
+<li>多表连接出现相同属性名</li>
+<li>需要给属性更名</li>
+</ul>
+<p><strong>子查询限制</strong>：</p>
+<p>不能含有<strong>ORDER BY</strong></p>
+<p>不能含有<strong>DISTINCT</strong></p>
+</blockquote>
+<p>删除</p>
+<blockquote>
+<p><strong>DROP VIEW</strong> view_name <strong>[CASCADE]</strong>;</p>
+<ul>
+<li>加CASCADE后会联级删除该视图与其导出的所有视图</li>
+</ul>
+</blockquote>
+<p>查询</p>
+<blockquote>
+<p>与关系的查询相同</p>
+</blockquote>
+<p>更新</p>
+<blockquote>
+<p>只有满足以下所有条件的视图才能对基表进行更新操作：</p>
+<ul>
+<li>视图只定义在一个基表上</li>
+<li>子查询不含 <strong>GROUP BY、DISTINCT、</strong>聚集函数</li>
+<li>视图列不含计算表达式</li>
+<li>视图列包含所有基表中<strong>NOT NULL</strong>的列</li>
+</ul>
+</blockquote>
+<p>作用</p>
+<ul>
+<li>视图能简化用户操作</li>
+<li>视图对重构的数据库提供一定程度的逻辑独立性</li>
+<li>视图为用户提供多个视角看同一数据</li>
+<li>提高数据安全性</li>
+<li>保证数据完整性</li>
+</ul>
+<hr>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>特点：空间换时间(hash)</p>
+<p>分类</p>
+<blockquote>
+<ul>
+<li><p>聚簇索引</p>
+<p>索引与数据储存在相邻等待数据空间，并使行的物理顺序和索引的顺序一致</p>
+<p>对经常搜索<strong>范围值</strong>的列非常有效</p>
+</li>
+<li><p>非聚簇索引</p>
+<p>数据和索引分开存储，索引以指针指向数据</p>
+<p><strong>精确匹配</strong>查询最佳方法</p>
+</li>
+<li><p>唯一索引</p>
+<p>保证索引列不含重复值</p>
+<p>创建<strong>PRIMARY KEY</strong>或<strong>UNIQUE</strong>约束会自动在表上场景唯一索引</p>
+</li>
+</ul>
+</blockquote>
+<p>创建</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#NONCLUSTERED：非聚簇索引<br>#CLUSTERED：聚簇索引<br>#UNIQUE：唯一索引<br><br>CREATE [UNIQUE][CLUSTERED][NONCLUSTERED] INDEX &lt;索引名&gt;<br>ON &lt;表名|视图名&gt; (列名[ASC|DESC]);<br><br>#eg.按ID和姓名创建用户的唯一索引<br>CREATE UNIQUE INDEX idIndex<br>ON web_user(user_id ASC, user_name DESC);<br></code></pre></td></tr></table></figure>
+<p>删除</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP INDEX [user_name] &lt;index_name&gt;;<br></code></pre></td></tr></table></figure>
+<p>索引建立原则</p>
+<blockquote>
+<ul>
+<li>选择数据量大的表建立索引</li>
+<li>索引建立数量要适量</li>
+<li>选择合适时机建立索引</li>
+<li>优先选择主键建立索引</li>
+<li>为支撑连接操作，考虑在外码上建立非聚簇索引</li>
+<li>最好选择包含大量非重复值的列建立非聚簇索引</li>
+</ul>
+</blockquote>
+<hr>
+<p>SQL server的三类操作系统文件</p>
+<ul>
+<li>主文件 .mdf： <strong>数据库启动信息</strong>及<strong>数据信息</strong>，每个数据库<strong>只有1个</strong></li>
+<li>次要文件 .ndf：主文件以外的所有信息， 可以有<strong>多</strong>个</li>
+<li>事务日志 .ldf：恢复数据库的日志信息，每个数据库<strong>至少有1个</strong></li>
+</ul>
+<h4 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h4><p>分类</p>
+<ul>
+<li>类型约束</li>
+<li>属性约束</li>
+<li>关系变量约束</li>
+<li>数据库约束</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">约束</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">PRIMARY KEY</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">UNIQUE</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">NOT NULL</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">CHECK</td>
+<td style="text-align:center">约束属性范围</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FOREIGN KEY</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="数据库安全"><a href="#数据库安全" class="headerlink" title="数据库安全"></a>数据库安全</h2><h4 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h4><p>授予权限</p>
+<blockquote>
+<p><strong>GRANT</strong> 权限 <strong>ON</strong> TABLE_NAME <strong>TO</strong> USERNAME <strong><em>[WITH GRANT OPTION]</em></strong></p>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">GRANT UPDATE(age) ON table TO kkyou WITH GRANT OPTION; <br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>表示将更新table表的age属性的权限授予kkyou用户， 并且kkyou用户可以将自己的权限授予他人</p>
+</blockquote>
+<p>角色</p>
+<blockquote>
+<p>创建角色</p>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">GRANT ROLE Adam; #创建角色Adam<br>GRANT SELECT ON user TO Adam; #将查询user表的权限分配给Adam<br>GRANT Adam TO kkyou; #将角色Adam授予用户kkyou<br>GRANT Adam TO qiao; #将角色Adam授予用户qiao<br></code></pre></td></tr></table></figure>
+<p>收回权限</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">REVOKE [WITH GRANT OPTION FOR] 权限 ON TABLE_NAME FROM USER_NAME;<br></code></pre></td></tr></table></figure>
+<h2 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h2><h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p>定义</p>
+<blockquote>
+<p>事务是用户定义的一个数据库操作序列，每个事务都是不可分割的整体</p>
+</blockquote>
+<p>事务相关的命令</p>
+<blockquote>
+<p><strong>BEGIN TRANSACTION</strong> #开始事务</p>
+<p><strong>ROLLBACK</strong> #执行错误，回滚，撤销所有操作</p>
+<p><strong>COMMIT</strong> #执行成功，提交事务</p>
+<p><strong>END TRANSACTION</strong> #结束事务</p>
+</blockquote>
+<p>事务的ACID特性</p>
+<blockquote>
+<ul>
+<li><p>原子性Atomic: 事务操作要么全部执行，要么都不执行，不可分割</p>
+</li>
+<li><p>一致性Consistent: 事务单独运行时（没有并发运行的其它事务），应保证数据库的一致性</p>
+</li>
+<li><p>隔离性Isolation: 多事务并发执行，每个事务之间不可相互干扰</p>
+</li>
+<li><p>持续性Duration: 事务一旦提交，它对数据库的数据改变应该是永久的</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="数据库恢复-1"><a href="#数据库恢复-1" class="headerlink" title="数据库恢复"></a>数据库恢复</h4><p>需要解决的问题</p>
+<blockquote>
+<ul>
+<li>如何建立冗余数据</li>
+<li>如何利用冗余数据恢复数据库</li>
+</ul>
+</blockquote>
+<h5 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h5><p>定义</p>
+<blockquote>
+<p>日志是DBMS用来记录事务对数据库进行更新操作的文件</p>
+</blockquote>
+<p>描述内容</p>
+<blockquote>
+<ul>
+<li>事务标识符：事务的唯一标识符</li>
+<li>数据项标识符：事务操作对象的唯一标识符</li>
+<li>前像(BI)：更新前数据的旧值</li>
+<li>后像(AI)：更新后数据的新值</li>
+</ul>
+</blockquote>
+<p>日志存储</p>
+<blockquote>
+<p>先存入缓冲区，再存入稳定的储存器</p>
+</blockquote>
+<p>记录形式</p>
+<blockquote>
+<ul>
+<li>\<T START> 事务T已经开始</li>
+<li>\<T COMMIT> 事务T成功提交</li>
+<li>\<T ABORT> 事务T不能成功完成，已终止</li>
+<li>\<T,X,V1,V2> 事务T对数据项X进行操作，前像为V1，后像为V2</li>
+</ul>
+</blockquote>
+<p>先写日志规则</p>
+<blockquote>
+<ul>
+<li>在主存中的数据块输出到数据库之前，所有与该数据库有关的日志记录必须已输出到稳定的储存器上(先更新日志，再更新数据库)</li>
+<li>事务要进入提交状态，必须是事务的日志，包括COMMIT记录都写入稳定存储器</li>
+</ul>
+</blockquote>
+<h4 id="保持事务原子性的三种方案"><a href="#保持事务原子性的三种方案" class="headerlink" title="保持事务原子性的三种方案"></a>保持事务原子性的三种方案</h4><blockquote>
+<ul>
+<li><p>后像(BI)在事务提交之后再写入数据库(恢复将数据更新为新值)</p>
+<p>缺点：增加事务平均缓冲的次数</p>
+<p>日志记录： <strong>\<T,X,V\>,</strong> V为后像，不储存前像。</p>
+</li>
+</ul>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">动作</th>
+<th style="text-align:center">日志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">READ(data1</td>
+<td style="text-align:center">\<T START\></td>
+</tr>
+<tr>
+<td style="text-align:center">change data1</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">WRITE(data1)</td>
+<td style="text-align:center">\<T,data1, new_data1></td>
+</tr>
+<tr>
+<td style="text-align:center">$\dots$</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\<T,COMMIT></td>
+</tr>
+<tr>
+<td style="text-align:center">将数据写入磁盘(数据库)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>   <strong>恢复步骤</strong>(从前向后，改为最后的新值)</p>
+<ul>
+<li>从后向前扫描日志文件，将COMMIT的事务放入redo-list中<ul>
+<li>从前向后扫描日志文件，对每个\<T,X,V>记录:</li>
+<li>若T不是redo-list中的事务，则什么都不做</li>
+<li>若T是redo-list中的事务，则将新值V写入磁盘</li>
+</ul>
+</li>
+<li>对未完成的事务，在日志文件中写入\<T,ABORT>记录并刷新日志</li>
+</ul>
+<ul>
+<li><p>后像(AI)在事务提交前完全写入数据库(恢复将数据改回旧值)</p>
+<p> 缺点：增加磁盘I/O次数</p>
+<p> 日志记录： <strong>\<T,X,V\></strong> V为前像，不储存后像。</p>
+<p> 要保证系统故障后恢复，需满足：</p>
+<ul>
+<li>记录数据变化的日志记录要在数据项写入磁盘前写入稳定的存储器</li>
+<li>COMMIT日志记录要在数据项写入磁盘后再写入稳定的存储器</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">动作</th>
+<th style="text-align:center">日志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\<T,START></td>
+</tr>
+<tr>
+<td style="text-align:center">READ(data1)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">change data1</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">WRITE(data1)</td>
+<td style="text-align:center">\<T,data1,V1></td>
+</tr>
+<tr>
+<td style="text-align:center">$\dots$</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">更新数据到磁盘</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\<T,COMMIT></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre><code>**恢复步骤** (从后向前，改为最初的旧值)
+</code></pre><ul>
+<li>对日志文件从后向前扫描，将<T, COMMIT>的事务放入redo-list中</li>
+<li>对每一个<T,X,V>，若T不在redo-list中，则什么都不做</li>
+<li>对每一个<T,X,V>，若T在redo-list中，则将X置为旧值V</li>
+</ul>
+<ul>
+<li><p>后像(AI)在事务提交前后写入数据库</p>
+<p> 日志记录：\<T,X,V1,V2></p>
+<p> <strong>恢复步骤</strong>(已提交记录设为新值，未提交记录回滚为旧值)</p>
+<ul>
+<li>对日志文件从后向前扫描，对有COMMIT记录和没有的事务分别放两个队列：redo-list、undo-list</li>
+<li>从前向后扫描日志文件，重新执行redo-list中的事务</li>
+<li>从后向前扫描日志文件，撤销执行undo-list中的事务</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<hr>
+<p>创建检查点的方法</p>
+<blockquote>
+<ul>
+<li><p>提交一致性检查点</p>
+<ul>
+<li>新的事务不能开始直到检查点完成</li>
+<li>现有的事务继续执行到提交或中止，并将相关日志都写入稳定存储器</li>
+<li>将当前日志缓冲区中的日志写回稳定存储器中的日志文件</li>
+<li>将日志记录<strong>\<CHECKPOINT></strong>写入存储器</li>
+</ul>
+</li>
+</ul>
+<p>   检查点之前的事务都已经完成，因此无需恢复之前的数据。</p>
+<p>   恢复时，从后向前扫描日志，<strong>\<CHECKPOINT></strong>后的记录都要恢复</p>
+<ul>
+<li><p>高速缓存一致性检查点</p>
+<ul>
+<li>新的事务不能开始直到检查点完成</li>
+<li>已存在的事务不允许进行更新操作</li>
+<li>将当前日志缓冲区中的日志写回稳定存储器中的日志文件</li>
+<li>将数据缓冲区的所有数据写入磁盘</li>
+<li>将日志记录<strong>\<CHECKPOINT，L></strong>写入存储器，L是所有活动事务的列表</li>
+</ul>
+</li>
+</ul>
+<p>   检查点前：事务已提交，不处理</p>
+<p>   检查点中：事务处于活动状态，若事务提交，执行REDO，否则执行UNDO</p>
+<p>   若后像在事务提交后才写入数据库，没有提交记录时，不必UNDO</p>
+<p>   若后像在事务提交前写入数据库，有提交记录，不必执行REDO</p>
+<ul>
+<li>模糊一致性检查点</li>
+</ul>
+</blockquote>
+<p>数据转储</p>
+<blockquote>
+<p>备份级别</p>
+<ul>
+<li>完全转储：备份整个数据库</li>
+<li>增量备份：只备份上次备份后改变的数据</li>
+</ul>
+<p>转储分类</p>
+<ul>
+<li>静态转储：转储期间不允许有事务进行</li>
+<li>动态转储：转储期间允许事务对数据库进行更新(需要用日志记录纠正数据库不一致状态)</li>
+</ul>
+</blockquote>
+<p>故障类型</p>
+<blockquote>
+<ul>
+<li><p>事务故障</p>
+<ul>
+<li>逻辑错误(错误输入、找不到数据、溢出等)</li>
+<li><p>系统错误(系统进入不良状态，如死锁)</p>
+<p>恢复：使用之前的三种方案中的一种即可</p>
+</li>
+</ul>
+</li>
+<li><p>系统故障：硬件、软件故障</p>
+<p> 恢复：使用之前的三种方案中的一种即可</p>
+</li>
+<li><p>介质故障：数据传输过程中发生的内容错误</p>
+<p> 恢复：完成转储备份工作</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="RAID-冗余磁盘阵列"><a href="#RAID-冗余磁盘阵列" class="headerlink" title="RAID(冗余磁盘阵列)"></a>RAID(冗余磁盘阵列)</h4><p>目的：应对介质故障带来的严重影响</p>
+<p>优点</p>
+<ul>
+<li>成本低、功耗小、传输效率高</li>
+<li>可提供容错功能</li>
+<li>具备数据校验功能</li>
+</ul>
+<h2 id="事务的并发控制"><a href="#事务的并发控制" class="headerlink" title="事务的并发控制"></a>事务的并发控制</h2><p>优点</p>
+<ul>
+<li>改善系统资源利用</li>
+<li>简短事务等待时间</li>
+</ul>
+<p>调度：事务按时间排序的序列</p>
+<p>串行调度：事务是一个个执行的(n个事务进行串行调度，有n!种方式)</p>
+<p>交叉调度可能引起的问题</p>
+<blockquote>
+<ul>
+<li><p>读脏数据</p>
+<p>脏数据：未提交事务所写的数据（读了ROLLBACK之前的数据）</p>
+</li>
+<li><p>不可重复读（两次读到不同的数据）</p>
+</li>
+<li><p>丢失修改（两个事务同时修改数据，其中一个事务的修改丢失）</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="可串行化"><a href="#可串行化" class="headerlink" title="可串行化"></a>可串行化</h4><blockquote>
+<p>若多个事务交叉调度和某一串行调度的结果相同时，该调度为可串行化的</p>
+</blockquote>
+<h5 id="冲突可串行化"><a href="#冲突可串行化" class="headerlink" title="冲突可串行化"></a>冲突可串行化</h5><blockquote>
+<p>多事务交叉调度发生冲突的条件</p>
+<ul>
+<li><strong>不同事务</strong>对同一数据操作</li>
+<li><strong>不同事务</strong>操作指令中含W操作</li>
+</ul>
+<p>冲突可串行化判断方法：</p>
+<p>交换调度S不冲突的指令，得到新的调度S’。S和S’是<strong>冲突等价</strong>的，若一个调度冲突等价于一个串行调度，则该调度室冲突可串行化的。</p>
+</blockquote>
+<h5 id="视图可串行化"><a href="#视图可串行化" class="headerlink" title="视图可串行化"></a>视图可串行化</h5><blockquote>
+<p>对同一事务集，若事务在任何时候都读到相同的值，写入数据库的最终状态也是相同的，则称事务<strong>视图等价</strong></p>
+</blockquote>
+<p>可串行化判断</p>
+<blockquote>
+<ul>
+<li>调度冲突等价于串行调度</li>
+<li>前驱图（点为事务，产生冲突则连线，入度点为先执行的，若产生环，则不可串行调度）</li>
+</ul>
+</blockquote>
+<p>可恢复条件</p>
+<blockquote>
+<p>不读脏数据(Ti读了Tj修改的数据，则Tj事务先提交，Ti后提交)</p>
+</blockquote>
+<h4 id="基于锁的并发控制协议"><a href="#基于锁的并发控制协议" class="headerlink" title="基于锁的并发控制协议"></a>基于锁的并发控制协议</h4><p>加锁方式(S和X锁之间都是不相容的)</p>
+<ul>
+<li>共享锁(S)：可读数据，不可写（申请队列为空，数据项没有排它锁，则可授予）SLOCK(Q)</li>
+<li>排他锁(X)：可以读写数据（申请队列为空，数据项没有锁，则可授予）XLOCK(Q)</li>
+<li>ULOCK(Q)：释放数据项Q的锁，事务提交或中止即可释放锁</li>
+</ul>
+<p>两段锁协议（2PL）</p>
+<blockquote>
+<p>保证冲突可串行化的充要条件，不能预防死锁</p>
+</blockquote>
+<ul>
+<li>增长阶段：读写数据前，应首先获得数据的锁</li>
+<li>收缩阶段：释放锁后，事务不再申请获得其他任何锁</li>
+</ul>
+<h4 id="活锁、死锁"><a href="#活锁、死锁" class="headerlink" title="活锁、死锁"></a>活锁、死锁</h4><p><strong>活锁</strong></p>
+<blockquote>
+<p>其他事务一直抢先得到锁，使得一个事务一直得不到锁</p>
+</blockquote>
+<p><strong>死锁</strong></p>
+<blockquote>
+<p>事务互相等待，形成死锁</p>
+<p>死锁的预防</p>
+<ul>
+<li><p>顺序封锁法：事务对锁的申请按顺序进行</p>
+</li>
+<li><p>一次封锁法：事务执行前获得所有锁，若不能获得所需的所有锁，则事务中止</p>
+<p> 缺点：事务开始前很难知道所需的所有锁、一次性获得所有锁，但有的锁会在很久之后使用，降低系统并发度</p>
+</li>
+<li><p>用时间戳的死锁预防：早运行的事务优先级高</p>
+<ul>
+<li>Wait-die机制：申请锁时，若事务相较冲突的事务优先级高，则等待，否则中止</li>
+<li>Wound-wait机制：申请锁时，若事务相较冲突的事务优先级高，则中止正在使用锁的事务，否则事务等待</li>
+</ul>
+</li>
+</ul>
+<p>死锁的检测预防</p>
+<ul>
+<li><p>等待图（点为事务，当事务A等待B释放锁时，边由A连向B）</p>
+</li>
+<li><p>死锁解除:撤销事务</p>
+<p> 需要解决的问题：</p>
+<ul>
+<li>撤销事务的选择</li>
+<li>撤销事务的程度（全部回滚|部分回滚）</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="数据库设计理论"><a href="#数据库设计理论" class="headerlink" title="数据库设计理论"></a>数据库设计理论</h2><p>设计的不好的数据库可能出现的问题：</p>
+<ul>
+<li>数据冗余</li>
+<li>操作异常<ul>
+<li>更新异常</li>
+<li>删除异常</li>
+<li>插入异常</li>
+</ul>
+</li>
+</ul>
+<p><strong>模式分解</strong>是解决数据冗余的主要方法</p>
+<p><strong>数据依赖包括</strong></p>
+<ul>
+<li>函数依赖</li>
+<li>多值依赖</li>
+<li>连接依赖</li>
+</ul>
+<p><strong>函数依赖</strong></p>
+<blockquote>
+<p>关系模式R(U)中，$X\subseteq U, Y\subseteq U$，若t[X] = s[X]，则有t[Y] = s[Y]，则称属性或属性组Y函数依赖于X</p>
+<p>FD X$\to$Y  <em>(X:决定因子、Y：依赖因子)</em></p>
+</blockquote>
+<ul>
+<li><p>平凡函数依赖</p>
+<p>若$X\subseteq Y, 则X\to Y$</p>
+</li>
+<li><p>完全函数依赖</p>
+</li>
+<li><p>部分函数依赖</p>
+</li>
+<li><p>传递函数依赖</p>
+<p>$X \to Y, Y \nrightarrow X, Y\rightarrow Z,则 Z对X传递函数依赖$</p>
+<p>$X \to Y, Y \nrightarrow X, Y\rightarrow Z \models X\rightarrow Z$</p>
+</li>
+</ul>
+<p>F的闭包：F和F所蕴含的依赖的全体</p>
+<p>属性集的闭包</p>
+<p>关系无损分解的判断方法</p>
+<ul>
+<li><p>追逐法</p>
+</li>
+<li><p>若关系被分解为两个关系，则无损分解的充要条件是：</p>
+<p>$(U_1\cap U_2)\rightarrow (U_1 - U_2)$或</p>
+<p>$(U_1\cap U_2)\rightarrow (U_2-U_1)$</p>
+</li>
+<li><p>$X\to Y 在R上成立，且X\cap Y=\phi，则{R-Y, XY}是无损分解$</p>
+</li>
+</ul>
+<p><strong>保持函数依赖的分解的判断方法</strong></p>
+<blockquote>
+<p><script type="math/tex">\rho=\{R_1, R_2, \dots , R_k\}</script>执行以下算法：</p>
+<p>Z=X</p>
+<p>while Z 改变 do{</p>
+<p>​    for i=1 to k{</p>
+<p>​        $Z = Z\cup ((Z \cap U_i)^+\cap U_i)$</p>
+<p>​    }</p>
+<p>}</p>
+<p>若最终所有的Z包含正确的$Z^+$，则分解保持函数依赖</p>
+</blockquote>
+<h2 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h2><h4 id="1NF"><a href="#1NF" class="headerlink" title="1NF"></a>1NF</h4><blockquote>
+<p>每个属性值都是原子值</p>
+</blockquote>
+<h4 id="2NF"><a href="#2NF" class="headerlink" title="2NF"></a>2NF</h4><blockquote>
+<p>每个非主属性都完全函数依赖于候选码</p>
+</blockquote>
+<h4 id="3NF"><a href="#3NF" class="headerlink" title="3NF"></a>3NF</h4><blockquote>
+<p>每个非主属性都不传递依赖于候选码，每个非主属性都完全函数依赖于候选码</p>
+<p>$2NF\subset 3NF$</p>
+</blockquote>
+<h4 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h4><blockquote>
+<p>$R\in$ 1NF，且每个属性都不传递依赖于R的候选码，则R是BCNF模式</p>
+</blockquote>
+<h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><h4 id="数据库设计方法"><a href="#数据库设计方法" class="headerlink" title="数据库设计方法"></a>数据库设计方法</h4><ul>
+<li>直观设计法</li>
+<li>规范化设计法</li>
+<li>面向对象设计法</li>
+<li>计算机辅助方法</li>
+</ul>
+<h4 id="数据库设计的基本过程"><a href="#数据库设计的基本过程" class="headerlink" title="数据库设计的基本过程"></a>数据库设计的基本过程</h4><ul>
+<li><p>需求分析阶段</p>
+<p>需求调研</p>
+<p>需求分析</p>
+<p>编写需求分析说明书</p>
+<p>需求分析说明书验证</p>
+</li>
+<li><p>概念设计阶段</p>
+</li>
+<li><p>逻辑设计阶段</p>
+</li>
+<li><p>物理设计阶段</p>
+</li>
+<li><p>实现阶段</p>
+</li>
+<li><p>运行和维护阶段</p>
+</li>
+</ul>
+<h4 id="ER图"><a href="#ER图" class="headerlink" title="ER图"></a>ER图</h4><p>全局视图集成的重要工作：</p>
+<ul>
+<li>冲突消除</li>
+<li>冗余消除与优化</li>
+</ul>
+<p>局部模式间的冲突：</p>
+<ul>
+<li>属性冲突</li>
+<li>命名冲突</li>
+<li>结构冲突</li>
+</ul>
+<h4 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h4><ul>
+<li>数据项</li>
+<li>数据结构</li>
+<li>数据流</li>
+<li>数据存储</li>
+<li>数据处理</li>
+</ul>
+<p>存取方法设计</p>
+<ul>
+<li>聚簇</li>
+<li>索引</li>
+<li>hash</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Lecture-Notes/">Lecture Notes</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/06/25/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">多媒体技术</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/05/06/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">
+                        <span class="hidden-mobile">组合数学</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

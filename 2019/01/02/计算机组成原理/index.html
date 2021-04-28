@@ -1,0 +1,1072 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Lecture note：组成原理概述、编码及运算、指令系统、存储器、总线、指令、异常与中断处理">
+  <meta name="author" content="樵鹏举">
+  <meta name="keywords" content="">
+  
+  <title>计算机组成原理 - QiaoPengju</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/default_loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>QiaoPengju's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/to-do-list/">
+                <i class="iconfont icon-plan"></i>
+                To Do List
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default_post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机组成原理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-01-02 14:42" pubdate>
+        January 2, 2019 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      39
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机组成原理</h1>
+            
+            <div class="markdown-body">
+              <p>​    </p>
+<!-- more -->
+<h2 id="一、计算机"><a href="#一、计算机" class="headerlink" title="一、计算机"></a>一、计算机</h2><h4 id="计算机发展"><a href="#计算机发展" class="headerlink" title="计算机发展"></a>计算机发展</h4><blockquote>
+<ol>
+<li>电子管计算机<ul>
+<li>ENIAC：第一台计算机、十进制表示、累加器风格</li>
+</ul>
+</li>
+<li>晶体管计算机<ul>
+<li>内存：磁芯存储器</li>
+<li>外存：磁鼓、磁带</li>
+<li>变址、中断、I/O</li>
+<li>出现高级语言</li>
+</ul>
+</li>
+<li>中/大规模集成电路计算机<ul>
+<li>微程序、cache、虚拟存储器、流水线</li>
+</ul>
+</li>
+<li>超大规模集成电路计算机</li>
+</ol>
+<p>摩尔定律：每18个月，集成度翻一番，速度提高一倍，价格降低一倍</p>
+</blockquote>
+<hr>
+<h4 id="计算机硬件"><a href="#计算机硬件" class="headerlink" title="计算机硬件"></a>计算机硬件</h4><blockquote>
+<p>采用”存储程序“工作方式：将程序与数据存入主存中，能不在人为干涉下，逐条取指并执行</p>
+<p>EDSAC为第一台存储程序计算机</p>
+<p>五大部件</p>
+</blockquote>
+<ul>
+<li>运算器、控制器、存储器、输入、输出设备</li>
+</ul>
+<hr>
+<h4 id="计算机软件"><a href="#计算机软件" class="headerlink" title="计算机软件"></a>计算机软件</h4><blockquote>
+<ul>
+<li>系统软件：有效、安全使用管理计算机的软件和为开发和运行应用软件而提供的软件<ul>
+<li>操作系统、语言处理系统、数据库管理系统、各类实用程序</li>
+</ul>
+</li>
+<li>应用软件</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="计算机系统结构划分"><a href="#计算机系统结构划分" class="headerlink" title="计算机系统结构划分"></a>计算机系统结构划分</h4><blockquote>
+<p>应用</p>
+<p>算法</p>
+<p>编程</p>
+<p>操作系统</p>
+<p>ISA 指令集体系结构</p>
+<p>微体系结构</p>
+<p>功能部件 RTL</p>
+<p>电路</p>
+<p>器件</p>
+</blockquote>
+<hr>
+<h4 id="翻译程序分类"><a href="#翻译程序分类" class="headerlink" title="翻译程序分类"></a>翻译程序分类</h4><blockquote>
+<ol>
+<li>汇编程序：将汇编程序翻译成机器语言</li>
+<li>解释程序：将语言逐条翻译成机器语言执行</li>
+<li>编译程序：将高级语言翻译成汇编或机器语言</li>
+</ol>
+</blockquote>
+<hr>
+<h4 id="程序开发过程"><a href="#程序开发过程" class="headerlink" title="程序开发过程"></a>程序开发过程</h4><blockquote>
+<ol>
+<li>预处理阶段： .cpp-&gt;<strong>.i</strong></li>
+<li>编译阶段：对预处理后的文件编译，生成汇编语言源程序文件 <strong>.s</strong></li>
+<li>汇编阶段：对汇编源程序进行汇编，生成一个<strong>可重定位目标文件</strong>，是<strong>二进制文件</strong> <strong>.o</strong></li>
+<li>链接阶段：将可重定位目标文件和标准函数库合并为一个<strong>可执行目标文件</strong> </li>
+</ol>
+</blockquote>
+<hr>
+<h4 id="计算机性能测试"><a href="#计算机性能测试" class="headerlink" title="计算机性能测试"></a>计算机性能测试</h4><blockquote>
+<p><strong>CPI</strong>:执行一条指令所需的时钟周期数 CPI=总周期数/总指令条数</p>
+<p><strong>MIPS</strong>：(Million Instructions Per Second) 每秒执行多少百万条指令</p>
+<p>用基准程序</p>
+</blockquote>
+<hr>
+<h4 id="计算机用户"><a href="#计算机用户" class="headerlink" title="计算机用户"></a>计算机用户</h4><ol>
+<li>最终用户：使用程序完成特定任务(应用层)</li>
+<li>系统管理员：对系统进行配置、管理维护(操作系统提供的抽象层)</li>
+<li>应用程序员：使用高级编程语言编制软件的程序员(编程层)</li>
+<li>系统程序员：设计开发系统软件的程序员(ISA层)</li>
+</ol>
+<hr>
+<h4 id="ISA"><a href="#ISA" class="headerlink" title="ISA"></a>ISA</h4><p>ISA，指令集体系结构，规定了如何使用硬件，涉及内容：</p>
+<ul>
+<li>指令集合</li>
+<li>操作数类型</li>
+<li>寄存器组结构</li>
+<li>存储空间的大小与编址方式</li>
+<li>大端，小端？</li>
+<li>寻址方式</li>
+<li>指令执行控制方式，包括程序计数器、条件码定义</li>
+</ul>
+<hr>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><ul>
+<li>吞吐率：单位时间的工作量</li>
+<li>响应时间(执行时间)：从开始到作业结束所用的时间</li>
+</ul>
+<h2 id="二、运算"><a href="#二、运算" class="headerlink" title="二、运算"></a>二、运算</h2><h4 id="补码溢出"><a href="#补码溢出" class="headerlink" title="补码溢出"></a>补码溢出</h4><ul>
+<li>最高次高位进位不同</li>
+<li>和的符号和加数符号不同</li>
+</ul>
+<p>E1~移~ + E2~移~ = [E1 + E2]~补~</p>
+<p>E1~移~ - E2~移~ = [E1 - E2]~补~</p>
+<hr>
+<h4 id="校验"><a href="#校验" class="headerlink" title="校验"></a>校验</h4><p>码距d为奇数，可以发现d-1位错，纠正(d-1)/2位错</p>
+<p>码距为偶数，可以发现d/2位错，纠正d/2-1位错</p>
+<ul>
+<li>奇偶校验码距为2，能发现1位错，不能纠错</li>
+<li>海明校验码距为3，能发现2位错，纠1位错</li>
+</ul>
+<hr>
+<h4 id="海明校验-SEC"><a href="#海明校验-SEC" class="headerlink" title="海明校验(SEC)"></a>海明校验(SEC)</h4><p>n位数据引入k为校验码，需满足：</p>
+<blockquote>
+<p> $2^K \geq 1 + K + n$</p>
+</blockquote>
+<ul>
+<li>故障字全0：无错</li>
+<li>故障字中有1个1：1位校验位错</li>
+<li>故障字中有多个1：1位数据位错(分组确认)</li>
+</ul>
+<hr>
+<h4 id="浮点数加减步骤"><a href="#浮点数加减步骤" class="headerlink" title="浮点数加减步骤"></a>浮点数加减步骤</h4><blockquote>
+<ul>
+<li>对阶</li>
+<li>尾数加减(隐藏位参与运算)</li>
+<li>规格化</li>
+<li>舍入(保护位|舍入位|粘位)<ul>
+<li>就近舍入(偶数优先)</li>
+<li>正无穷向舍入</li>
+<li>负无穷向舍入</li>
+<li>朝0舍入</li>
+</ul>
+</li>
+<li>判断溢出</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="加法器"><a href="#加法器" class="headerlink" title="加法器"></a>加法器</h4><blockquote>
+<script type="math/tex; mode=display">F_i = X_i \bigoplus Y_i \bigoplus C_{i-1}</script><script type="math/tex; mode=display">C_i = C_{i-1}(X_i + Y_i) + X_i Y_i</script><p>$P_i = X_i + Y_i$：进位传递函数</p>
+<p>$G_I = X_i Y_i$：进位生成函数</p>
+</blockquote>
+<ol>
+<li>全先行加法器</li>
+<li>局部现行加法器：将数据分组，组内并行，组间串行</li>
+<li>多级现行加法器：将数据分组，组内并行，组间并行</li>
+</ol>
+<hr>
+<h4 id="字、字长"><a href="#字、字长" class="headerlink" title="字、字长"></a>字、字长</h4><blockquote>
+<p>字：处理信息的宽度，用于度量数据类型大小</p>
+<p>字长：整数运算数据通路宽度，反映了计算机的一种处理信息的能力</p>
+</blockquote>
+<hr>
+<h2 id="三、指令系统"><a href="#三、指令系统" class="headerlink" title="三、指令系统"></a>三、指令系统</h2><h4 id="指令必须包含-显示或隐含-的内容"><a href="#指令必须包含-显示或隐含-的内容" class="headerlink" title="指令必须包含(显示或隐含)的内容"></a>指令必须包含(显示或隐含)的内容</h4><ol>
+<li>操作码</li>
+<li>原操作数或操作数地址</li>
+<li>结果的地址</li>
+<li>下条指令地址</li>
+</ol>
+<hr>
+<h4 id="指令设计原则"><a href="#指令设计原则" class="headerlink" title="指令设计原则"></a>指令设计原则</h4><ol>
+<li>指令尽量短</li>
+<li>要有充足的操作码位数</li>
+<li>操作码含义唯一</li>
+<li>指令长度是字节的整数倍</li>
+<li>合理选择地址字段的个数</li>
+<li>尽量规整</li>
+</ol>
+<h2 id="四、存储器"><a href="#四、存储器" class="headerlink" title="四、存储器"></a>四、存储器</h2><h4 id="CS：片选信号"><a href="#CS：片选信号" class="headerlink" title="CS：片选信号"></a>CS：片选信号</h4><h4 id="存储器逻辑框图"><a href="#存储器逻辑框图" class="headerlink" title="存储器逻辑框图"></a>存储器逻辑框图</h4><ul>
+<li>片选信号CS</li>
+<li>写使能WE</li>
+<li>读出数据线D</li>
+<li>片内地址线A</li>
+</ul>
+<hr>
+<h4 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h4><blockquote>
+<p>直接映射</p>
+</blockquote>
+<p>主存地址：主存群号+群内块号+块内地址</p>
+<ul>
+<li>命中率最低</li>
+<li>关联度最低</li>
+<li>判断命中开销最小，命中时间最短</li>
+<li>标记所占空间最小</li>
+<li>无须替换算法</li>
+</ul>
+<blockquote>
+<p>全相联映射</p>
+</blockquote>
+<p>主存地址：主存块号+块内地址</p>
+<ul>
+<li>命中率最高</li>
+<li>关联度最高</li>
+<li>判断命中时间最长</li>
+<li>标记所占空间最大</li>
+</ul>
+<blockquote>
+<p>组相联映射</p>
+</blockquote>
+<p>主存地址：主存群号+cache组号+块内地址</p>
+<ul>
+<li>n路：每组的行数为n</li>
+</ul>
+<blockquote>
+<p>关联度</p>
+</blockquote>
+<ol>
+<li>关联度越高，命中率越高</li>
+<li>关联度越低，判断命中开销越小，命中时间越短</li>
+<li>关联度越低，标记所占的空间开销越小</li>
+</ol>
+<hr>
+<h4 id="cache替换算法"><a href="#cache替换算法" class="headerlink" title="cache替换算法"></a>cache替换算法</h4><blockquote>
+<p>先进先出FIFO</p>
+<p>最近少用LRU</p>
+</blockquote>
+<hr>
+<h4 id="存储周期"><a href="#存储周期" class="headerlink" title="存储周期"></a>存储周期</h4><blockquote>
+<p>存储器一次读写所需时间</p>
+</blockquote>
+<h4 id="DRAM芯片刷新-一次刷一行"><a href="#DRAM芯片刷新-一次刷一行" class="headerlink" title="DRAM芯片刷新(一次刷一行)"></a>DRAM芯片刷新(一次刷一行)</h4><blockquote>
+<ul>
+<li>集中刷新(整体刷新一遍)</li>
+<li>分散刷新(将存储周期分为两部分)</li>
+<li>异步刷新</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h4><p>寻道时间：磁头找到磁道所需时间</p>
+<blockquote>
+<p>磁盘操作流程</p>
+</blockquote>
+<ol>
+<li>所有磁头同步寻道(由柱面号控制)</li>
+<li>选择磁头(由磁头号控制)</li>
+<li>磁头等待扇区到磁头下方(扇区号控制，需从0扇区开始顺序定位到指定扇区)</li>
+<li>读写该扇区的内容</li>
+</ol>
+<blockquote>
+<p>磁盘响应时间 = 寻道时间 + 转到指定扇区时间 + 数据传输时间 + 磁盘控制器开销 + 排队时间 </p>
+</blockquote>
+<hr>
+<h4 id="磁盘冗余阵列-RAID"><a href="#磁盘冗余阵列-RAID" class="headerlink" title="磁盘冗余阵列(RAID)"></a>磁盘冗余阵列(RAID)</h4><blockquote>
+<p>出现原因：CPU、主存发展快、辅存提高慢</p>
+<ul>
+<li>RAID是一组物理磁盘驱动器，但只有一个逻辑驱动器</li>
+<li>数据分布在一组物理磁盘上</li>
+<li>冗余磁盘存放校验信息</li>
+</ul>
+<hr>
+<p>RAID0</p>
+<ul>
+<li>无冗余</li>
+<li>并行发送，I/O响应快</li>
+<li>数据传输速率较高</li>
+<li><p>不保证可靠性</p>
+<p><img src="RAID0.png" srcset="/img/default_loading.gif" lazyload style="width=400px"></p>
+</li>
+</ul>
+<hr>
+<p>RAID1</p>
+<ul>
+<li>实现1对1冗余(直接备份完整一份)</li>
+<li>读：读定位时间更少的磁盘</li>
+<li>写：写两次磁盘</li>
+<li><p>可靠性高、价格昂贵</p>
+<p><img src="RAID1.png" srcset="/img/default_loading.gif" lazyload style="width=400px"></p>
+</li>
+</ul>
+<hr>
+<p>RAID2</p>
+<ul>
+<li>海明校验生成冗余盘，纠正一位错，检测两位错</li>
+<li>条区小，传输速率高，但I/O响应差</li>
+<li>并行读写</li>
+<li>写操作要同时写数据盘和校验盘</li>
+<li><p>贵(已不再使用)</p>
+<p><img src="RAID2.png" srcset="/img/default_loading.gif" lazyload style="width=400px"></p>
+</li>
+</ul>
+<hr>
+<p>RAID3</p>
+<ul>
+<li>奇偶校验生成单个冗余盘</li>
+<li>条区交叉分布，使用小条区，数据传输速率高，I/O响应差</li>
+<li>用于大容量I/O请求场合</li>
+<li><p>磁盘可以奇偶校验恢复</p>
+<p><img src="RAID3.png" srcset="/img/default_loading.gif" lazyload style="width=400px"></p>
+</li>
+</ul>
+<hr>
+<p>RAID4</p>
+<ul>
+<li>一个冗余盘存放奇偶校验码</li>
+<li>大条区交叉分布，I/O响应快</li>
+<li>独立存取技术，每个磁盘操作独立进行I/O响应快</li>
+<li><p>少量写：有写损失，需先读之前数据，才能更新校验</p>
+</li>
+<li><p>大量写：直接根据新数据计算奇偶校验，无需读原数据</p>
+<p><img src="RAID4.png" srcset="/img/default_loading.gif" lazyload style="width=400px"></p>
+</li>
+</ul>
+<hr>
+<p>RAID5</p>
+<ul>
+<li>奇偶校验放在各个磁盘中</li>
+<li>独立存取技术，I/O响应快</li>
+<li><p>成本低，效率高</p>
+<p><img src="RAID5.png" srcset="/img/default_loading.gif" lazyload style="width=400px"></p>
+</li>
+</ul>
+<hr>
+<p>RAID6</p>
+<ul>
+<li>对RAID5的扩展，引入第二种奇偶校验，可靠性很高</li>
+<li>写入速度慢</li>
+</ul>
+<hr>
+<p>RAID7</p>
+<ul>
+<li>在RAID6基础上，采用Cache，速度有较大提高</li>
+</ul>
+</blockquote>
+<h2 id="五、总线"><a href="#五、总线" class="headerlink" title="五、总线"></a>五、总线</h2><h4 id="I-O性能指标"><a href="#I-O性能指标" class="headerlink" title="I/O性能指标"></a>I/O性能指标</h4><ul>
+<li>吞吐率：单位时间内传输数据量</li>
+<li>响应时间：响应I/O请求的时间</li>
+</ul>
+<h4 id="输入输出系统"><a href="#输入输出系统" class="headerlink" title="输入输出系统"></a>输入输出系统</h4><p>解决各种信息的输入输出</p>
+<ul>
+<li>输入系统：将人感知的信息转化成二进制输入到系统中</li>
+<li>输出系统：将二进制转换成人能感知的信息</li>
+</ul>
+<hr>
+<h4 id="总线分类"><a href="#总线分类" class="headerlink" title="总线分类"></a>总线分类</h4><blockquote>
+<ul>
+<li>芯片内总线:芯片内部元件间连接</li>
+<li>系统总线:系统主要功能部件间连接</li>
+<li>通信总线:主机与I/O设备间连接</li>
+</ul>
+<hr>
+<ul>
+<li>数据总线</li>
+<li>地址总线</li>
+<li>控制总线</li>
+</ul>
+</blockquote>
+<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><blockquote>
+<p>控制线</p>
+<blockquote>
+<ul>
+<li>clock、reset</li>
+<li>总线请求</li>
+<li>中断相关</li>
+<li>存储器读写信号</li>
+<li>传输确认</li>
+</ul>
+</blockquote>
+<p>地址线(宽度反映最大寻址空间)</p>
+<p>数据线(宽度反映一次传输数据大小)</p>
+</blockquote>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><blockquote>
+<p>总线裁决：选择哪个设备使用总线</p>
+<p>总线定时：确定总线事务每一步的开始结束</p>
+<p>设计趋势：点对点、异步、串行</p>
+<p>传输方式：</p>
+<ul>
+<li>突发(发送一个地址后，连续传数据，后续地址默认自增)</li>
+<li>非突发：一个地址对应一个数据</li>
+</ul>
+</blockquote>
+<h4 id="I-O控制器-I-O接口的职能"><a href="#I-O控制器-I-O接口的职能" class="headerlink" title="I/O控制器(I/O接口的职能)"></a>I/O控制器(I/O接口的职能)</h4><blockquote>
+<ul>
+<li>数据缓冲</li>
+<li>错误或状态检测</li>
+<li>控制和定时</li>
+<li>数据格式转换</li>
+<li>与主机和设备通信</li>
+</ul>
+</blockquote>
+<h4 id="I-O设备寻址方式"><a href="#I-O设备寻址方式" class="headerlink" title="I/O设备寻址方式"></a>I/O设备寻址方式</h4><blockquote>
+<p>统一编址：与主存空间统一编址，将主存空间分出一部分给I/O串口编号</p>
+<p>独立编址</p>
+</blockquote>
+<h4 id="I-O传输方式"><a href="#I-O传输方式" class="headerlink" title="I/O传输方式"></a>I/O传输方式</h4><blockquote>
+<p>轮询方式</p>
+<blockquote>
+<p>OS主动询问设备状态</p>
+</blockquote>
+<p>程序中断方式</p>
+<blockquote>
+<p>设备通知cpu，中断当前进程</p>
+</blockquote>
+<p>直接存储器访问方式(DMA)</p>
+<blockquote>
+<p>存储设备直接与主存进行数据交换</p>
+</blockquote>
+</blockquote>
+<p>IN命令：读设备信息到CPU，OUT命令：写CPU信息到设备</p>
+<hr>
+<h4 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h4><blockquote>
+<p><strong>过程</strong>：中断检测(硬件实现)、中断响应(硬件实现)、中断处理(软件实现)</p>
+<p><strong>中断响应条件</strong></p>
+<ul>
+<li>开中断状态</li>
+<li>指令执行完(异常无须指令执行完就要处理)</li>
+<li>有未被屏蔽的中断请求</li>
+</ul>
+<p><strong>中断响应过程</strong></p>
+<ul>
+<li>关中断</li>
+<li>保护断点与程序状态</li>
+<li>识别中断源(硬件、软件通过判断优先级识别)</li>
+</ul>
+<p><strong>中断处理过程</strong></p>
+<ul>
+<li>保护现场及旧屏蔽字</li>
+<li>查明原因</li>
+<li>设置新屏蔽字</li>
+<li>开中断</li>
+<li>处理中断(可被新的中断打断)</li>
+<li>关中断</li>
+<li>恢复现场及旧屏蔽字</li>
+<li>开中断</li>
+<li>清中断请求</li>
+<li>返回</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="DMA"><a href="#DMA" class="headerlink" title="DMA"></a>DMA</h4><p> 出现原因</p>
+<blockquote>
+<ul>
+<li>轮询cpu利用率低，传输效率低</li>
+<li>中断需响应中断请求，需处理断点、保护现场，开销过大</li>
+</ul>
+<p>特点</p>
+<ul>
+<li>高速缓存和主存间直接传输数据</li>
+<li>通过DMA控制器控制数据传输</li>
+</ul>
+<p>采用请求-响应方式</p>
+<ul>
+<li>DMA控制器优先级比CPU更高</li>
+<li>DMA控制器向cpu发送DMA请求，CPU中断，将总线控制权交给DMA控制器</li>
+</ul>
+</blockquote>
+<p> DMA数据传输方式</p>
+<blockquote>
+<ul>
+<li>CPU停止法：DMA传输时，CPU脱离总线<ul>
+<li>CPU访存受限，主线周期没有充分利用</li>
+<li>弥补缺点方法：<ul>
+<li>引入缓存</li>
+<li>周期挪用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>周期挪用：DMA传输时，CPU让出一个总线事务周期让DMA控制总线，传送完一个数据后立刻释放总线<ul>
+<li>总线切换开销较大</li>
+</ul>
+</li>
+<li>交替分时：每个存储周期分为两个时间，一个给CPU，一个给DMA</li>
+</ul>
+</blockquote>
+<p> DMA控制器的功能</p>
+<blockquote>
+<ul>
+<li>请求：接收外设发来的”总线请求”信号，并向CPU发送DMA信号</li>
+<li>响应：cpu响应后，DMA控制器能接管对总线的控制</li>
+<li>能在地址线给出主存地址，并修改主存地址</li>
+<li>识别传送方向</li>
+<li>确定数据个数</li>
+<li>能发出DMA结束信号</li>
+</ul>
+</blockquote>
+<p> DMA操作步骤</p>
+<blockquote>
+<ol>
+<li>DMA控制器初始化(软件实现)<ul>
+<li>准备内存</li>
+<li>设置传送参数</li>
+<li>启动外设</li>
+</ul>
+</li>
+<li>DMA数据传输(硬件实现)</li>
+<li>DMA结束处理(软件实现)</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="六、指令"><a href="#六、指令" class="headerlink" title="六、指令"></a>六、指令</h2><h4 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h4><ol>
+<li>立即寻址：指令给出操作数本身</li>
+<li>直接寻址：指令给出操作数的地址</li>
+<li>间接寻址：地址存放存储操作数地址的<strong>主存单元</strong>地址</li>
+<li>寄存器间接寻址：地址为<strong>寄存器号</strong>，其中存放操作数的有效地址</li>
+<li>变址寻址：指令给出存放<strong>基址</strong>的地址，偏移量由变址寄存器给出</li>
+<li>相对寻址：相对PC的地址</li>
+<li>基址寻址：指令给出存放<strong>偏移量</strong>的地址，基址由基址寄存器给出</li>
+</ol>
+<blockquote>
+<p>Clock-to-signal 一定大于 Clock-to-Q</p>
+</blockquote>
+<hr>
+<h4 id="指令系统设计风格"><a href="#指令系统设计风格" class="headerlink" title="指令系统设计风格"></a>指令系统设计风格</h4><blockquote>
+<p>按操作数位置</p>
+</blockquote>
+<ol>
+<li>累加器型：运算的一个操作数隐含在累加器中</li>
+<li>栈型：操作数必须来自栈顶</li>
+<li>通用寄存器型：使用通用寄存器存放数据</li>
+<li>Load/Store型：只有Load和Store指令可以访存</li>
+</ol>
+<blockquote>
+<p>按指令格式复杂程度</p>
+</blockquote>
+<ol>
+<li>CISC：复杂指令集<ul>
+<li>Intel</li>
+</ul>
+</li>
+<li>RISC：简单指令集<ul>
+<li>PowerPC、MIPS、Sun、SPARC、Compaq Alpha</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="控制信号"><a href="#控制信号" class="headerlink" title="控制信号"></a>控制信号</h4><ul>
+<li>ALUSrc：选择操作数(0:BusB；1:立即数)</li>
+<li>ALUCtr：选择ALU操作类型</li>
+<li>ExtOp：选择扩展类型(1符号扩展)</li>
+<li>MemtoReg：选择输出到寄存器(0:ALU result；1:Mem)</li>
+<li>RegDst：0:Rd；1:Rt</li>
+<li>RegWr：是否写寄存器</li>
+<li>MemWr：是否写主存</li>
+<li>Jump</li>
+</ul>
+<hr>
+<h4 id="微指令编码"><a href="#微指令编码" class="headerlink" title="微指令编码"></a>微指令编码</h4><ol>
+<li>直接控制法(不译法)：微操作码长度和微命令个数相当</li>
+<li>字段直接编码法</li>
+<li>字段简介编码法：在字段直接编码的基础上进行压缩，某一字段可以表示多组微命令组，具体为哪一个微命令组需要其它字段给出(<strong>垂直型微指令</strong>)</li>
+</ol>
+<h2 id="七、异常中断处理"><a href="#七、异常中断处理" class="headerlink" title="七、异常中断处理"></a>七、异常中断处理</h2><h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><blockquote>
+<p><strong>内部异常</strong></p>
+</blockquote>
+<p>由<strong>处理器</strong>内部异常引起的异常，按照发生原因分类：</p>
+<ol>
+<li><strong>硬故障中断</strong>：由硬连线异常引起(电源掉电、存储器线路错误)</li>
+<li><strong>程序性异常</strong>：CPU执行指令时出现的异常(除零、溢出、断点、访问超时、非法操作码、栈溢出、缺页、地址越界)</li>
+</ol>
+<hr>
+<p>按照发生异常的报告方式和返回方式不同分类：</p>
+<ol>
+<li><strong>故障</strong>(失效)：引起故障的<em>指令启动后，执行结束前</em>被检测到异常；<strong>由特定指令产生</strong></li>
+<li><strong>自陷</strong>(陷阱、陷入)：先将CPU设定为某个特定的状态，在程序执行过程中，当满足一定状态的条件时，执行特定的程序对其进行处理，执行完异常处理后回到下一条指令执行；<strong>由特定指令产生</strong></li>
+<li><strong>终止</strong>：指令执行过程中出现了使机器无法继续执行的硬件故障(掉电、线路故障等)，调出中断服务程序重启系统(<strong>随机发生</strong>)</li>
+</ol>
+<hr>
+<h4 id="中断-1"><a href="#中断-1" class="headerlink" title="中断"></a>中断</h4><blockquote>
+<p><strong>外部中断</strong></p>
+</blockquote>
+<p><strong>外设</strong>完成任务或发生特定事件(打印机缺页、键盘缓冲满等)，会向CPU发中断请求</p>
+<hr>
+<h4 id="异常处理步骤"><a href="#异常处理步骤" class="headerlink" title="异常处理步骤"></a>异常处理步骤</h4><ul>
+<li>关中断</li>
+<li>保护断点和程序状态</li>
+<li>识别异常并处理</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Lecture-Notes/">Lecture Notes</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/01/04/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">软件工程</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/06/%E6%AF%9B%E6%B3%BD%E4%B8%9C%E6%80%9D%E6%83%B3%E4%B8%8E%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89/">
+                        <span class="hidden-mobile">毛泽东思想与中国特色社会主义</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="樵鹏举">
+  <meta name="description" content="在使用Google Flutter时学习Dart的笔记，主要有：function、operator，control flow statements，class">
   <meta name="author" content="樵鹏举">
   <meta name="keywords" content="">
   
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/default_loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -248,32 +248,27 @@
             <h1 style="display: none">Dart</h1>
             
             <div class="markdown-body">
-              <h3 id="functions"><a class="markdownIt-Anchor" href="#functions"></a> Functions</h3>
-<h4 id="definition"><a class="markdownIt-Anchor" href="#definition"></a> Definition</h4>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">//三种定义方式</span><br><span class="hljs-built_in">bool</span> isNoble(<span class="hljs-built_in">int</span> atomicNumber)&#123;...&#125; <span class="hljs-comment">//申明返回类型</span><br>isNoble(<span class="hljs-built_in">int</span> atomicNumber)&#123;...&#125; 			<span class="hljs-comment">//忽略类型定义</span><br>boo isNoble(<span class="hljs-built_in">int</span> atomicNumber) =&gt; _nobleGases[atomicNumber] != <span class="hljs-keyword">null</span>;	<span class="hljs-comment">//返回单行表达式结果</span><br></code></pre></td></tr></table></figure>
-<h4 id="parameter"><a class="markdownIt-Anchor" href="#parameter"></a> Parameter</h4>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">//调用方法时可指定参数</span><br>enableFlags(bold: <span class="hljs-keyword">true</span>, hidden: <span class="hljs-keyword">false</span>);<br><span class="hljs-comment">//可选参数, device参数在函数调用时可以缺省</span><br><span class="hljs-built_in">String</span> say(<span class="hljs-built_in">String</span> from, <span class="hljs-built_in">String</span> msg, [<span class="hljs-built_in">String</span> device]) &#123;...&#125;<br><span class="hljs-comment">//默认参数值</span><br><span class="hljs-keyword">void</span> enableFlags(&#123;<span class="hljs-built_in">bool</span> bold = <span class="hljs-keyword">false</span>, <span class="hljs-built_in">bool</span> hidden = <span class="hljs-keyword">false</span>&#125;)&#123;...&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="the-main-function"><a class="markdownIt-Anchor" href="#the-main-function"></a> The main function</h4>
-<blockquote>
+              <p>​    </p>
+<!-- more -->
+<h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">//三种定义方式</span><br><span class="hljs-built_in">bool</span> isNoble(<span class="hljs-built_in">int</span> atomicNumber)&#123;...&#125; <span class="hljs-comment">//申明返回类型</span><br>isNoble(<span class="hljs-built_in">int</span> atomicNumber)&#123;...&#125; 			<span class="hljs-comment">//忽略类型定义</span><br>boo isNoble(<span class="hljs-built_in">int</span> atomicNumber) =&gt; _nobleGases[atomicNumber] != <span class="hljs-keyword">null</span>;	<span class="hljs-comment">//返回单行表达式结果</span><br></code></pre></td></tr></table></figure>
+<h4 id="Parameter"><a href="#Parameter" class="headerlink" title="Parameter"></a>Parameter</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">//调用方法时可指定参数</span><br>enableFlags(bold: <span class="hljs-keyword">true</span>, hidden: <span class="hljs-keyword">false</span>);<br><span class="hljs-comment">//可选参数, device参数在函数调用时可以缺省</span><br><span class="hljs-built_in">String</span> say(<span class="hljs-built_in">String</span> from, <span class="hljs-built_in">String</span> msg, [<span class="hljs-built_in">String</span> device]) &#123;...&#125;<br><span class="hljs-comment">//默认参数值</span><br><span class="hljs-keyword">void</span> enableFlags(&#123;<span class="hljs-built_in">bool</span> bold = <span class="hljs-keyword">false</span>, <span class="hljs-built_in">bool</span> hidden = <span class="hljs-keyword">false</span>&#125;)&#123;...&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="The-main-function"><a href="#The-main-function" class="headerlink" title="The main function"></a>The main function</h4><blockquote>
 <p>应用必须有main函数入口才能执行，main返回值为void并且有可选参数List<String></p>
 </blockquote>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;...&#125;<br><span class="hljs-keyword">void</span> main(<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt; arguments)&#123;<br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="functions-as-first-class-object"><a class="markdownIt-Anchor" href="#functions-as-first-class-object"></a> Functions as first-class object</h4>
-<blockquote>
+<h4 id="Functions-as-first-class-object"><a href="#Functions-as-first-class-object" class="headerlink" title="Functions as first-class object"></a>Functions as first-class object</h4><blockquote>
 <p>方法可作为参数传递给另一个方法(函数式编程)，也可以将方法赋值给一个变量</p>
 </blockquote>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">var</span> a = (msg) =&gt; <span class="hljs-string">&#x27;<span class="hljs-subst">$&#123;msg.toUpperCase()&#125;</span>&#x27;</span>; <span class="hljs-comment">//方法赋值给变量</span><br><br><span class="hljs-comment">//将方法作为参数传递</span><br><span class="hljs-keyword">var</span> list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><br>printElement(element) &#123;<br>	<span class="hljs-built_in">print</span> (element);  <br>&#125;<br>list.forEach(printElement);<br></code></pre></td></tr></table></figure>
-<h4 id="anonymous-functions匿名方法"><a class="markdownIt-Anchor" href="#anonymous-functions匿名方法"></a> Anonymous functions(匿名方法)</h4>
-<blockquote>
+<h4 id="Anonymous-functions-匿名方法"><a href="#Anonymous-functions-匿名方法" class="headerlink" title="Anonymous functions(匿名方法)"></a>Anonymous functions(匿名方法)</h4><blockquote>
 <p>匿名方法未给其命名，可直接调用或者将其赋值给其他变量</p>
 </blockquote>
-<h4 id="lexical-closure词法闭包"><a class="markdownIt-Anchor" href="#lexical-closure词法闭包"></a> Lexical closure(词法闭包)</h4>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">/// <span class="markdown">Returns a function that adds [addBy] to the</span></span><br><span class="hljs-comment">/// <span class="markdown">function&#x27;s argument.</span></span><br><span class="hljs-built_in">Function</span> makeAdder(<span class="hljs-built_in">num</span> addBy) &#123;<br>  <span class="hljs-keyword">return</span> (<span class="hljs-built_in">num</span> i) =&gt; addBy + i;<br>&#125;<br><br>main() &#123;<br>  <span class="hljs-comment">// Create a function that adds 2.</span><br>  <span class="hljs-keyword">var</span> add2 = makeAdder(<span class="hljs-number">2</span>);<br><br>  <span class="hljs-comment">// Create a function that adds 4.</span><br>  <span class="hljs-keyword">var</span> add4 = makeAdder(<span class="hljs-number">4</span>);<br><br>  <span class="hljs-keyword">assert</span>(add2(<span class="hljs-number">3</span>) == <span class="hljs-number">5</span>);<br>  <span class="hljs-keyword">assert</span>(add4(<span class="hljs-number">3</span>) == <span class="hljs-number">7</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-<hr />
-<h3 id="operators"><a class="markdownIt-Anchor" href="#operators"></a> Operators</h3>
-<blockquote>
+<h4 id="Lexical-closure-词法闭包"><a href="#Lexical-closure-词法闭包" class="headerlink" title="Lexical closure(词法闭包)"></a>Lexical closure(词法闭包)</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">/// <span class="markdown">Returns a function that adds [addBy] to the</span></span><br><span class="hljs-comment">/// <span class="markdown">function&#x27;s argument.</span></span><br><span class="hljs-built_in">Function</span> makeAdder(<span class="hljs-built_in">num</span> addBy) &#123;<br>  <span class="hljs-keyword">return</span> (<span class="hljs-built_in">num</span> i) =&gt; addBy + i;<br>&#125;<br><br>main() &#123;<br>  <span class="hljs-comment">// Create a function that adds 2.</span><br>  <span class="hljs-keyword">var</span> add2 = makeAdder(<span class="hljs-number">2</span>);<br><br>  <span class="hljs-comment">// Create a function that adds 4.</span><br>  <span class="hljs-keyword">var</span> add4 = makeAdder(<span class="hljs-number">4</span>);<br><br>  <span class="hljs-keyword">assert</span>(add2(<span class="hljs-number">3</span>) == <span class="hljs-number">5</span>);<br>  <span class="hljs-keyword">assert</span>(add4(<span class="hljs-number">3</span>) == <span class="hljs-number">7</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h3><blockquote>
 <p>只列举独特的操作符，其余操作符与其它语言类似</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -307,7 +302,7 @@
 <td style="text-align:left">若变量为null，则赋值，否则不变</td>
 </tr>
 <tr>
-<td style="text-align:left">…</td>
+<td style="text-align:left">..</td>
 <td style="text-align:left">级联操作符，用以访问一个方法返回值的成员变量</td>
 </tr>
 <tr>
@@ -320,22 +315,20 @@
 </tr>
 </tbody>
 </table>
+</div>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dart">x == y;<br>x .== y; 		 <span class="hljs-comment">//==是定义以在左侧对象的函数</span><br>b ??= value; <span class="hljs-comment">//如果 b 是 null，则赋值给 b；如果不是 null，则 b 的值保持不变</span><br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>级联操作符：</p>
 </blockquote>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">querySelector</span>(<span class="hljs-string">&#x27;#button&#x27;</span>) <span class="hljs-comment">// Get an object.</span><br>  ..text = <span class="hljs-string">&#x27;Confirm&#x27;</span>   	 <span class="hljs-comment">// Use its members.</span><br>  ..classes.add(<span class="hljs-string">&#x27;important&#x27;</span>)<br>  ..onClick.listen((e) =&gt; <span class="hljs-built_in">window</span>.alert(<span class="hljs-string">&#x27;Confirmed!&#x27;</span>));<br><span class="hljs-comment">//级联调用可以嵌套</span><br><span class="hljs-keyword">final</span> addressBook = (<span class="hljs-keyword">new</span> AddressBookBuilder()<br>      ..name = <span class="hljs-string">&#x27;jenny&#x27;</span><br>      ..email = <span class="hljs-string">&#x27;jenny@example.com&#x27;</span><br>      ..phone = (<span class="hljs-keyword">new</span> PhoneNumberBuilder()<br>            ..number = <span class="hljs-string">&#x27;415-555-0100&#x27;</span><br>            ..label = <span class="hljs-string">&#x27;home&#x27;</span>)<br>          .build())<br>    .build();<br><span class="hljs-comment">//无法再void上使用级联操作</span><br></code></pre></td></tr></table></figure>
-<hr />
-<h3 id="control-flow-statements"><a class="markdownIt-Anchor" href="#control-flow-statements"></a> Control flow statements</h3>
-<ul>
+<hr>
+<h3 id="Control-flow-statements"><a href="#Control-flow-statements" class="headerlink" title="Control flow statements"></a>Control flow statements</h3><ul>
 <li>for、forEach(与c++相同)</li>
 <li>switch中可用continue跳转至一个标签</li>
 </ul>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">var</span> command = <span class="hljs-string">&#x27;CLOSED&#x27;</span>;<br><span class="hljs-keyword">switch</span> (command) &#123;<br>  <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;CLOSED&#x27;</span>:<br>    executeClosed();<br>    <span class="hljs-keyword">continue</span> nowClosed; <span class="hljs-comment">// Continues executing at the nowClosed label.</span><br>nowClosed:<br>  <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;NOW_CLOSED&#x27;</span>:<br>    <span class="hljs-comment">// Runs for both CLOSED and NOW_CLOSED.</span><br>    executeNowClosed();<br>    <span class="hljs-keyword">break</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<hr />
-<h3 id="class"><a class="markdownIt-Anchor" href="#class"></a> Class</h3>
-<h4 id="constructor构造函数"><a class="markdownIt-Anchor" href="#constructor构造函数"></a> Constructor(构造函数)</h4>
-<blockquote>
+<hr>
+<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><h4 id="Constructor-构造函数"><a href="#Constructor-构造函数" class="headerlink" title="Constructor(构造函数)"></a>Constructor(构造函数)</h4><blockquote>
 <p>一般构造函数与语法糖</p>
 </blockquote>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span>&#123;<br>  <span class="hljs-built_in">num</span> x, y;<br>  <br>  Point(<span class="hljs-built_in">num</span> x, <span class="hljs-built_in">num</span> y)&#123;<br>    <span class="hljs-keyword">this</span>.x = x;<br>    <span class="hljs-keyword">this</span>.y = y;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//使用语法糖简化构造函数</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span>&#123;<br>  <span class="hljs-built_in">num</span> x, y;<br>  <br>  <span class="hljs-comment">// Syntactic sugar for setting x and y</span><br>  <span class="hljs-comment">// before the constructor body runs.</span><br>  Point(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y);<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -350,8 +343,6 @@
 <li>superclass’s no-arg constructor（超类的无名构造函数）</li>
 <li>main class’s no-arg constructor（主类的无名构造函数</li>
 </ol>
-</blockquote>
-<blockquote>
 <p>调用超类的构造函数</p>
 </blockquote>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;<br>  <span class="hljs-built_in">String</span> firstName;<br><br>  Person.fromJson(<span class="hljs-built_in">Map</span> data) &#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;in Person&#x27;</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;<br>  <span class="hljs-comment">// Person does not have a default constructor;</span><br>  <span class="hljs-comment">// you must call super.fromJson(data).</span><br>  Employee.fromJson(<span class="hljs-built_in">Map</span> data) : <span class="hljs-keyword">super</span>.fromJson(data) &#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;in Employee&#x27;</span>);<br>  &#125;<br>&#125;<br><br>main() &#123;<br>  <span class="hljs-keyword">var</span> emp = <span class="hljs-keyword">new</span> Employee.fromJson(&#123;&#125;);<br><br>  <span class="hljs-comment">// Prints:</span><br>  <span class="hljs-comment">// in Person</span><br>  <span class="hljs-comment">// in Employee</span><br>  <span class="hljs-keyword">if</span> (emp <span class="hljs-keyword">is</span> Person) &#123;<br>    <span class="hljs-comment">// Type check</span><br>    emp.firstName = <span class="hljs-string">&#x27;Bob&#x27;</span>;<br>  &#125;<br>  (emp <span class="hljs-keyword">as</span> Person).firstName = <span class="hljs-string">&#x27;Bob&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -370,7 +361,7 @@
 <blockquote>
 <p>Factory constructors</p>
 </blockquote>
-<hr />
+<hr>
 
             </div>
             <hr>
@@ -398,9 +389,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/06/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">
+                      <a href="/2019/05/27/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">计算机系统结构</span>
+                        <span class="hidden-mobile">汇编语言与微机接口</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -408,8 +399,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2018/12/06/%E9%A9%AC%E5%85%8B%E6%80%9D%E4%B8%BB%E4%B9%89%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
-                        <span class="hidden-mobile">马克思主义基本原理</span>
+                      <a href="/2019/01/04/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                        <span class="hidden-mobile">软件工程</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

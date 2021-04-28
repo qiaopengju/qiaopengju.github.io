@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="樵鹏举">
+  <meta name="description" content="随便记的C++笔记">
   <meta name="author" content="樵鹏举">
   <meta name="keywords" content="">
   
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/default_loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      652 字
+      1.4k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      17
        分钟
     </span>
   
@@ -248,8 +248,9 @@
             <h1 style="display: none">C++ notes</h1>
             
             <div class="markdown-body">
-              <h2 id="class"><a class="markdownIt-Anchor" href="#class"></a> class</h2>
-<ul>
+              <p>​    </p>
+<!-- more -->
+<h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><ul>
 <li>类中定义函数默认为inline</li>
 <li>类默认修饰符为private</li>
 <li>派生类<strong>继承</strong>基类默认为private</li>
@@ -259,6 +260,7 @@
 <ul>
 <li>派生类中访问修饰符</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -289,79 +291,77 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>friend右元</p>
-</blockquote>
-<ul>
-<li>
-<p>右元可访问类中的私有和protected变量</p>
+</div>
+<h5 id="friend友元"><a href="#friend友元" class="headerlink" title="friend友元"></a>friend友元</h5><ul>
+<li><p>友元可访问类中的私有和protected变量</p>
 </li>
-<li>
-<p>破坏封装性，提高运行效率</p>
+<li><p>破坏封装性，提高运行效率</p>
 </li>
-<li>
-<p>右元没有继承性，没有传递性，右元单向</p>
-</li>
-<li>
-<p>友元函数</p>
-</li>
+<li>友元没有继承性，没有传递性，友元单向</li>
+<li>友元函数</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>&#123;</span><br>  <span class="hljs-keyword">int</span> a;<br>  <span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">int</span> <span class="hljs-title">geta</span><span class="hljs-params">(A tmp)</span></span>;<br>&#125;;<br><br><span class="hljs-function">itn <span class="hljs-title">geta</span><span class="hljs-params">(A tmp)</span></span>&#123; <span class="hljs-keyword">return</span> A.a; &#125;<br></code></pre></td></tr></table></figure>
 <ul>
 <li>友元类</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>&#123;</span><br>	<span class="hljs-keyword">int</span> a;<br>	<span class="hljs-keyword">friend</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>;</span><br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">geta</span><span class="hljs-params">(A tmp)</span></span>&#123; <span class="hljs-keyword">return</span> tmp.a; &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>const函数只能访问const对象或函数</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apple</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> apple_number;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">take</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span></span>;<br>&#125;;<br>Apple::<span class="hljs-built_in">take</span>(<span class="hljs-keyword">int</span> num) <span class="hljs-keyword">const</span>&#123; <span class="hljs-comment">//只能访问const变量/函数</span><br>  cout &lt;&lt; num &lt;&lt; endl;<br>&#125;<br>Apple::<span class="hljs-built_in">add</span>(<span class="hljs-keyword">int</span> num)&#123;<span class="hljs-comment">//可以访问所有类对象/函数</span><br>  <span class="hljs-built_in">take</span>(num);<br>&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>static函数只能访问static对象或函数，static成员函数没有this指针</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apple</span> &#123;</span> <br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printMsg</span><span class="hljs-params">()</span> </span>&#123;<br>            cout&lt;&lt;<span class="hljs-string">&quot;Welcome to Apple!&quot;</span>; <br>        &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>  Apple::<span class="hljs-built_in">printMsg</span>();<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>派生类</p>
-</blockquote>
-<ul>
+<h5 id="const函数只能访问const对象或函数"><a href="#const函数只能访问const对象或函数" class="headerlink" title="const函数只能访问const对象或函数"></a>const函数只能访问const对象或函数</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apple</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> apple_number;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">take</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span></span>;<br>&#125;;<br>Apple::<span class="hljs-built_in">take</span>(<span class="hljs-keyword">int</span> num) <span class="hljs-keyword">const</span>&#123; <span class="hljs-comment">//只能访问const变量/函数</span><br>  cout &lt;&lt; num &lt;&lt; endl;<br>&#125;<br>Apple::<span class="hljs-built_in">add</span>(<span class="hljs-keyword">int</span> num)&#123;<span class="hljs-comment">//可以访问所有类对象/函数</span><br>  <span class="hljs-built_in">take</span>(num);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="static函数只能访问static对象或函数，static成员函数没有this指针"><a href="#static函数只能访问static对象或函数，static成员函数没有this指针" class="headerlink" title="static函数只能访问static对象或函数，static成员函数没有this指针"></a>static函数只能访问static对象或函数，static成员函数没有this指针</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apple</span> &#123;</span> <br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printMsg</span><span class="hljs-params">()</span> </span>&#123;<br>            cout&lt;&lt;<span class="hljs-string">&quot;Welcome to Apple!&quot;</span>; <br>        &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>  Apple::<span class="hljs-built_in">printMsg</span>();<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="派生类"><a href="#派生类" class="headerlink" title="派生类"></a>派生类</h5><ul>
 <li>派生类不会继承基类运算符重载、友元函数、构造函数、析构函数</li>
 </ul>
-<blockquote>
-<h4 id="virtual"><a class="markdownIt-Anchor" href="#virtual"></a> virtual</h4>
-</blockquote>
-<ul>
+<h5 id="virtual"><a href="#virtual" class="headerlink" title="virtual"></a>virtual</h5><ul>
 <li>虚函数的调用取决于指向或者引用的对象的类型，而不是指针或者引用自身的类型；</li>
 <li>默认参数静态绑定，默认参数的使用需要看指针或者应用本身的类型，而不是对象的类型(与上一条正好相反)；</li>
 </ul>
-<h2 id="const"><a class="markdownIt-Anchor" href="#const"></a> const</h2>
-<ul>
-<li>
-<p>多文件需访问const需显示声明extern const</p>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><ul>
+<li><p>多文件需访问const需显示声明extern const</p>
 </li>
-<li>
-<p>const指针就近修饰</p>
-<ul>
-<li>
-<pre class="highlight"><code class="c++"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> * p; 
-<span class="hljs-comment">/*指向const int类型的指针
-不能通过指针来修改对象的值
-若指向非const变量，也不能修改变量值
-*/</span>
-
-<span class="hljs-keyword">int</span> * <span class="hljs-keyword">const</span> p = &amp;i;
-<span class="hljs-comment">/*
-常指针，必须初始化
-不能修改指针，但是可以修改指针指向的变量
-*/</span>
-&lt;!--code￼<span class="hljs-number">5</span>--&gt;
-
-</code></pre>
+<li><p>const指针就近修饰</p>
 </li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> * p; <br><span class="hljs-comment">/*指向const int类型的指针</span><br><span class="hljs-comment">不能通过指针来修改对象的值</span><br><span class="hljs-comment">若指向非const变量，也不能修改变量值</span><br><span class="hljs-comment">*/</span><br>    <br><span class="hljs-keyword">int</span> * <span class="hljs-keyword">const</span> p = &amp;i;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">常指针，必须初始化</span><br><span class="hljs-comment">不能修改指针，但是可以修改指针指向的变量</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>对于非内部数据类型的输入参数，应该将“值传递”的方式改为“const 引用传递”，目的是提高效率。例如将void func(A a) 改为void func(const A &amp;a)。</li>
+</ul>
+<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><ul>
+<li>static只会被初始化一次</li>
+<li>static生命周期贯穿程序始终</li>
+<li>static没有this指针，无法访问vptr</li>
+</ul>
+<h2 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h2><ul>
+<li>在编译阶段编译器内联：<ul>
+<li>会采用内联的函数：编译阶段能确定的函数</li>
+<li>不会采用内联的函数：编译阶段无法确定的函数<ul>
+<li>eg. virtual函数呈现多态性时无法内联</li>
 </ul>
 </li>
 </ul>
-<h2 id="assert"><a class="markdownIt-Anchor" href="#assert"></a> assert</h2>
-<ul>
-<li>assert是宏，定义在</li>
+</li>
+<li>原理：复制</li>
+<li>不一采用内联函数：<ul>
+<li>函数内部代码较长，复制后消耗较多内存；</li>
+<li>函数内部有循环，执行函数时间比调用函数大(无需使用内联)。</li>
+</ul>
+</li>
+<li>应使用内联：<ul>
+<li>函数代码较短</li>
+<li>函数调用时间大于执行时间</li>
+</ul>
+</li>
+</ul>
+<h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><ul>
+<li>用volatile声明的变量可以被编译器未知的事件修改</li>
+<li>volatile一般用于多线程</li>
+<li>volatile告诉编译器<ul>
+<li>不对变量优化</li>
+<li>每次对变量读写都要从内存取出，而非使用寄存器</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> local = <span class="hljs-number">10</span>; <span class="hljs-comment">//使用volatile声明，可以被修改</span><br>    <span class="hljs-keyword">int</span> *ptr = (<span class="hljs-keyword">int</span>*) &amp;local;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Initial value of local : %d \n&quot;</span>, local);<br>    *ptr = <span class="hljs-number">100</span>;<span class="hljs-comment">//有效修改了*ptr</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Modified value of local: %d \n&quot;</span>, local); <span class="hljs-comment">//100</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/******************************/</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> local = <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">int</span> *ptr = (<span class="hljs-keyword">int</span>*) &amp;local;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Initial value of local : %d \n&quot;</span>, local);<br>    *ptr = <span class="hljs-number">100</span>; <span class="hljs-comment">//无效，无法修改*ptr</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Modified value of local: %d \n&quot;</span>, local);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h2><ul>
+<li>assert是宏，定义在 </li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">assert.h<br></code></pre></td></tr></table></figure>
 <ul>
@@ -370,30 +370,74 @@
 <li>若要忽略断言，加上:</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> NDEBUG <span class="hljs-comment">//要加载assert.h之前，不然会重复#define NDEBUG</span></span><br><span class="hljs-comment">//#include &lt;assert.h&gt;</span><br></code></pre></td></tr></table></figure>
-<h2 id="extern"><a class="markdownIt-Anchor" href="#extern"></a> extern</h2>
-<ul>
+<h2 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h2><ul>
 <li>c++调用c函数</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span>&#123; <span class="hljs-comment">//只在c++中支持，所有extern “C”的声明都要放在cpp中</span><br>  <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;tmp.h&quot;</span></span><br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
 <li>要调用其它文件中的变量、函数需要在变量声明前加extern修饰</li>
 </ul>
-<h2 id="struct"><a class="markdownIt-Anchor" href="#struct"></a> struct</h2>
-<ul>
+<h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><ul>
 <li>C与C++中struct区别</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th></th>
+<th style="text-align:left"></th>
+<th style="text-align:left">c</th>
+<th>c++</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td style="text-align:left">结构体内声明函数</td>
+<td style="text-align:left">不能声明函数</td>
+<td>能声明函数</td>
+</tr>
+<tr>
+<td style="text-align:left">使用访问修饰符</td>
+<td style="text-align:left">不能使用访问修饰符</td>
+<td>可以使用：public、protected、private</td>
+</tr>
+<tr>
+<td style="text-align:left">定义结构体</td>
+<td style="text-align:left">必须加struct</td>
+<td>不需要加struct</td>
+</tr>
+<tr>
+<td style="text-align:left">继承</td>
+<td style="text-align:left">无继承</td>
+<td>可以继承，可以使用virtual</td>
+</tr>
+<tr>
+<td style="text-align:left">结构体和函数同名</td>
+<td style="text-align:left">可以正常运行调用</td>
+<td>定义结构体必须带struct</td>
 </tr>
 </tbody>
 </table>
+</div>
+<ul>
+<li>与Class的区别<ul>
+<li>struct默认访问是public</li>
+<li>struct用于数据结构实体</li>
+<li>class用于对象实体</li>
+</ul>
+</li>
+</ul>
+<h2 id="Lambda表达式-匿名函数"><a href="#Lambda表达式-匿名函数" class="headerlink" title="Lambda表达式(匿名函数)"></a>Lambda表达式(匿名函数)</h2><h2 id="Using"><a href="#Using" class="headerlink" title="Using"></a>Using</h2><ul>
+<li>同等于typedef</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">using</span> VI = vector&lt;<span class="hljs-keyword">int</span>&gt;; <span class="hljs-comment">//equal to typedef vector&lt;int&gt; VI</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>using 指定在之后的作用域中使用该命名空间</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std; <span class="hljs-comment">//之后使用std命名空间</span><br><span class="hljs-comment">//using namespace std::cout; //之后使用std::cout函数</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span>&#123;</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span></span>&#123; cout&lt;&lt;<span class="hljs-string">&quot;f()&quot;</span>&lt;&lt;endl;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;cout&lt;&lt;<span class="hljs-string">&quot;Base::f(int)&quot;</span>&lt;&lt;endl;&#125;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Derived</span> :</span> <span class="hljs-keyword">private</span> Base &#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-keyword">using</span> Base::f; <span class="hljs-comment">//不带形参，使用基类的函数</span><br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;cout&lt;&lt;<span class="hljs-string">&quot;Derived::f(int)&quot;</span>&lt;&lt;endl;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    Base b;<br>    Derived d;<br>    d.<span class="hljs-built_in">f</span>(); <span class="hljs-comment">//f()</span><br>    d.<span class="hljs-built_in">f</span>(<span class="hljs-number">1</span>);<span class="hljs-comment">//Derived::f(int)</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="dynamic-cast-amp-static-cast"><a href="#dynamic-cast-amp-static-cast" class="headerlink" title="dynamic_cast &amp; static_cast"></a>dynamic_cast &amp; static_cast</h2><ul>
+<li>强制类型转换，用法：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">static_cast</span>&lt;new_type&gt;(e);<br><span class="hljs-keyword">dynamic_cast</span>&lt;new_type&gt;(e);<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>

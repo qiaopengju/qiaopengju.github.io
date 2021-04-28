@@ -1,0 +1,1055 @@
+<h2 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h2><p>[TOC]</p>
+<hr>
+<h2 id="一、软件工程概述"><a href="#一、软件工程概述" class="headerlink" title="一、软件工程概述"></a>一、软件工程概述</h2><h4 id="软件的定义"><a href="#软件的定义" class="headerlink" title="软件的定义*"></a>软件的定义*</h4><p>程序+数据+文档 (不准确)</p>
+<ul>
+<li>程序是按事先设计的功能和性能要求执行的指令序列</li>
+<li>数据是使程序能正确处理信息的数据结构</li>
+<li><strong>文档是与程序开发、维护、使用有关的图文资料*</strong><ol>
+<li>提高软件开发过程能见度</li>
+<li>记录开发过程有关信息，便于使用维护</li>
+<li>作为开发人员阶段工作成果和结束标志</li>
+<li>提高开发效率</li>
+<li>作为软件运行、维护、培训资料</li>
+<li>便于用户了解软件功能、性能</li>
+</ol>
+</li>
+</ul>
+<h4 id="软件的特点"><a href="#软件的特点" class="headerlink" title="软件的特点*"></a>软件的特点*</h4><ol>
+<li><strong>软件是开发出来的、工程化的，并不是制造出的</strong><ul>
+<li>充满了个人行为和个人因素</li>
+<li>尚未实现自动化</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="软件危机"><a href="#软件危机" class="headerlink" title="软件危机"></a>软件危机</h4><blockquote>
+<p><strong>软件开发维护时出现的一系列严重问题*</strong></p>
+</blockquote>
+<ul>
+<li>超预算、超出计划时间</li>
+<li>软件运行效率低</li>
+<li>软件质量差</li>
+<li>软件不符合要求</li>
+<li>项目难管理，代码难维护</li>
+<li>软件不能交付</li>
+</ul>
+<blockquote>
+<p><strong>软件危机的原因</strong></p>
+</blockquote>
+<ul>
+<li><strong>软件的发展速断远滞后于硬件的发展速度</strong></li>
+<li>软件本身逻辑复杂</li>
+<li>软件规模庞大</li>
+<li>忽视需求分析</li>
+<li>错误认为:软件开发=程序编写</li>
+<li>轻视软件维护</li>
+</ul>
+<hr>
+<h4 id="软件工程-1"><a href="#软件工程-1" class="headerlink" title="软件工程"></a>软件工程</h4><blockquote>
+<p><strong>IEEE定义</strong></p>
+</blockquote>
+<ul>
+<li>应用系统化、学科化、定量方法开发、运行维护软件</li>
+<li>对第一点的研究</li>
+</ul>
+<blockquote>
+<p><strong>目标</strong></p>
+</blockquote>
+<p>  在时间和预算内，按需求开发易修改、高效、可靠、可维护、适应能力强、可移动、可重用的软件。</p>
+<blockquote>
+<p><strong>三要素*</strong></p>
+</blockquote>
+<ol>
+<li>方法</li>
+<li>工具</li>
+<li>过程</li>
+</ol>
+<hr>
+<h2 id="二、软件过程模型"><a href="#二、软件过程模型" class="headerlink" title="二、软件过程模型"></a>二、软件过程模型</h2><h4 id="软件生命周期"><a href="#软件生命周期" class="headerlink" title="软件生命周期"></a>软件生命周期</h4><p>软件从系统设计、投入使用到被淘汰的全过程</p>
+<hr>
+<h4 id="CMMI成熟度模型标准"><a href="#CMMI成熟度模型标准" class="headerlink" title="CMMI成熟度模型标准"></a>CMMI成熟度模型标准</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">级别</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1.初始级</td>
+<td style="text-align:center">有能力的人和个人英雄主义</td>
+</tr>
+<tr>
+<td style="text-align:center">2.可重复级</td>
+<td style="text-align:center">基本的项目管理</td>
+</tr>
+<tr>
+<td style="text-align:center">3.已定义级</td>
+<td style="text-align:center">过程标准化</td>
+</tr>
+<tr>
+<td style="text-align:center">4.量化管理级</td>
+<td style="text-align:center">量化管理</td>
+</tr>
+<tr>
+<td style="text-align:center">5.优化级</td>
+<td style="text-align:center">持续的过程改进</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="过程模型"><a href="#过程模型" class="headerlink" title="过程模型"></a>过程模型</h4><blockquote>
+<p><strong>瀑布模型*</strong></p>
+</blockquote>
+<ul>
+<li>开发过程与软件生命周期一致，也被称为<strong>经典的生命周期模型</strong></li>
+<li>以<strong>文档驱动</strong></li>
+</ul>
+<p><strong>特点*</strong>：</p>
+<ol>
+<li>阶段有顺序性与依赖性<ul>
+<li>前一阶段的工作完成，后一阶段才能开始</li>
+<li>前一阶段的输出文档是后一阶段的输入文档</li>
+</ul>
+</li>
+<li>推迟实现的观点<ul>
+<li>编码前设置系统分析设计阶段，主要考虑系统的逻辑模型，不考虑物理实现</li>
+<li>尽可能推迟物理实现</li>
+</ul>
+</li>
+<li><p>质量保证的观点</p>
+<ul>
+<li>每个阶段必须完成规定文档</li>
+<li>每个阶段结束前要对所有文档评审</li>
+</ul>
+<pre><code class="lang-mermaid">graph LR
+A[可行性研究] --&gt; B[需求分析]
+B --&gt; C[概要设计] 
+C --&gt; D[详细设计] 
+D --&gt; E[实现] 
+E --&gt; F[组装测试] 
+F --&gt; G[验收测试] 
+G --&gt; H[使用维护] 
+H --&gt; I[退役]
+</code></pre>
+</li>
+</ol>
+<p><strong>缺点*</strong> </p>
+<ul>
+<li>不灵活，下一阶段开始前，当前阶段需要固定</li>
+<li>严格文档驱动，增大工作量</li>
+<li>线性开发，只有等到过程末期才能见到开发成果，增大开发风险</li>
+<li>早期需投入大量成本，难以应对客户需求变更</li>
+</ul>
+<p><strong>适用场合*</strong></p>
+<p>需求明确且在将来没有太大改变的情况</p>
+<blockquote>
+<p> <strong>演化模型</strong></p>
+</blockquote>
+<p>首先实现软件最核心，最重要的功能</p>
+<p><strong>适用场合</strong></p>
+<ol>
+<li>需求不明确或需求经常变更</li>
+<li>适用于中小型系统</li>
+</ol>
+<p><strong>分类</strong></p>
+<ul>
+<li><blockquote>
+<p>快速原型模型(原型模型)*</p>
+</blockquote>
+<p>思路：先开发原型，实现最主要的功能，征求用户意见并完善，在确定使用该原型后，开始完整的开发。</p>
+<p>优点：</p>
+<ol>
+<li>软件、文档能明确符合用户需求</li>
+<li>快速</li>
+<li>可以在原型基础上开发或者抛弃</li>
+</ol>
+<p>缺点：为快速建立原型，设计者可能不会用长远的眼光和维护的角度考虑系统</p>
+</li>
+<li><blockquote>
+<p>并行开发模型</p>
+</blockquote>
+<ul>
+<li>所有任务同时存在，又处于不同的状态</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>增量过程模型</strong></p>
+</blockquote>
+<ul>
+<li><p>增量模型*</p>
+<ul>
+<li>在前面增量基础上开发后面增量</li>
+<li>迭代思想</li>
+<li>第一个增量通常是核心产品</li>
+</ul>
+</li>
+<li><p>RAD：快速开发</p>
+</li>
+<li><p>螺旋模型*</p>
+<p>优点：</p>
+<ul>
+<li>强调风险管理</li>
+<li>支持需求动态变化</li>
+<li>评估更加准确</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>若每次迭代效率不高，会影响成本及效率</li>
+<li>团队需要较高的知识水平</li>
+<li>只适用于大型软件开发</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><blockquote>
+<p><strong>增量模型和螺旋模型的异同*</strong> </p>
+</blockquote>
+<p>相同：都是现代式迭代方式</p>
+<p>不同</p>
+<ol>
+<li>两者迭代层次不同，增量模型是活动级迭代，螺旋模型是过程级迭代</li>
+<li>需求分析时间不同，增量先做总体需求分析，再编码测试，逐个增量；螺旋模型在开发周期内采用瀑布模型</li>
+<li>交付软件方式不同，增量每次的增量开发都是在上一次增量的基础上提交新的一部分软件；螺旋每次提交新的完整的系统</li>
+<li>风险管理不同，增量通过扩充技术与经常客户反馈；螺旋直接植入风险分析</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="三、需求分析"><a href="#三、需求分析" class="headerlink" title="三、需求分析"></a>三、需求分析</h2><h4 id="需求获取"><a href="#需求获取" class="headerlink" title="需求获取"></a>需求获取</h4><p>软件需求的来源及收集软件需求的方法</p>
+<hr>
+<h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><p>确定系统必须有的功能和性能，系统要求的运行环境，并预测系统发展前景。</p>
+<p>核心在于<strong>建立分析模型</strong>(DD、DFD等)</p>
+<ul>
+<li>功能性需求：系统应该做什么</li>
+<li>非功能性需求：必须遵守的标准与约束(性能等)</li>
+</ul>
+<p><strong>步骤*</strong>：</p>
+<ol>
+<li>需求获取</li>
+<li>需求提炼</li>
+<li>需求描述(撰写需求规格说明书)</li>
+<li>需求验证</li>
+</ol>
+<p>任务：</p>
+<ol>
+<li>建立分析模型</li>
+<li>编写需求说明</li>
+</ol>
+<hr>
+<h4 id="数据字典-Data-Dictionary-DD"><a href="#数据字典-Data-Dictionary-DD" class="headerlink" title="数据字典(Data Dictionary DD)*"></a>数据字典(Data Dictionary DD)*</h4><blockquote>
+<p>数据项</p>
+</blockquote>
+<ul>
+<li>数据项名</li>
+<li>类型</li>
+<li>长度</li>
+<li>取值范围</li>
+</ul>
+<blockquote>
+<p> 数据流</p>
+</blockquote>
+<ul>
+<li>数据流名</li>
+<li>简介其作用</li>
+<li>数据流来源</li>
+<li>数据流去向</li>
+<li>数据流组成</li>
+</ul>
+<blockquote>
+<p> 数据文件或数据库</p>
+</blockquote>
+<ul>
+<li>数据文件名</li>
+<li>简述存放数据</li>
+<li>输入数据</li>
+<li>输出数据</li>
+<li>数据存放的数据结构</li>
+<li>存取频率</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表示</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">定义为</td>
+</tr>
+<tr>
+<td style="text-align:center">A+B</td>
+<td style="text-align:center">与</td>
+</tr>
+<tr>
+<td style="text-align:center">[A\</td>
+<td style="text-align:center">B]</td>
+<td>或</td>
+</tr>
+<tr>
+<td style="text-align:center">{A}</td>
+<td style="text-align:center">X由多个A组成</td>
+</tr>
+<tr>
+<td style="text-align:center">(A)</td>
+<td style="text-align:center">可选</td>
+</tr>
+<tr>
+<td style="text-align:center">m{A}n</td>
+<td style="text-align:center">A至少出现m次，至多出现n次</td>
+</tr>
+<tr>
+<td style="text-align:center">“A”</td>
+<td style="text-align:center">基本数据元素，默认值</td>
+</tr>
+<tr>
+<td style="text-align:center">a…b</td>
+<td style="text-align:center">取值区间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h4><p><img src="e-r_.png" width=400px></p>
+<ul>
+<li>实体(矩形)</li>
+<li>属性(椭圆)(<strong>主键</strong>：属性名下打下划线)</li>
+<li>关系(菱形)</li>
+</ul>
+<p><strong>关系模式</strong>：实体名(属性)</p>
+<p><img src="E-R.png" width=400px></p>
+<hr>
+<h4 id="数据流图-Data-Flow-Diagram-DFD"><a href="#数据流图-Data-Flow-Diagram-DFD" class="headerlink" title="数据流图(Data Flow Diagram DFD)"></a>数据流图(Data Flow Diagram DFD)</h4><p><img src="dfd.png" widht=400px></p>
+<ul>
+<li><p>加工框应有编号</p>
+</li>
+<li><p>分解前后的数据流一致</p>
+</li>
+<li><p>顶层：只包含一个加工</p>
+</li>
+<li><p>底层：加工不能再分解(最好不要超过7个)</p>
+</li>
+<li><p>父子平衡</p>
+</li>
+<li><p>加工之间可有有多股数据流</p>
+</li>
+<li><p>除从文件流入、流出的数据流，其它数据流须有名字</p>
+</li>
+</ul>
+<hr>
+<h4 id="状态-变迁图-Status-Transfer-Diagram-STD"><a href="#状态-变迁图-Status-Transfer-Diagram-STD" class="headerlink" title="状态-变迁图(Status Transfer Diagram STD)"></a>状态-变迁图(Status Transfer Diagram STD)</h4><p><strong>状态</strong>：矩形；<strong>转换</strong>：有向箭头；<strong>规则表达式</strong>：转换条件</p>
+<p>类似有限状态自动机</p>
+<p>Petri网</p>
+<hr>
+<h4 id="加工说明-PSPEC"><a href="#加工说明-PSPEC" class="headerlink" title="加工说明(PSPEC)"></a>加工说明(PSPEC)</h4><p> 判定树</p>
+<p> 判定表(条件+执行动作)</p>
+<hr>
+<h4 id="UML图"><a href="#UML图" class="headerlink" title="UML图"></a>UML图</h4><blockquote>
+<p><strong>静态模型</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>用例图</p>
+</blockquote>
+<p>用例图是显示一组用例、参与者以及它们之间关系的图</p>
+<p><strong>内容</strong>：</p>
+<ul>
+<li>参与者<ul>
+<li>系统<strong>外部</strong>的人或物，以某种方式参与了系统执行</li>
+<li>参与者在不同的组成部分可能扮演不同角色</li>
+<li><strong>外部、与系统交互</strong>(可能隐含时间、温度等)</li>
+<li><img src="Actor.png" width="50px"></li>
+</ul>
+</li>
+<li>用例<ul>
+<li>执行的操作</li>
+<li>考虑每个参与者是如何使用系统的</li>
+<li><img src="用例.png" style="width:50px"></li>
+</ul>
+</li>
+<li><p>泛化、扩展、包含关系</p>
+<ul>
+<li><p>泛化：同一业务的不同技术实现</p>
+<p><img src="泛化.png" width=200px></p>
+</li>
+<li><p>包含：基本用例会用到包含用例</p>
+<ul>
+<li>包含用例应是可重用的</li>
+</ul>
+</li>
+<li><p>扩展：对基础用例的扩展</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="用例图实例.png" width=400px></p>
+<ul>
+<li><blockquote>
+<p>业务场景图：</p>
+</blockquote>
+</li>
+</ul>
+<p>​    <img src="业务场景图_借书.png" width=400px></p>
+</li>
+<li><blockquote>
+<p>类图</p>
+</blockquote>
+<p><img src="类图.png" width=400px></p>
+</li>
+<li><blockquote>
+<p>对象图</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>组件图</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>部署图</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><strong>动态模型</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>顺序图</p>
+</blockquote>
+<p><img src="顺序图.png" width=400px></p>
+</li>
+</ul>
+<hr>
+<h2 id="四、软件设计工程"><a href="#四、软件设计工程" class="headerlink" title="四、软件设计工程"></a>四、软件设计工程</h2><h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构*"></a>软件架构*</h4><p>开发架构、逻辑架构、数据架构、运行架构、物理架构</p>
+<blockquote>
+<ol>
+<li>开发架构(程序)</li>
+</ol>
+</blockquote>
+<ul>
+<li>程序单元<ul>
+<li>源文件、配置文件</li>
+<li>程序库、框架</li>
+<li>目标单元</li>
+</ul>
+</li>
+<li>程序单元组织<ul>
+<li>项目划分</li>
+<li>项目目录结构</li>
+<li>编译依赖关系</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>逻辑架构(职责)</li>
+</ol>
+</blockquote>
+<ul>
+<li>职责划分<ul>
+<li>逻辑层</li>
+<li>子系统、模块</li>
+<li>关键类</li>
+</ul>
+</li>
+<li>职责协作<ul>
+<li>接口</li>
+<li>协作关系</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>数据架构</li>
+</ol>
+</blockquote>
+<ul>
+<li>数据单元<ul>
+<li>文件</li>
+<li>数据库</li>
+</ul>
+</li>
+<li>存储格式</li>
+</ul>
+<blockquote>
+<ol>
+<li>运行架构(控制流)</li>
+</ol>
+</blockquote>
+<ul>
+<li>控制流<ul>
+<li>进程、线程</li>
+<li>中断</li>
+</ul>
+</li>
+<li>控制流组织<ul>
+<li>启动与停机</li>
+<li>控制通信</li>
+<li>加锁与同步</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>物理架构</li>
+</ol>
+</blockquote>
+<ul>
+<li>物理节点<ul>
+<li>PC、服务器</li>
+<li>物理硬件</li>
+<li>软件安装、部署</li>
+<li>系统软件选型</li>
+</ul>
+</li>
+<li>物理节点拓扑<ul>
+<li>连接方式、拓扑结构</li>
+<li>物理层</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="体系结构设计原则"><a href="#体系结构设计原则" class="headerlink" title="体系结构设计原则"></a>体系结构设计原则</h4><ul>
+<li>合适性</li>
+<li>结构稳定性</li>
+<li>可扩展性</li>
+<li>可复用性</li>
+</ul>
+<hr>
+<h4 id="模块设计原则"><a href="#模块设计原则" class="headerlink" title="模块设计原则"></a>模块设计原则</h4><ul>
+<li><p>信息隐藏</p>
+</li>
+<li><p>高内聚</p>
+<blockquote>
+<p>内聚(Cohesion)：模块内部各成分间的关联程度</p>
+</blockquote>
+</li>
+<li><p>低耦合</p>
+<blockquote>
+<p>耦合(Coupling)：模块间的依赖程度</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h4 id="内聚"><a href="#内聚" class="headerlink" title="内聚*"></a>内聚*</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>内聚</th>
+<th>特点</th>
+<th>强度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>巧合内聚</td>
+<td>模块内句段没有什么联系</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>逻辑内聚</td>
+<td>将几种功能组合，通过参数判断执行哪一个功能</td>
+<td></td>
+</tr>
+<tr>
+<td>时间内聚</td>
+<td>模块中包含了需同一时间执行的多个任务</td>
+<td></td>
+</tr>
+<tr>
+<td>过程内聚</td>
+<td>模块各部分相关，且必须按照指定顺序执行</td>
+<td></td>
+</tr>
+<tr>
+<td>通信内聚</td>
+<td>模块中各部分有同一输入数据或产生同一输出数据</td>
+<td></td>
+</tr>
+<tr>
+<td>顺序内聚</td>
+<td>模块各部分与同一个功能相关，前一个部分的输出是后一个部分的输入数据</td>
+<td></td>
+</tr>
+<tr>
+<td>功能内聚</td>
+<td>模块内的各个部分共同完成一个单一功能</td>
+<td>强</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="耦合"><a href="#耦合" class="headerlink" title="耦合*"></a>耦合*</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>耦合</th>
+<th>特点</th>
+<th>强度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内容耦合</td>
+<td>一个模块对另一个模块进行直接修改或引用或两个模块共享一部分代码</td>
+<td>高</td>
+</tr>
+<tr>
+<td>公共耦合</td>
+<td>一组模块公用数据环境(全局变量在多个模块间使用)</td>
+<td></td>
+</tr>
+<tr>
+<td>外部耦合</td>
+<td>模块间通过软件之外的环境连接</td>
+<td></td>
+</tr>
+<tr>
+<td>控制耦合</td>
+<td>一个模块传送给另一个模块的信息中包含了控制信息</td>
+<td></td>
+</tr>
+<tr>
+<td>标记耦合</td>
+<td>两个模块通过参数表传递一个数据结构的一部分</td>
+<td></td>
+</tr>
+<tr>
+<td>数据耦合</td>
+<td>两个模块仅通过模块参数交换信息，且交换信息全为简单数据</td>
+<td></td>
+</tr>
+<tr>
+<td>非直接耦合</td>
+<td>两个模块间没有直接关系</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="扇出"><a href="#扇出" class="headerlink" title="扇出"></a>扇出</h4><p>调用其它模块的数目</p>
+<hr>
+<h4 id="扇入"><a href="#扇入" class="headerlink" title="扇入"></a>扇入</h4><p>被其它模块调用的数目</p>
+<hr>
+<h4 id="结构化程序"><a href="#结构化程序" class="headerlink" title="结构化程序*"></a>结构化程序*</h4><blockquote>
+<p> 程序代码仅仅通过<strong>顺序、选择、循环</strong>三种结构连接，且每个代码块只有<strong>一个入口和一个出口</strong></p>
+</blockquote>
+<hr>
+<h4 id="程序流程图"><a href="#程序流程图" class="headerlink" title="程序流程图*"></a>程序流程图*</h4><p>缺点*：</p>
+<ol>
+<li>容易使程序员过早考虑控制流程而不是全局结构</li>
+<li>箭头代表控制流，可以随意转移控制，可能使程序过于混乱</li>
+<li>表示数据结构方面存在不足</li>
+</ol>
+<p>为使流程图描述<strong>结构化程序</strong>，必须只能用下面五中基本控制结构</p>
+<p><img src="程序流程图.png" style="width:400px"></p>
+<hr>
+<h4 id="NS图-盒图"><a href="#NS图-盒图" class="headerlink" title="NS图(盒图)"></a>NS图(盒图)</h4><p><img src="NS图.png" style="width:400px"></p>
+<p><img src="NS实例图.png" style="width:400px"></p>
+<hr>
+<h4 id="PAD图"><a href="#PAD图" class="headerlink" title="PAD图"></a>PAD图</h4><p>必定是<strong>结构化</strong>的</p>
+<p><img src="PAD图.png" style="width:400px"></p>
+<p><img src="PAD实例图.png" style="width:400px"></p>
+<hr>
+<h4 id="模块化和软件成本"><a href="#模块化和软件成本" class="headerlink" title="模块化和软件成本*"></a>模块化和软件成本*</h4><p><img src="module.png" widht=400px></p>
+<hr>
+<h4 id="设计性语言PDL-Program-Design-Laguage"><a href="#设计性语言PDL-Program-Design-Laguage" class="headerlink" title="设计性语言PDL(Program Design Laguage)"></a>设计性语言PDL(Program Design Laguage)</h4><p>伪代码</p>
+<hr>
+<h2 id="五、软件生产率与工作量的度量"><a href="#五、软件生产率与工作量的度量" class="headerlink" title="五、软件生产率与工作量的度量"></a>五、软件生产率与工作量的度量</h2><h4 id="软件度量"><a href="#软件度量" class="headerlink" title="软件度量"></a>软件度量</h4><p>定义：对软件产品、开发过程、资源简单属性的<strong>定量</strong>描述</p>
+<hr>
+<h4 id="为什么需要软件度量"><a href="#为什么需要软件度量" class="headerlink" title="为什么需要软件度量"></a>为什么需要软件度量</h4><p>客观准确的项目估算，是项目成功的基础</p>
+<hr>
+<h4 id="项目估算"><a href="#项目估算" class="headerlink" title="项目估算"></a>项目估算</h4><ol>
+<li>项目规模</li>
+<li>项目工作量</li>
+<li>项目资源</li>
+<li>项目时间</li>
+<li>项目成本</li>
+</ol>
+<hr>
+<h4 id="面向规模度量-直接度量"><a href="#面向规模度量-直接度量" class="headerlink" title="面向规模度量(直接度量)*"></a>面向规模度量(直接度量)*</h4><ul>
+<li>生产率 PM = L / E ( L:代码总量 E:软件工作量(人月) )</li>
+<li>每千行代码平均成本： CKL = S / L (S:项目总开销)</li>
+<li>文档代码比：DI = Pd / L</li>
+<li><p>代码出错率：EQRI = Ne / L</p>
+<p>优点：简单直观</p>
+<p>缺点：</p>
+</li>
+<li><p>只适合于过程式设计语言</p>
+</li>
+<li>初期难以估算代码行数</li>
+</ul>
+<hr>
+<h4 id="功能点分析法"><a href="#功能点分析法" class="headerlink" title="功能点分析法*"></a>功能点分析法*</h4><ul>
+<li><p>不能直接度量</p>
+</li>
+<li><p>初期即可估算</p>
+</li>
+<li><p>功能点计算依赖于经验公式，主观因素较多</p>
+</li>
+<li><p>与语言无关</p>
+</li>
+<li><p>没有涉及算法复杂度</p>
+</li>
+<li><p>FP = (0.65 + 0.01  x $\sum F_i$)  x CT</p>
+<ul>
+<li>CT：5个信息量的加权和</li>
+<li>$F_i$：14个因素的复杂性调节值(影响越大，数值越大)</li>
+<li>0.65 0.01皆为经验常数</li>
+</ul>
+</li>
+<li><p>CT的计算</p>
+<blockquote>
+<ul>
+<li>用户输入数×加权因子(简单=3,平均=4,复杂=5)</li>
+<li>用户输出数×加权因子(简单=3,平均=4,复杂=5)</li>
+<li>用户查询数×加权因子(简单=3,平均=4,复杂=5)</li>
+<li>文件数×加权因子(简单=3,平均=4,复杂=5)</li>
+<li>外部界面数×加权因子(简单=3,平均=4,复杂=5)</li>
+</ul>
+<p>CT = 上述计算值的总和</p>
+</blockquote>
+</li>
+<li><p>PM：平均生产率(代码行/人月)</p>
+</li>
+<li><p>C：每个人月的成本</p>
+</li>
+</ul>
+<hr>
+<h2 id="六、软件测试策略"><a href="#六、软件测试策略" class="headerlink" title="六、软件测试策略"></a>六、软件测试策略</h2><h4 id="软件缺陷"><a href="#软件缺陷" class="headerlink" title="软件缺陷*"></a>软件缺陷*</h4><blockquote>
+<ol>
+<li>软件未实现要求功能</li>
+<li>软件出现了指明不能出现的错误</li>
+<li>软件实现了产品说明书未提到的功能</li>
+<li>软件未实现产品说明书未明确提到但应该实现的目标</li>
+<li>软件难以理解、不易使用、运行缓慢</li>
+</ol>
+<p>满足一条就是发生了一个软件缺陷</p>
+</blockquote>
+<h4 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h4><blockquote>
+<p>在特定条件下对软件观察或记录结果，对系统或组件的某些方面进行评估的过程</p>
+</blockquote>
+<h4 id="软件测试目标"><a href="#软件测试目标" class="headerlink" title="软件测试目标*"></a>软件测试目标*</h4><blockquote>
+<ol>
+<li>确认系统满足预期使用和用户需要</li>
+<li>确认解决了需解决的问题</li>
+<li>为测试的过程建立责任和可解释性</li>
+<li>发现软件系统的异常</li>
+<li>提供软件系统的性能的评估</li>
+<li>为管理人员提供真实信息</li>
+<li>鉴别程序在功能方面的异常聚集处</li>
+</ol>
+</blockquote>
+<h4 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例*"></a>测试用例*</h4><blockquote>
+<p>是测试输入、执行条件、预期结果的集合</p>
+</blockquote>
+<h4 id="单元测试-模块测试"><a href="#单元测试-模块测试" class="headerlink" title="单元测试(模块测试)*"></a>单元测试(模块测试)*</h4><blockquote>
+<p>验证模块是否按照详细设计的规格进行正确运行</p>
+<ol>
+<li>模块接口：模块输入/输出是否正确(个数、次序、类型)</li>
+<li>局部数据结构</li>
+<li>边界条件</li>
+<li>所有独立路径：确保所有语句至少执行一遍</li>
+<li>所有错误处理路径</li>
+</ol>
+<h5 id="驱动模块-：调用被测模块，传数据给被测模块并接受返回结果"><a href="#驱动模块-：调用被测模块，传数据给被测模块并接受返回结果" class="headerlink" title="驱动模块* ：调用被测模块，传数据给被测模块并接受返回结果"></a>驱动模块* ：调用被测模块，传数据给被测模块并接受返回结果</h5><h5 id="桩模块-：代替被测模块调用的模块-隔离缺陷"><a href="#桩模块-：代替被测模块调用的模块-隔离缺陷" class="headerlink" title="桩模块*：代替被测模块调用的模块(隔离缺陷)"></a>桩模块*：代替被测模块调用的模块(隔离缺陷)</h5><pre><code class="lang-mermaid">graph LR
+A[驱动模块]
+B[被测模块]
+C[桩模块]
+D[桩模块]
+A--&gt;B
+B--&gt;C
+B--&gt;D
+</code></pre>
+</blockquote>
+<h4 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试*"></a>集成测试*</h4><blockquote>
+<p>测试多模块间的协同工作</p>
+<ol>
+<li><p>非增量式集成：将所有经过单元测试的模块组合，对整体进行测试</p>
+</li>
+<li><p>增量式集成：根据程序结构图，按一定次序选一个(或一组)尚未测试的模块集成到已测试好的模块中进行测试</p>
+<ol>
+<li><p>自顶向下集成：从主控模块开始，按照程序结构图将模块按深度优先或广度优先的方式逐个集成到结构中并测试(要打桩)</p>
+<ul>
+<li>较早验证主程序功能</li>
+<li>缺陷隔离较好</li>
+<li>可以较早验证主要的控制判断点</li>
+<li>桩模块编写费时</li>
+</ul>
+</li>
+<li><p>自底向上集成</p>
+<blockquote>
+<p>将低层模块组合成能实现特定功能的簇，为每个簇写驱动程序并测试</p>
+<p>用上层模块替换驱动程序</p>
+<p>每次对新的簇测试后都要进行回顾测试</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h4 id="系统测试"><a href="#系统测试" class="headerlink" title="系统测试*"></a>系统测试*</h4><blockquote>
+<p>测试整个系统是否满足<strong>规格说明</strong></p>
+<ul>
+<li><p>功能测试</p>
+<ul>
+<li>运行软件所有功能，验证系统有无严重错误</li>
+</ul>
+</li>
+<li><h4 id="压力测试"><a href="#压力测试" class="headerlink" title="压力测试*"></a>压力测试*</h4><ul>
+<li><h5 id="采用比平常高一个数量级的反常测试用例来测试"><a href="#采用比平常高一个数量级的反常测试用例来测试" class="headerlink" title="采用比平常高一个数量级的反常测试用例来测试*"></a>采用比平常高一个数量级的反常测试用例来测试*</h5></li>
+<li><p>系统运行正常至发生故障时，可以运行到何种情况</p>
+</li>
+</ul>
+</li>
+<li><p>性能测试</p>
+<ul>
+<li>响应时间(发出请求到收到反馈的时间)</li>
+<li>吞吐量、辅助存储区大小、处理精度</li>
+</ul>
+</li>
+<li><p>界面测试</p>
+</li>
+<li><p>安全性测试</p>
+<ul>
+<li>系统安全、保密性措施是否完善</li>
+</ul>
+</li>
+<li><p>恢复测试</p>
+<ul>
+<li>排除故障后系统是否还能正常工作</li>
+</ul>
+</li>
+<li><p>配置测试、兼容性测试、本地化测试、文档测试、易用性测试</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="验收测试"><a href="#验收测试" class="headerlink" title="验收测试*"></a>验收测试*</h4><blockquote>
+<h5 id="从用户角度来看系统是否满足合同定义要求，以及产品是否能符合业务上的需要"><a href="#从用户角度来看系统是否满足合同定义要求，以及产品是否能符合业务上的需要" class="headerlink" title="从用户角度来看系统是否满足合同定义要求，以及产品是否能符合业务上的需要*"></a>从用户角度来看系统是否满足合同定义要求，以及产品是否能符合业务上的需要*</h5><ul>
+<li>用户为主、软件开发人员、QA(质量保证)人员也要参加</li>
+</ul>
+</blockquote>
+<h4 id="回归测试"><a href="#回归测试" class="headerlink" title="回归测试*"></a>回归测试*</h4><blockquote>
+<p>有选择的重新测试系统或其组件，验证软件的修改是否导致不希望出现的影响</p>
+</blockquote>
+<h4 id="alpha-测试和-beta-测试"><a href="#alpha-测试和-beta-测试" class="headerlink" title="$\alpha$测试和$\beta$测试*"></a>$\alpha$测试和$\beta$测试*</h4><blockquote>
+<p>$\alpha$测试：用户在<strong>开发环境</strong>下进行的测试</p>
+<p>$\beta $测试：多用户在<strong>实际环境</strong>下的测试，并返回相关错误给开发者</p>
+</blockquote>
+<h4 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试*"></a>黑盒测试*</h4><blockquote>
+<p>忽略内部结构，只关注输入输出；功能、数据驱动</p>
+<ul>
+<li>等价类划分<ul>
+<li>每个等价类中的数据对于揭露程序错误都是等效的</li>
+<li>有效等价类：合理的、有意义的输入数据构成的集合</li>
+<li>无效等价类：不合理、无意义输入构成的集合</li>
+<li>新测试用例尽量多的覆盖未被覆盖的有效等价类的数据</li>
+<li>设计新的测试用例，使其仅覆盖一个尚未被覆盖的无效等价类，重复直至所有无效等价类都被覆盖</li>
+</ul>
+</li>
+<li>边界值分析<ul>
+<li>选取正好等于、刚刚大于、刚刚小于边界值的数据作为测试</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="白盒测试-逻辑结构驱动"><a href="#白盒测试-逻辑结构驱动" class="headerlink" title="白盒测试(逻辑结构驱动)*"></a>白盒测试(逻辑结构驱动)*</h4><blockquote>
+<p>考虑内部组件机制，对所有逻辑路径进行测试</p>
+<ul>
+<li>所有独立路径至少测一次</li>
+<li>所有逻辑判断的结果至少测一次</li>
+<li>循环的边界和界内运行</li>
+<li>内部数据结构有效性</li>
+</ul>
+<p>语句覆盖：<strong>每个语句</strong>至少执行一次</p>
+<p>分支(判定)覆盖：<strong>每个判断的分支</strong>至少执行一次</p>
+<p>条件覆盖：所有判断的<strong>每个条件的所有可能</strong>至少出现一次</p>
+<p>判定/条件覆盖：</p>
+<blockquote>
+<p><strong>每个判断分支，所有判断的每个条件可能</strong>都至少出现一次</p>
+<p>判定/条件覆盖 = 判定覆盖 + 条件覆盖</p>
+</blockquote>
+<p>条件组合覆盖：<strong>每个判定的所有组合</strong>都至少出现一次</p>
+<blockquote>
+<p>不能保证路径覆盖，满足条件组合覆盖就一定满足判定覆盖、条件覆盖、判定/条件覆盖</p>
+</blockquote>
+<p>路径覆盖：<strong>所有路径</strong>都至少被经过一次</p>
+</blockquote>
+<h4 id="测试评估标准"><a href="#测试评估标准" class="headerlink" title="测试评估标准"></a>测试评估标准</h4><blockquote>
+<ul>
+<li><h5 id="覆盖率-：测试集合占测试需求集合之比"><a href="#覆盖率-：测试集合占测试需求集合之比" class="headerlink" title="覆盖率*：测试集合占测试需求集合之比"></a>覆盖率*：测试集合占测试需求集合之比</h5></li>
+<li>故障插入：人为插入故障到程序，一部分故障有可能不会暴露</li>
+<li>变异分值</li>
+</ul>
+</blockquote>
+<h4 id="静态分析方法"><a href="#静态分析方法" class="headerlink" title="静态分析方法*"></a>静态分析方法*</h4><blockquote>
+<p>不运行程序，通过检查、阅读发现代码错误评估代码质量</p>
+<ul>
+<li>检查需求<ul>
+<li>完整性：是否完整描述一个功能</li>
+<li>正确性：是否正确反应客户要求</li>
+<li>可行性</li>
+<li>必要性</li>
+<li>无二义性</li>
+<li>可验证性</li>
+<li>需求规格的说明标准<ul>
+<li>完整性：是否包含所有需求</li>
+<li>一致性：重复？相互矛盾</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检查设计<ul>
+<li>在编码前进行</li>
+<li>检查功能设计，消除歧义</li>
+</ul>
+</li>
+<li>检查代码</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="七、软件维护"><a href="#七、软件维护" class="headerlink" title="七、软件维护"></a>七、软件维护</h2><h4 id="软件维护"><a href="#软件维护" class="headerlink" title="软件维护"></a>软件维护</h4><blockquote>
+<h5 id="ISO-IEC定义-：软件产品出现问题或需要改进，对其代码及相关文档的修改，目的是对现有的软件产品进行修改的同时保证其完整性"><a href="#ISO-IEC定义-：软件产品出现问题或需要改进，对其代码及相关文档的修改，目的是对现有的软件产品进行修改的同时保证其完整性" class="headerlink" title="ISO-IEC定义*：软件产品出现问题或需要改进，对其代码及相关文档的修改，目的是对现有的软件产品进行修改的同时保证其完整性"></a>ISO-IEC定义*：软件产品出现问题或需要改进，对其代码及相关文档的修改，目的是对现有的软件产品进行修改的同时保证其完整性</h5><p>目的：</p>
+<ol>
+<li>改正程序的错误缺陷</li>
+<li>改进设计以适应新的软硬件环境</li>
+<li>增加新的应用范围</li>
+</ol>
+</blockquote>
+<h4 id="软件维护必要性"><a href="#软件维护必要性" class="headerlink" title="软件维护必要性*"></a>软件维护必要性*</h4><blockquote>
+<ol>
+<li>能改正错误</li>
+<li>能改善设计</li>
+<li>能实现软件的改进</li>
+<li>能与其他系统交互</li>
+<li>能为为使用不同的硬件、软件、系统新性能及通信设备对软件进行改进</li>
+<li>能完成遗留程序移植</li>
+<li>软件退出使用</li>
+</ol>
+</blockquote>
+<h4 id="完善性维护"><a href="#完善性维护" class="headerlink" title="完善性维护*"></a>完善性维护*</h4><blockquote>
+<p>增加新功能、增强性能、改进效率，提高可维护性</p>
+<ul>
+<li>占比最大</li>
+</ul>
+</blockquote>
+<h4 id="改正性维护"><a href="#改正性维护" class="headerlink" title="改正性维护*"></a>改正性维护*</h4><blockquote>
+<p>识别纠正软件错误</p>
+</blockquote>
+<h4 id="适应性维护"><a href="#适应性维护" class="headerlink" title="适应性维护*"></a>适应性维护*</h4><blockquote>
+<p>因外部环境与数据环境发生变化而修改软件</p>
+<ul>
+<li>配置管理时，把环境因素的可变化考虑在内</li>
+<li>将与外部环境相关的部分归到特定的程序模块中</li>
+<li>使用内部程序列表、外部文件，以及处理的例行程序包</li>
+</ul>
+</blockquote>
+<h4 id="预防性维护"><a href="#预防性维护" class="headerlink" title="预防性维护*"></a>预防性维护*</h4><blockquote>
+<p>采用先进的软件工程方法对需要维护的软件或其部分进行重新进行设计、编制、测试</p>
+</blockquote>
+<h4 id="软件维护困难性"><a href="#软件维护困难性" class="headerlink" title="软件维护困难性*"></a>软件维护困难性*</h4><blockquote>
+<ol>
+<li>配置管理不到位，软件的改动没有被标记</li>
+<li>人员变动产生的影响</li>
+<li>维护人员大多不是编写代码的人员</li>
+<li>错误大多只有在运行中发现</li>
+</ol>
+</blockquote>
+<h4 id="软件再工程"><a href="#软件再工程" class="headerlink" title="软件再工程"></a>软件再工程</h4><blockquote>
+<p>对现有的软件进行审查和改造，对其重构</p>
+</blockquote>
+<h4 id="正向工程"><a href="#正向工程" class="headerlink" title="正向工程"></a>正向工程</h4><blockquote>
+<p>通过现代软件工程概念、原理、技术方法，重新开发现有的某些系统</p>
+</blockquote>
+<h4 id="逆向工程"><a href="#逆向工程" class="headerlink" title="逆向工程"></a>逆向工程</h4><blockquote>
+<p>分析目标系统，识别系统构件及其交互关系，通过高层抽象和其它形式来展现目标系统的过程</p>
+</blockquote>
+<hr>
+<h2 id="八、项目管理"><a href="#八、项目管理" class="headerlink" title="八、项目管理"></a>八、项目管理</h2><h4 id="软件项目管理要素"><a href="#软件项目管理要素" class="headerlink" title="软件项目管理要素*"></a>软件项目管理要素*</h4><p> 管理方法在软件开发与维护中的应用，以保证整个过程是系统的、有原则的、可量化的</p>
+<blockquote>
+<h5 id="人员-People"><a href="#人员-People" class="headerlink" title="人员(People)*"></a>人员(People)*</h5></blockquote>
+<p>  人力资源管理成熟度模型PCMM</p>
+<p>  初始级-&gt;重复级-&gt;定义级-&gt;定量级-&gt;优化级(与CMMI成熟度模型排序一样)</p>
+<blockquote>
+<h5 id="产品-Product"><a href="#产品-Product" class="headerlink" title="产品(Product)*"></a>产品(Product)*</h5><h5 id="过程-Process"><a href="#过程-Process" class="headerlink" title="过程(Process)*"></a>过程(Process)*</h5></blockquote>
+<p>  选择合适的过程模型</p>
+<blockquote>
+<h5 id="项目-Project"><a href="#项目-Project" class="headerlink" title="项目(Project)*"></a>项目(Project)*</h5></blockquote>
+<p>  将人力和非人力资源集合在一个临时性的组织中实现一个规定的目标</p>
+<ul>
+<li>有明确的目标</li>
+<li>有生命周期</li>
+<li>项目任务可分解</li>
+<li>有明确的客户</li>
+<li>需要多种资源</li>
+<li>有不确定性因素</li>
+</ul>
+<hr>
+<h4 id="团队组织形式"><a href="#团队组织形式" class="headerlink" title="团队组织形式*"></a>团队组织形式*</h4><blockquote>
+<p>民主分权制(DD)</p>
+</blockquote>
+<p>  软件工程团队没有永久的领导者，存在问题的方法和决策都是小组共识</p>
+<ul>
+<li>较低模块化，需较高的通信量时宜采用</li>
+<li>较高士气</li>
+<li>横向沟通</li>
+</ul>
+<blockquote>
+<p>有控制的分权制(CD)</p>
+</blockquote>
+<p> 有明确的领导分工，解决问题由团队活动，解决方案由组长分配到各个小组实施</p>
+<ul>
+<li>较大项目宜采用</li>
+<li>高度模块化宜采用(交流少)</li>
+<li>横向纵向沟通都会发生</li>
+</ul>
+<blockquote>
+<p>有控制的集中制(CC)</p>
+</blockquote>
+<p> 团队内问题的解决协调由一个团队领导者执行</p>
+<ul>
+<li>较大项目宜采用</li>
+<li>高度模块化宜采用</li>
+<li>纵向沟通</li>
+</ul>
+<hr>
+<h4 id="虚拟团队"><a href="#虚拟团队" class="headerlink" title="虚拟团队*"></a>虚拟团队*</h4><p>地理上分散的团队，三个主要方面：目标、人、联系，其中目标是虚拟团队在一起的原因</p>
+<blockquote>
+<p>优势</p>
+</blockquote>
+<p>提高生产力，扩大市场机遇，进行知识转移</p>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<p>沟通不足，领导不力，成员不称职</p>
+<h2 id="九、Java"><a href="#九、Java" class="headerlink" title="九、Java"></a>九、Java</h2><blockquote>
+<p>JDK每个目录文件功能</p>
+</blockquote>
+<p>bin：存放Java启动命令及其他开发工具命令，该目录应保存到PATH变量中</p>
+<p>db：开源的java数据库</p>
+<p>include：c语言头文件，支持用Java本地接口和Java虚拟机接口实现本机代码编程</p>
+<p>jre：java.home指向的目录</p>
+<blockquote>
+<p> import语句规定</p>
+<p>构造方法要求</p>
+</blockquote>
+<p>类似C++</p>
+<blockquote>
+<p>运算符优先级</p>
+</blockquote>
+<p><img src="java.png" widht=400px></p>
+<blockquote>
+<p>Switch语句</p>
+</blockquote>
+<p>和C一样</p>
+<blockquote>
+<p>变量又称为属性</p>
+</blockquote>

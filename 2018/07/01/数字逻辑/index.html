@@ -1,0 +1,1342 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Lecture note：数制码制、数字电路、逻辑代数、组合逻辑设计、触发器">
+  <meta name="author" content="樵鹏举">
+  <meta name="keywords" content="">
+  
+  <title>数字逻辑 - QiaoPengju</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/default_loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>QiaoPengju's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/to-do-list/">
+                <i class="iconfont icon-plan"></i>
+                To Do List
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default_post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数字逻辑">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-07-01 15:08" pubdate>
+        July 1, 2018 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数字逻辑</h1>
+            
+            <div class="markdown-body">
+              <p>​    </p>
+<!-- more -->
+<h3 id="一、数制码制"><a href="#一、数制码制" class="headerlink" title="一、数制码制"></a>一、数制码制</h3><h5 id="数字信号"><a href="#数字信号" class="headerlink" title="数字信号"></a>数字信号</h5><blockquote>
+<p>在有限个离散稳定值之间做阶跃式变化的信号</p>
+<p>取值有限</p>
+<p>范围是离散值</p>
+<p>晶体管工作在非线性区，处于开关状态 </p>
+</blockquote>
+<h5 id="模拟信号"><a href="#模拟信号" class="headerlink" title="模拟信号"></a>模拟信号</h5><blockquote>
+<p>模拟信号是连续信号，任一时间段都包含了信号的连续变化</p>
+<p>模拟电路: 晶体管工作在线性区，处于放大状态</p>
+</blockquote>
+<h5 id="数字逻辑电路"><a href="#数字逻辑电路" class="headerlink" title="数字逻辑电路"></a>数字逻辑电路</h5><blockquote>
+<p>对数字信号信进行传递、变换、运算、存储及显示处理的电路称为数字电路 </p>
+<ul>
+<li>数值运算</li>
+<li>逻辑运算</li>
+<li>逻辑判断</li>
+</ul>
+<p>分类</p>
+<blockquote>
+<ul>
+<li>组合逻辑电路</li>
+<li>时序逻辑电路</li>
+</ul>
+</blockquote>
+<p>研究问题</p>
+<blockquote>
+<p>电路输出信号状态与输入信号状态之间的逻辑关系</p>
+</blockquote>
+</blockquote>
+<h5 id="数字系统"><a href="#数字系统" class="headerlink" title="数字系统"></a>数字系统</h5><blockquote>
+<p>数字系统是由实现各种功能的逻辑电路相互连接构成的整体，它能交互式地处理用离散形式表示的信息 </p>
+</blockquote>
+<h5 id="真值"><a href="#真值" class="headerlink" title="真值"></a>真值</h5><blockquote>
+<p>真值是指在数值前用“+”表示正数，用“-”表示负数的带符号二进制数。</p>
+</blockquote>
+<h5 id="机器数"><a href="#机器数" class="headerlink" title="机器数"></a>机器数</h5><blockquote>
+<p>机器数是指用“0”表示“+”， 用“1”表示“-”，即把符号“数值化”后的带符号二进制数</p>
+<p>正数的原码、反码、补码都是相同的</p>
+<ul>
+<li><p>原码</p>
+<ul>
+<li>整数部分</li>
+</ul>
+</li>
+</ul>
+<p><img src="2.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<ul>
+<li>小数部分</li>
+</ul>
+<p><img src="3.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<ul>
+<li><p>有两种形式的整数0原码</p>
+</li>
+<li><p>有两种形式的纯小数0.0原码</p>
+</li>
+<li><p>符号位不能直接加入运算</p>
+</li>
+</ul>
+<ul>
+<li><p>反码(1的补码)</p>
+<ul>
+<li><p>对于负数，反码的数值是将原码数值部分按位求反</p>
+</li>
+<li><p>对于负数，反码为等长的全1码减数值部分，再加上符号位</p>
+</li>
+<li><p>有两种形式的整数0反码</p>
+</li>
+<li><p>有两种形式的纯小数0.0反码</p>
+</li>
+<li><p>eg：</p>
+<blockquote>
+<p>－0.101的反码为1.010</p>
+<p>－10101的反码为101010</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>补码(对2的补数)</p>
+<p>反码加1</p>
+<ul>
+<li>整数部分</li>
+</ul>
+</li>
+</ul>
+<p><img src="4.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<ul>
+<li>小数部分</li>
+</ul>
+<p><img src="5.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<ul>
+<li>0和0.0的表示是唯一的</li>
+</ul>
+</blockquote>
+<h5 id="机器数加减运算"><a href="#机器数加减运算" class="headerlink" title="机器数加减运算"></a>机器数加减运算</h5><blockquote>
+<ul>
+<li><p>原码运算</p>
+<p>先看符号，判断绝对值</p>
+<p>符号位不参与运算</p>
+</li>
+<li><p>补码运算</p>
+<ul>
+<li><p>[X1＋X2]~补~＝[X1]~补~＋[X2]~补~</p>
+</li>
+<li><p>[X1- X2]~补~＝[X1]~补~＋[-X2]~补~</p>
+</li>
+<li><p>补码溢出</p>
+<blockquote>
+<p>符号位和数值位一样参加运算，若符号位产生进位，则将进位“丢掉”(高两位进位相同时可直接丢掉)</p>
+<p>最高的两位进位不相同，产生溢出。通过添加Bit数，最高的两位进位为00，从而防止溢出 </p>
+<p> <img src="7.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</li>
+<li><p>符号位为1，说明是负数补码，应对运算结果再求补码，得到原码</p>
+</li>
+</ul>
+</li>
+<li><p>反码运算</p>
+<blockquote>
+<ul>
+<li><p>[X1＋X2]~反~＝[X1]~反~＋[X2]~反~</p>
+</li>
+<li><p>[X1- X2]~反~＝[X1]~反~＋[-X2]~反~</p>
+</li>
+<li><p>循环进位</p>
+<blockquote>
+<p>符号位参加运算，如果符号位产生了进位，则该进位应该加到和数的最低位</p>
+</blockquote>
+</li>
+<li><p>若符号位为1，说明是负数的反码，对结果再求反码得原码</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h5 id="数制三要素"><a href="#数制三要素" class="headerlink" title="数制三要素"></a>数制三要素</h5><blockquote>
+<ul>
+<li>基数</li>
+<li>进位规则</li>
+<li>位权</li>
+</ul>
+</blockquote>
+<h5 id="二进制乘除法"><a href="#二进制乘除法" class="headerlink" title="二进制乘除法"></a>二进制乘除法</h5><blockquote>
+<p><img src="14.png" srcset="/img/default_loading.gif" lazyload width=200px></p>
+<p><img src="15.png" srcset="/img/default_loading.gif" lazyload width=200px></p>
+</blockquote>
+<h5 id="数制转换"><a href="#数制转换" class="headerlink" title="数制转换"></a>数制转换</h5><blockquote>
+<p>十进制转二进制</p>
+<blockquote>
+<p>整数部分：除以2取<strong>余数</strong>，直到商为0为止(逆序取余数)</p>
+<p>小数部分：乘以2取<strong>整数</strong>，直到小数为0(或到达要求精度)为止(顺序取整数) </p>
+<p>eg: (25.875)~10~＝(11001.111)~2~</p>
+<p><img src="1.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<p>十进制转n进制</p>
+<blockquote>
+<p>整数部分：除以n取余数，直到商为0为止(逆序取余数)</p>
+<p>小数部分：乘以n取整数，直到小数为0(或到达要求精度)为止(顺序取整数)</p>
+</blockquote>
+<p>n进制转十进制</p>
+<blockquote>
+<p>位权展开求和</p>
+</blockquote>
+<p>二进制转八进制</p>
+<blockquote>
+<p>小数点起<strong>三位</strong>一组，整数部分不够三位的向前添0，小数部分不够三位的向后添0</p>
+</blockquote>
+<p>二进制转十六进制</p>
+<blockquote>
+<p>即从小数点起<strong>四位</strong>一组，整数部分不够四位的向前添0，小数部分不够四位的向后添0</p>
+</blockquote>
+</blockquote>
+<h5 id="十进制的二进制编码-BCD码"><a href="#十进制的二进制编码-BCD码" class="headerlink" title="十进制的二进制编码(BCD码)"></a>十进制的二进制编码(BCD码)</h5><blockquote>
+<p><img src="9.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p><img src="10.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>8421码</p>
+<blockquote>
+<p>具有奇偶特性，当十进制数为奇数时，对应代码的最低位为1，为偶数时则为0</p>
+</blockquote>
+<p>余3码</p>
+<blockquote>
+<p>8421码加上3(加0011)</p>
+</blockquote>
+</blockquote>
+<h5 id="可靠性编码"><a href="#可靠性编码" class="headerlink" title="可靠性编码"></a>可靠性编码</h5><blockquote>
+<p>格雷码</p>
+<blockquote>
+<p>任意相邻两个代码之间只有一位状态不同，这样在计数过程中就不会出现其它代码，译码时就不会产生抖动和毛刺</p>
+<p><img src="11.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p><img src="12.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<p>奇偶校验码</p>
+<blockquote>
+<p>即在数据中加入校验位，校验位的加入如果使整个代码中的“1” 的个数为奇数，称奇校验</p>
+<p>如果使整个代码中的“1” 的个数为偶数，称偶校验</p>
+<p><img src="13.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</blockquote>
+<h3 id="二、数字电路"><a href="#二、数字电路" class="headerlink" title="二、数字电路"></a>二、数字电路</h3><h5 id="正负逻辑"><a href="#正负逻辑" class="headerlink" title="正负逻辑"></a>正负逻辑</h5><blockquote>
+<p>正逻辑</p>
+<blockquote>
+<p>用“0”表示V~L~，用“1”表示V~H~</p>
+</blockquote>
+<p>负逻辑</p>
+<blockquote>
+<p>用“1”表示V~L~，用“0”表示V~H~ </p>
+</blockquote>
+</blockquote>
+<h5 id="逻辑系列"><a href="#逻辑系列" class="headerlink" title="逻辑系列"></a>逻辑系列</h5><blockquote>
+<ul>
+<li>同一系列的芯片具有类似的输入、输出及内部电路特征，但逻辑功能不同</li>
+<li>不同系列的芯片可能不匹配</li>
+<li>CMOS逻辑</li>
+<li>TTL逻辑</li>
+</ul>
+</blockquote>
+<h5 id="CMOS"><a href="#CMOS" class="headerlink" title="CMOS"></a>CMOS</h5><blockquote>
+<p>互补式金属-氧化层-半导体逻辑电路 </p>
+<ul>
+<li><p>VDD=+3V～+18V</p>
+</li>
+<li><p>VL=0V</p>
+</li>
+<li><p>VH= VDD</p>
+</li>
+<li><p>速度慢，功耗小，抗干扰强，集成度高</p>
+</li>
+</ul>
+<p><img src="16.png" srcset="/img/default_loading.gif" lazyload></p>
+<p>n沟道</p>
+<blockquote>
+<p><img src="17.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>增加V~gs~，R~ds~减小，高压导通</p>
+</blockquote>
+<p>p沟道</p>
+<blockquote>
+<p><img src="18.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>增加V~gs~，R~ds~减小，低压导通</p>
+</blockquote>
+<p>栅－漏、栅－源之间几乎没有电流</p>
+<p>电容耦合</p>
+<blockquote>
+<p>栅极与源和漏极之间有电容耦合</p>
+<p>信号转换时，电容充放电，功耗较大</p>
+</blockquote>
+</blockquote>
+<h5 id="CMOS反相器"><a href="#CMOS反相器" class="headerlink" title="CMOS反相器"></a>CMOS反相器</h5><blockquote>
+<p><img src="19.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+</blockquote>
+<h5 id="CMOS与非门"><a href="#CMOS与非门" class="headerlink" title="CMOS与非门"></a>CMOS与非门</h5><blockquote>
+<p><img src="20.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p>T1、T3串联</p>
+<p>T2、T4并联</p>
+</blockquote>
+<h5 id="CMOS或非门"><a href="#CMOS或非门" class="headerlink" title="CMOS或非门"></a>CMOS或非门</h5><blockquote>
+<p><img src="21.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p>T1、T3并联</p>
+<p>T2、T4串联</p>
+</blockquote>
+<h5 id="CMOS非反向缓存"><a href="#CMOS非反向缓存" class="headerlink" title="CMOS非反向缓存"></a>CMOS非反向缓存</h5><blockquote>
+<p><img src="22.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<h5 id="CMOS电气特性"><a href="#CMOS电气特性" class="headerlink" title="CMOS电气特性"></a>CMOS电气特性</h5><blockquote>
+<ul>
+<li>逻辑电平规格</li>
+</ul>
+<blockquote>
+<p><img src="23.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>输出端能吸收的最大电流：I~OLmax~（灌电流）</p>
+<p>输出端能提供的最大电流：I~OHmax~（拉电流）  </p>
+</blockquote>
+<ul>
+<li><p>直流噪声容限</p>
+<blockquote>
+<p>表示多大的噪声会使最坏输出电压被破坏,成为不可被输入端识别的值</p>
+<p>高态：V~OHmin~ - V~LHmin~</p>
+<p>低态：V~ILmax~ - V~OLmax~</p>
+<p><strong>非理想输入</strong>：输入端电路增大，功耗增大</p>
+</blockquote>
+</li>
+<li><p>扇入</p>
+<blockquote>
+<p>门电路所具有的输入端的数目</p>
+</blockquote>
+</li>
+<li><p>扇出</p>
+<blockquote>
+<p>在不超出其最坏情况负载规格的条件下，一个逻辑门能驱动的输入端个数</p>
+<p>高态扇出：$\frac{I<em>{OHmax}}{I</em>{IHmax}}$</p>
+<p>低态扇出：$\frac{I<em>{OLmax}}{I</em>{ILmax}}$</p>
+<p>总扇出：min&lt;高态扇出，低态扇出&gt;</p>
+<p><strong>输出负载大于扇出能力</strong>：电流增大、功耗增大、温度升高、传输时延、转换时间变长</p>
+</blockquote>
+</li>
+<li><p>不用的CMOS端的处理</p>
+<blockquote>
+<p>悬空时，电路噪声会使悬空端呈现高电平，间歇性造成电路故障</p>
+<ul>
+<li>与、与非门，不用的输入端接高电平</li>
+<li>或、或非门，不用的输入端接低电平</li>
+</ul>
+</blockquote>
+</li>
+<li><p>动态特性</p>
+<blockquote>
+<p>速度</p>
+<ul>
+<li><p>状态转换时间</p>
+<blockquote>
+<p>输出从一个状态转换到另外一个状态所需的时间 </p>
+</blockquote>
+</li>
+<li><p>传播时延</p>
+<blockquote>
+<p>从输入信号变化到产生输出信号变化所需的时间</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>动态功耗</p>
+<blockquote>
+<ul>
+<li>CMOS管同时导通瞬间产生的功耗</li>
+<li>电容充放电功耗</li>
+</ul>
+</blockquote>
+</li>
+<li><p>电流尖峰</p>
+<blockquote>
+<p>当CMOS输出，在低态与高态之间交替变化时，从Vcc到地线的电流，通过部分导通的p沟道和n沟道晶体管而流动，持续时间很短</p>
+<p>噪声解决方法：在Vcc与地线之间接去耦电容器</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h5 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h5><blockquote>
+<p>晶体管晶体管逻辑电路</p>
+<ul>
+<li>VCC=+5V</li>
+<li>VL=0.2V</li>
+<li>VH=3.6V</li>
+<li>速度中等，功耗较大，性价比高</li>
+</ul>
+<p>低态（低电平）：0.0～0.8V</p>
+<p>高态（高电平）：2.0～5.0V</p>
+</blockquote>
+<h5 id="CMOS-TTL接口"><a href="#CMOS-TTL接口" class="headerlink" title="CMOS/TTL接口"></a>CMOS/TTL接口</h5><blockquote>
+<ul>
+<li><p>A驱动B：A为输出端</p>
+</li>
+<li><p>直流噪声容限</p>
+<blockquote>
+<p>高态：V~OHmin~ - V~LHmin~</p>
+<p>低态：V~ILmax~ - V~OLmax~</p>
+</blockquote>
+</li>
+<li><p>扇出</p>
+<blockquote>
+<p>高态扇出：$\frac{I<em>{OHmax}}{I</em>{IHmax}}$</p>
+<p>低态扇出：$\frac{I<em>{OLmax}}{I</em>{ILmax}}$</p>
+<p>总扇出：min&lt;高态扇出，低态扇出&gt;</p>
+</blockquote>
+</li>
+<li><p>剩余驱动能</p>
+<blockquote>
+<p>高态剩余驱动能：高态扇出 - 总扇出</p>
+<p>低态剩余驱动能： 0</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="三、逻辑代数"><a href="#三、逻辑代数" class="headerlink" title="三、逻辑代数"></a>三、逻辑代数</h3><h5 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h5><blockquote>
+<p>事物的前因和后果所遵循的规律 </p>
+</blockquote>
+<h5 id="逻辑代数"><a href="#逻辑代数" class="headerlink" title="逻辑代数"></a>逻辑代数</h5><blockquote>
+<p>用于处理有限个逻辑变量的数学运算体系。又称为布尔代数</p>
+<ul>
+<li><p>逻辑与</p>
+<blockquote>
+<p>F＝f(A，B)＝A$\and$B=A·B＝AB</p>
+<p><img src="24.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</li>
+<li><p>逻辑或</p>
+<blockquote>
+<p>F＝f(A，B)＝A$\or$B＝A＋B</p>
+<p><img src="25.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</li>
+<li><p>逻辑非</p>
+<blockquote>
+<p>F=A^’^</p>
+<p><img src="26.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</li>
+<li><p>异或</p>
+<blockquote>
+<p>$F=A\oplus B = A\bar{B} + \bar{A}B$</p>
+<p><img src="30.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>可作为模为2的加法</p>
+</blockquote>
+</li>
+<li><p>同或</p>
+<blockquote>
+<p>$F=A\odot B = AB + \overline{A}\cdot\overline{B}$</p>
+<p><img src="31.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</li>
+<li><p>偶数个变量的异或和同或互反</p>
+</li>
+<li><p>基数个变量的异或和同或相同</p>
+</li>
+<li><p>偶数个1异或为0(做奇偶校验)</p>
+</li>
+<li><p>偶数个1同或为1(做奇偶校验)</p>
+</li>
+</ul>
+</blockquote>
+<h5 id="逻辑函数"><a href="#逻辑函数" class="headerlink" title="逻辑函数"></a>逻辑函数</h5><blockquote>
+<p>逻辑变量和逻辑函数的取值只有0和1</p>
+<p>函数和变量之间的关系由“ 与、或、非 ” 三种基本运算决定</p>
+<ul>
+<li><p>逻辑函数的相等</p>
+<blockquote>
+<p>两个逻辑函数，输入相同时，值也相同</p>
+</blockquote>
+</li>
+<li><p>逻辑函数的表示</p>
+<ul>
+<li>真值表</li>
+<li>表达式</li>
+<li>卡诺图</li>
+<li>时序图、波形图</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="逻辑代数运算规则"><a href="#逻辑代数运算规则" class="headerlink" title="逻辑代数运算规则"></a>逻辑代数运算规则</h5><blockquote>
+<p><img src="27.png" srcset="/img/default_loading.gif" lazyload width=450px></p>
+<p><img src="28.png" srcset="/img/default_loading.gif" lazyload width=450px></p>
+<p><img src="29.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p><img src="32.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p><img src="33.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<ul>
+<li><p>分配率</p>
+<blockquote>
+<p>$A(B\oplus C)=AB\oplus AC$</p>
+<p>$A+(B\odot C)=(A+B)\odot (A+C)$</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="34.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<ul>
+<li><p>代入规则</p>
+<blockquote>
+<p>任何一个含有变量A的逻辑等式,如果将所有出现A的位置都代之以同一个逻辑函数F,则等式仍然成立</p>
+</blockquote>
+</li>
+<li><p>反演规则($\bar{F}$)</p>
+<blockquote>
+<p>0、1互换</p>
+<p>A、$\bar{A} $互换</p>
+<p>与、或互换</p>
+<p>保持符号运算顺序不变</p>
+</blockquote>
+</li>
+<li><p>对偶规则(F`)</p>
+<blockquote>
+<p>0、1互换</p>
+<p>A、$\bar{A} $不变</p>
+<p>与、或互换</p>
+<p>保持符号运算顺序不变</p>
+<p>性质</p>
+<blockquote>
+<p>若一个定理是正确的，则其对偶式也一定正确</p>
+<p>若两个逻辑式相等，则它们的对偶式也相等</p>
+<p>(F`)`=F</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>展开规则</p>
+<blockquote>
+<p>$F=f(X_1, X_2, \dots X_n)$<br>$=\bar{X_1}f(0, X_2, \dots X_n) + X_1f(1,X_1,\dots X_n)$</p>
+<p>$=[X_1+f(0, X_2, \dots X_n)][\bar{X_1}f(1,X_1,\dots X_n)]$</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h5 id="正负逻辑-对偶关系"><a href="#正负逻辑-对偶关系" class="headerlink" title="正负逻辑(对偶关系)"></a>正负逻辑(对偶关系)</h5><blockquote>
+<p><img src="35.png" srcset="/img/default_loading.gif" lazyload width=300px></p>
+</blockquote>
+<h5 id="逻辑函数的标准形式"><a href="#逻辑函数的标准形式" class="headerlink" title="逻辑函数的标准形式"></a>逻辑函数的标准形式</h5><blockquote>
+<ul>
+<li><p>标准与或式(积之和)、最小项和式</p>
+<blockquote>
+<p>最小项($\sum$m)</p>
+<blockquote>
+<p>积项包含所有变量，每个变量只出现一次</p>
+<ul>
+<li>任意输入，有且只有一个最小项为1</li>
+<li>n个变量一共有2n个最小项</li>
+<li>不相同的最小项的乘积为0</li>
+<li>所有最小项的和为1</li>
+<li>相邻最小项和可消去互反变量</li>
+</ul>
+</blockquote>
+<p>标准与或表达式：由最小项或组成</p>
+<p>将代数式转换为标准与或式(真值表中的1，1为原变量)</p>
+<blockquote>
+<p>将函数式变换成一般“与或”表达式</p>
+<p>使用$A=A(B+\bar{B})$将所有非最小项转换为最小项</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>标准或与式(和之积)、最大项积式</p>
+<blockquote>
+<p>最大项($\prod$M)</p>
+<blockquote>
+<p>和项包含所有变量，每个变量只出现一次</p>
+<ul>
+<li>任意输入，有且只有一个最大项为0</li>
+<li>n个变量一共有2n个最大项</li>
+<li>不同的最大项和为1</li>
+<li>所有最大项之积为0</li>
+<li>相邻最大项积可消去互反变量 </li>
+</ul>
+</blockquote>
+<p>标准或与表达式：由最大项积组成</p>
+<p>将代数式转换为标准或与式(真值表中的0，0为原变量)</p>
+<blockquote>
+<p>将函数表达式转换成一般“或与”式</p>
+<p>使用$A=(A+B)(A+\bar{B})$将非最大项扩展成最大项</p>
+</blockquote>
+<p>最大项最小项互反</p>
+</blockquote>
+</li>
+<li><p>标准式</p>
+<blockquote>
+<p>n个变量组成的函数式，每个变量在函数式的<strong>每一项</strong>中都必须以原变量或反变量的形式出现一次，且仅出现一次</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h5 id="卡诺图"><a href="#卡诺图" class="headerlink" title="卡诺图"></a>卡诺图</h5><blockquote>
+<p>圈0，得最简或与式(和之积)(0为原变量)</p>
+<p>圈1，的最简与或式(积之和)(1为原变量)</p>
+<p>禁止逻辑</p>
+<blockquote>
+<p><img src="36.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p><img src="37.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>圈出的与或式乘以禁止项的非等于正确值</p>
+<p>多乘的禁止项可以在后边加上</p>
+</blockquote>
+</blockquote>
+<h3 id="四、组合逻辑设计"><a href="#四、组合逻辑设计" class="headerlink" title="四、组合逻辑设计"></a>四、组合逻辑设计</h3><h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><blockquote>
+<ul>
+<li>逻辑抽象,逻辑赋值</li>
+<li>作真值表</li>
+<li>逻辑化简</li>
+<li>逻辑函数表达式</li>
+<li>逻辑电路图</li>
+</ul>
+<p><strong>与非和或非是通用逻辑电路，可以转换成任意门</strong></p>
+</blockquote>
+<h5 id="逻辑转换"><a href="#逻辑转换" class="headerlink" title="逻辑转换"></a>逻辑转换</h5><blockquote>
+<ul>
+<li>$A+B=\overline{\bar{A}\cdot \bar{B}}$</li>
+</ul>
+</blockquote>
+<h5 id="替代尾因子"><a href="#替代尾因子" class="headerlink" title="替代尾因子"></a>替代尾因子</h5><blockquote>
+<p>$F=\sum{E_i}=H_i\overline{T_1}\overline{T_2}\dots$</p>
+<p>其中$H_i$为头部因子，T为尾部因子，可在T中插入头部因子，作为替代尾因子</p>
+<p><img src="38.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+</blockquote>
+<h5 id="设计无反变量的逻辑电路"><a href="#设计无反变量的逻辑电路" class="headerlink" title="设计无反变量的逻辑电路"></a>设计无反变量的逻辑电路</h5><blockquote>
+<ul>
+<li>求出函数的最简“与或”式</li>
+<li>把函数整理成$F=\sum{E_i}$的形式</li>
+<li>选择合适的替代尾部因子</li>
+<li>将或转换为与非</li>
+</ul>
+</blockquote>
+<h5 id="基本运算电路"><a href="#基本运算电路" class="headerlink" title="基本运算电路"></a>基本运算电路</h5><blockquote>
+<p>半加器</p>
+<blockquote>
+<p><img src="39.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>S：结果</p>
+<p>C：进位</p>
+</blockquote>
+<p>全加器</p>
+<blockquote>
+<p><img src="40.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+</blockquote>
+<p>74183集成全加器</p>
+<blockquote>
+<p><img src="41.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p>全加器74183的级连：A2A1 + B2B1</p>
+</blockquote>
+<p>74283超前进位加法器</p>
+<blockquote>
+<p><img src="42.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<p>全减器</p>
+<blockquote>
+<p>D:差</p>
+<p>G:借位</p>
+</blockquote>
+<p>7485集成比较器</p>
+<blockquote>
+<p><img src="43.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p><img src="44.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<p>8 3编码器</p>
+<blockquote>
+<p><img src="45.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p><img src="46.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>约束：$I_i\cdot I_j = 0$</p>
+<p>$Y_2=\overline{\bar{I_4}\bar{I_5}\bar{I_6}\bar{I_7}}$</p>
+<p>$Y_1=\overline{\bar{I_2}\bar{I_3}\bar{I_6}\bar{I_7}}$</p>
+<p>$Y_0=\overline{\bar{I_1}\bar{I_3}\bar{I_5}\bar{I_7}}$</p>
+</blockquote>
+<p>优先编码器</p>
+<blockquote>
+<p><img src="47.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p> Y~s~=0表示无编码信号输入(选通输出端)</p>
+<p>$\bar{Y}_{EX}=0$表示有编码信号输入(扩展输出端)</p>
+<p><img src="48.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>$Y_2=\overline{ST[I_4+I_5+I_6+I_7]}$</p>
+</blockquote>
+<p>译码器</p>
+<blockquote>
+<p><img src="49.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p>E:使能端，高电平有效</p>
+<p>3-8译码器 74LS138</p>
+<blockquote>
+<p><img src="50.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>$\overline{Z_0}到\overline{Z_7}输出M_0到M_7$</p>
+</blockquote>
+<p>数据<strong>分配器</strong>(2-4译码器,E为数据)</p>
+<blockquote>
+<p><img src="51.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p>选中的输出端输出$\bar{E}$</p>
+</blockquote>
+<p>数据选择器</p>
+<blockquote>
+<p><img src="52.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p><img src="53.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h5 id="利用3-8译码器实现逻辑函数"><a href="#利用3-8译码器实现逻辑函数" class="headerlink" title="利用3-8译码器实现逻辑函数"></a>利用3-8译码器实现逻辑函数</h5><blockquote>
+<ul>
+<li>将输出化成标准积之和形式再转成和之积</li>
+<li>3-8译码器每个输出端都输出一个最大项，根据逻辑函数所需的最大项构造电路图</li>
+</ul>
+<p><img src="75.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<h5 id="利用数据选择器实现逻辑函数"><a href="#利用数据选择器实现逻辑函数" class="headerlink" title="利用数据选择器实现逻辑函数"></a>利用数据选择器实现逻辑函数</h5><blockquote>
+<ul>
+<li>列出真值表</li>
+<li>将真值表移到数据选择器的输入端</li>
+</ul>
+<p>或利用4选1数据选择器(输出可以被分组总结出来)</p>
+<p><img src="54.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>eg(保留地址端)</p>
+<blockquote>
+<p><img src="55.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<p>双4路74LS153数据选择器</p>
+<blockquote>
+<p><img src="56.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</blockquote>
+<h5 id="组合逻辑电路险象"><a href="#组合逻辑电路险象" class="headerlink" title="组合逻辑电路险象"></a>组合逻辑电路险象</h5><blockquote>
+<ul>
+<li><p>竞争$A\cdot \bar{A}$</p>
+<blockquote>
+<p>某个门电路的两个信号同时向相反方向变化</p>
+<p>原因</p>
+<ul>
+<li>变化时间有微小差异</li>
+<li>信号边沿变化时间存在差异</li>
+</ul>
+<p>结果</p>
+<ul>
+<li>导致险象(毛刺)</li>
+</ul>
+</blockquote>
+</li>
+<li><p>冒险(险象)</p>
+<blockquote>
+<p>输出出现瞬间的逻辑错误。工程上也称为毛刺</p>
+<ul>
+<li>若在输入变化而输出不应发生变化的情况下输出产生险象，称为<strong>静态险象</strong> </li>
+<li>若在输入变化而输出应该发生变化，输出在变化过程中产生的险象称<strong>动态险象</strong> </li>
+<li>若错误输出为负脉冲称<strong>“ 0 ”型险象</strong></li>
+<li>若错误输出为正脉冲称<strong>“ 1 ”型险象</strong></li>
+<li><img src="57.png" srcset="/img/default_loading.gif" lazyload width=450></li>
+</ul>
+</blockquote>
+</li>
+<li><p>险象判断</p>
+<blockquote>
+<p><img src="58.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p><img src="59.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</li>
+<li><p>险象消除</p>
+<blockquote>
+<p><img src="60.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="五、触发器"><a href="#五、触发器" class="headerlink" title="五、触发器"></a>五、触发器</h3><h5 id="触发器-Flip-Flop"><a href="#触发器-Flip-Flop" class="headerlink" title="触发器(Flip-Flop)"></a>触发器(Flip-Flop)</h5><blockquote>
+<p>能够存储一位二进制信息的基本单元电路称触发器</p>
+<ul>
+<li>具有两个能自行保持的稳定状态</li>
+<li>具有一对互补输出( $Q$、 $\bar{Q}$ )</li>
+<li>有一组控制(激励 、驱动)输入</li>
+<li>或许有定时(时钟)端CP(Clock Pulse) </li>
+<li>在输入信号消失后,电路能将获得的新状态保存 </li>
+</ul>
+</blockquote>
+<h5 id="SR触发器"><a href="#SR触发器" class="headerlink" title="SR触发器"></a>SR触发器</h5><blockquote>
+<p>特征方程</p>
+<blockquote>
+<p>$Q^{n+1}=S+\bar{R}Q^n$</p>
+</blockquote>
+<p>约束条件(S和R不能同时为1)</p>
+<blockquote>
+<p>$\bar{S}+\bar{R}=1$（与非门结构）</p>
+<p>$S\cdot R=0$（或非门结构）</p>
+</blockquote>
+<p><img src="61.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<p>真值表</p>
+<blockquote>
+<p>与非门结构</p>
+<p><img src="62.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>或非门结构</p>
+<p><img src="63.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<h5 id="钟控S-R触发器"><a href="#钟控S-R触发器" class="headerlink" title="钟控S-R触发器"></a>钟控S-R触发器</h5><blockquote>
+<p><img src="64.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p><img src="65.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+</blockquote>
+<h5 id="主从S-R触发器"><a href="#主从S-R触发器" class="headerlink" title="主从S-R触发器"></a>主从S-R触发器</h5><blockquote>
+<p>时钟下降沿输出主触发器状态，解决空翻问题</p>
+<p><img src="66.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>cp=1,从触发器保持</p>
+<p>cp=0,主触发器保持,从触发器输出主触发器状态</p>
+</blockquote>
+<h5 id="状态转换图"><a href="#状态转换图" class="headerlink" title="状态转换图"></a>状态转换图</h5><blockquote>
+<ul>
+<li>确定状态个数</li>
+<li>确定得到每个状态的条件</li>
+<li>确定不同状态间的转换条件</li>
+</ul>
+</blockquote>
+<h5 id="D触发器"><a href="#D触发器" class="headerlink" title="D触发器"></a>D触发器</h5><blockquote>
+<p><img src="67.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<ul>
+<li>CP=0：保持</li>
+<li>CP=1： $Q^{n+1}=D$</li>
+</ul>
+</blockquote>
+<h5 id="JK触发器"><a href="#JK触发器" class="headerlink" title="JK触发器"></a>JK触发器</h5><blockquote>
+<p><img src="68.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p>$Q^{n+1}=J\overline{Q^n}+\overline{K}Q^n$</p>
+<p><img src="69.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p>JK触发器将<strong>SR触发器</strong>的输出反馈到输入，消去了约束条件</p>
+<p>翻转状态不稳定</p>
+</blockquote>
+<h5 id="主从JK触发器"><a href="#主从JK触发器" class="headerlink" title="主从JK触发器"></a>主从JK触发器</h5><blockquote>
+<p>将主从SR触发器的输出反馈到输入，解决了空翻和消去了约束</p>
+<blockquote>
+<p><img src="70.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<p>cp=1,从触发器保持</p>
+<p>cp=0,主触发器保持,从触发器输出主触发器状态</p>
+<p>一次变化</p>
+<blockquote>
+<p>CP为“1”期间，主触发器仅能翻转一次</p>
+<p>Q=0,K被封锁，CP=1期间，J只要有一次为1，$Q^{n+1}=1$</p>
+<p>$\bar{Q}$=0,J被封锁，CP=1期间，K只要有一次为1，$Q^{n+1}=0$</p>
+</blockquote>
+<p>上升沿接收，下降沿改变</p>
+<p>cp=1期间J、K应该保持不变，不然会发生一次变化</p>
+</blockquote>
+<h5 id="T触发器"><a href="#T触发器" class="headerlink" title="T触发器"></a>T触发器</h5><blockquote>
+<p><img src="74.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+<p>$Q^{n+1}=T\oplus Q^n$</p>
+<p>T=0保持</p>
+<p>T=1翻转</p>
+<p>下降沿触发</p>
+</blockquote>
+<h5 id="集成触发器"><a href="#集成触发器" class="headerlink" title="集成触发器"></a>集成触发器</h5><blockquote>
+<p>集成D触发器</p>
+<blockquote>
+<p><img src="71.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+<p><strong>上升沿</strong></p>
+<blockquote>
+<p>同步工作</p>
+<p>CP=1</p>
+<p>若$\bar{S}\cdot \bar{R}=1$发挥D触发器的作用</p>
+<p>否则发挥SR触发器的作用</p>
+</blockquote>
+<p>CP=0</p>
+<blockquote>
+<p>异步工作</p>
+<p>发挥SR触发器的作用(约束)</p>
+</blockquote>
+</blockquote>
+<p>集成JK触发器</p>
+<blockquote>
+<p><img src="72.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+</blockquote>
+<p><strong>下降沿</strong></p>
+<blockquote>
+<p>同步工作</p>
+<p>若$\bar{S}\cdot \bar{R}=1$发挥JK触发器的作用</p>
+<p>否则发挥SR触发器的作用</p>
+</blockquote>
+<p>CP=1</p>
+<blockquote>
+<p>异步工作</p>
+<p>发挥SR触发器的作用(约束)</p>
+</blockquote>
+</blockquote>
+<h5 id="边沿JK触发器"><a href="#边沿JK触发器" class="headerlink" title="边沿JK触发器"></a>边沿JK触发器</h5><blockquote>
+<p><img src="73.png" srcset="/img/default_loading.gif" lazyload width=450></p>
+</blockquote>
+<h5 id="触发器之间的转换"><a href="#触发器之间的转换" class="headerlink" title="触发器之间的转换"></a>触发器之间的转换</h5><blockquote>
+<p>p141</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Lecture-Notes/">Lecture Notes</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/12/06/%E9%A9%AC%E5%85%8B%E6%80%9D%E4%B8%BB%E4%B9%89%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">马克思主义基本原理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/06/25/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/">
+                        <span class="hidden-mobile">多媒体技术</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
