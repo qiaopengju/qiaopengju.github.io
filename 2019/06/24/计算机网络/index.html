@@ -1,0 +1,1871 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="计网期末简单总结：因特网概述、网络核心、协议层次及服务模型、网络边缘、网络攻击、应用层、运输层、网络层、数据链路层">
+  <meta name="author" content="樵鹏举">
+  <meta name="keywords" content="">
+  
+  <title>计算机网络 - QiaoPengju</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/default_loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>QiaoPengju's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/to-do-list/">
+                <i class="iconfont icon-plan"></i>
+                To Do List
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default_post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机网络">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-06-24 16:14" pubdate>
+        June 24, 2019 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      71
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机网络</h1>
+            
+            <div class="markdown-body">
+              <!-- more -->
+<h2 id="网络与因特网"><a href="#网络与因特网" class="headerlink" title="网络与因特网"></a>网络与因特网</h2><h3 id="因特网概述"><a href="#因特网概述" class="headerlink" title="因特网概述"></a>因特网概述</h3><h5 id="因特网"><a href="#因特网" class="headerlink" title="因特网"></a>因特网</h5><blockquote>
+<p>具体组成</p>
+<ul>
+<li>端系统或主机</li>
+<li>通信链路</li>
+<li>分组交换机<ul>
+<li>路由器</li>
+<li>链路层交换机</li>
+</ul>
+</li>
+</ul>
+<p>服务描述</p>
+<ul>
+<li><p>通信基础设施</p>
+<blockquote>
+<p>允许终端系统上运行分布式 应用程序，并彼此交换数据</p>
+</blockquote>
+</li>
+<li><p>为分布式应用程序􏰀供的通信服务</p>
+<blockquote>
+<ul>
+<li>无连接服务</li>
+<li>面向连接服务</li>
+<li>不􏰀供数据传递时间保证(发送端到接收端)的服务 </li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h5 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h5><blockquote>
+<p>定义了两个或多个通信实体间所交换报文的<strong>格式和次序</strong>，以及在报文发送和/或接收或者其他事件方面所采取的行动(<strong>响应</strong>)</p>
+<p>要素</p>
+<ul>
+<li>语法</li>
+<li>语义</li>
+<li>同步</li>
+</ul>
+</blockquote>
+<h5 id="internet标准"><a href="#internet标准" class="headerlink" title="internet标准"></a>internet标准</h5><blockquote>
+<p>IETF: </p>
+<blockquote>
+<p>Internet Engineering Task Force</p>
+<p>因特网工程任务组</p>
+</blockquote>
+<p>RFC</p>
+<blockquote>
+<p>Request for comments </p>
+<p>请求评论 </p>
+<p><img src="1.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p><img src="2.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+</blockquote>
+<h5 id="端系统上的因特网服务"><a href="#端系统上的因特网服务" class="headerlink" title="端系统上的因特网服务"></a>端系统上的因特网服务</h5><blockquote>
+<p>面向连接的服务 TCP</p>
+<blockquote>
+<p>目的：在端系统间传送数据 </p>
+<p>握手</p>
+<blockquote>
+<p>客户和服务器事先进入戒备状态，为接下来的分组交换做好准备</p>
+</blockquote>
+<ul>
+<li>可靠、顺序、字节流传输<ul>
+<li>丢失: 确认和重传 </li>
+</ul>
+</li>
+<li>流量控制 <ul>
+<li>发送者不至于淹没接收者 </li>
+</ul>
+</li>
+<li>拥塞控制 <ul>
+<li>当网络拥塞时发送者降低发送速率</li>
+</ul>
+</li>
+<li>不提供时延保证</li>
+</ul>
+<p>应用</p>
+<blockquote>
+<p>HTTP , FTP , Telnet, SMTP </p>
+</blockquote>
+</blockquote>
+<p>无连接服务 UDP</p>
+<blockquote>
+<p>目的：在端系统间传送数据 </p>
+<ul>
+<li>不可靠数据传输 </li>
+<li>无流量控制  </li>
+<li>无拥塞控制</li>
+</ul>
+<p>应用</p>
+<blockquote>
+<p>流媒体,视频会议, DNS, Internet电话</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="网络核心"><a href="#网络核心" class="headerlink" title="网络核心"></a>网络核心</h3><h5 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h5><blockquote>
+<p>每个端到端的数据流被划分成分组来发送</p>
+<blockquote>
+<ul>
+<li>所有分组共享网络资源  </li>
+<li>每个分组使用全部链路带宽 </li>
+<li>资源按需使用</li>
+</ul>
+</blockquote>
+<p>统计复用</p>
+<blockquote>
+<ul>
+<li>资源需求总量可以大于可获得资源的总量 </li>
+<li>拥塞: 采用分组队列, 等待使用链路 </li>
+<li>存储转发 <ul>
+<li>在1个链路上传输 </li>
+<li>每经过1个链路转发1次 </li>
+<li>转发分组前，要求收到完整分组 </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>分类</p>
+<blockquote>
+<ul>
+<li><p>数据报网络: TCP/IP</p>
+<ul>
+<li>分组目的地址决定下一跳 </li>
+<li>会话期间路由可以改变 </li>
+</ul>
+</li>
+<li><p>虚电路网络: X.25,FR,ATM  </p>
+<ul>
+<li><p>每个分组有1个标签，标签决定下1跳</p>
+</li>
+<li><p>连接建立时确定固定的路径, 并且将保持于整个会话期间</p>
+</li>
+<li><p>路由器必须为每个连接维护状态信息</p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>优点</p>
+<blockquote>
+<ul>
+<li>适合大量的突发数据传输<ul>
+<li>资源共享</li>
+<li>简单, 不需要建立连接</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>缺点:</p>
+<blockquote>
+<ul>
+<li>过渡竞争导致分组延迟与丢失 </li>
+<li>需要可靠数据传输、拥塞控制协议 </li>
+</ul>
+</blockquote>
+</blockquote>
+<h5 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h5><blockquote>
+<p>每次会话预留沿其路径(线路)所需的独占资源—电话网</p>
+<p>多路复用</p>
+<ul>
+<li><p>分片分配到会话 </p>
+</li>
+<li><p>分片没有被会话使用的情况下，分片空载(不共享) </p>
+</li>
+<li><p>电路级性能(有保证) </p>
+</li>
+<li><p>要求呼叫建立—建立一个专门的端到端线路(意味着每个链路上预留一个线路)</p>
+</li>
+</ul>
+<p>分片方式</p>
+<ul>
+<li>频分FDMA</li>
+<li>时分TDMA</li>
+</ul>
+</blockquote>
+<h5 id="网络分类"><a href="#网络分类" class="headerlink" title="网络分类"></a>网络分类</h5><blockquote>
+<p><img src="3.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+<h5 id="分组时延"><a href="#分组时延" class="headerlink" title="分组时延"></a>分组时延</h5><blockquote>
+<p>原因：分组到达输出链路的速率超过输出链路的容量</p>
+<p>分组时延类型</p>
+<ul>
+<li><p>节点处理时延</p>
+<blockquote>
+</blockquote>
+</li>
+<li><p>排队时延</p>
+<blockquote>
+</blockquote>
+</li>
+<li><p>传输时延</p>
+<blockquote>
+<ul>
+<li>R=链路带宽 (bps) </li>
+<li>L=分组长度 (bits) </li>
+<li>发送分组比特流的时 间 = L/R </li>
+</ul>
+</blockquote>
+</li>
+<li><p>传播时延</p>
+<blockquote>
+<ul>
+<li>d = 物理链路的长度 </li>
+<li>s = 介质的信号传播速度 (~2x10^8^ m/sec)</li>
+<li>传播延迟=d/s</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>总的节点延迟：$d<em>{nodal} = d</em>{proc} + d<em>{queue} + d</em>{trans} + d_{prop}$</p>
+<p>prop:传播时延、queue:排队时延、trans:传输时延</p>
+</blockquote>
+<h5 id="分组丢失"><a href="#分组丢失" class="headerlink" title="分组丢失"></a>分组丢失</h5><blockquote>
+<ul>
+<li>路由器输入链路和输出链路的缓冲区容量有限 </li>
+<li>当分组到达路由器输入链路发现缓冲区已满，则路由器只好丢弃分组 </li>
+<li>当分组在路由器内部要转发到输出链路时发现输出缓冲区队列已满，路由器只好丢弃分组 </li>
+<li>丢失的分组可能被前路由节点、源节点重传，或不重传 </li>
+<li>丢包率或分组丢失率</li>
+</ul>
+</blockquote>
+<h5 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h5><blockquote>
+<p>接收端接收数据的比特速率 (bps)</p>
+<ul>
+<li>瞬时吞吐量: 某一瞬间的吞吐量  </li>
+<li>平均吞吐量: 一段时间内的吞吐量均值</li>
+</ul>
+<p>吞吐量=$min(R_s, R_c)$</p>
+</blockquote>
+<h3 id="协议层次及服务模型"><a href="#协议层次及服务模型" class="headerlink" title="协议层次及服务模型"></a>协议层次及服务模型</h3><h5 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>层号</th>
+<th>层的名称</th>
+<th>层的英文名称</th>
+<th>层的英文缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>应用层</td>
+<td>Application</td>
+<td>A</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>表示层</strong></td>
+<td>Presentation</td>
+<td>P</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>会话层</strong></td>
+<td>Session</td>
+<td>S</td>
+</tr>
+<tr>
+<td>4</td>
+<td>运输层</td>
+<td>Transport</td>
+<td>T</td>
+</tr>
+<tr>
+<td>3</td>
+<td>网络层</td>
+<td>Network</td>
+<td>N</td>
+</tr>
+<tr>
+<td>2</td>
+<td>数据链路层</td>
+<td>Data Link</td>
+<td>DL</td>
+</tr>
+<tr>
+<td>1</td>
+<td>物理层</td>
+<td>Physical</td>
+<td>PL</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="分层的意义"><a href="#分层的意义" class="headerlink" title="分层的意义"></a>分层的意义</h5><blockquote>
+<p>清楚的结构允许我们对大型复杂系统定义其特定部分，探讨其各部分的关系 </p>
+<p>模块化使得系统的维护、升级简化</p>
+</blockquote>
+<h5 id="弊端"><a href="#弊端" class="headerlink" title="弊端"></a>弊端</h5><blockquote>
+<p>各层可能重复较低层功能 </p>
+</blockquote>
+<h5 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h5><p>五层因特网协议栈</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">应用层</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">传输层</td>
+</tr>
+<tr>
+<td style="text-align:center">网络层</td>
+</tr>
+<tr>
+<td style="text-align:center">网络接口层(数据链路层)</td>
+</tr>
+<tr>
+<td style="text-align:center">网络接口层(物理层)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="网际协议栈"><a href="#网际协议栈" class="headerlink" title="网际协议栈"></a>网际协议栈</h5><blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">应用层</th>
+<th style="text-align:center">支持网络应用， 报文传送</th>
+<th style="text-align:center">HTTP,FTP, SMTP,DNS,STTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">运输层</td>
+<td style="text-align:center">主机进程间数据、报文传送、地址可靠校验</td>
+<td style="text-align:center">TCP, UDP</td>
+</tr>
+<tr>
+<td style="text-align:center">网络层</td>
+<td style="text-align:center">主机间分组传送</td>
+<td style="text-align:center">IP协议, 路由协议</td>
+</tr>
+<tr>
+<td style="text-align:center">数据链路层</td>
+<td style="text-align:center">相邻网络节点间的数据帧传送</td>
+<td style="text-align:center">PPP, Ethernet</td>
+</tr>
+<tr>
+<td style="text-align:center">物理层</td>
+<td style="text-align:center">物理介质上的比特传送</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>各层发方从上层到下层，收方从下层到上层传递数据</p>
+</blockquote>
+<h3 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h3><h5 id="接入网"><a href="#接入网" class="headerlink" title="接入网"></a>接入网</h5><blockquote>
+<ul>
+<li>住宅接入网<ul>
+<li>点对点接入</li>
+<li>不能同时网上冲浪和拨打电话: 不能一直在线</li>
+<li>HFC：混合光纤同轴电缆</li>
+<li>ADSL：非对称数字用户线路</li>
+<li><img src="4.png" srcset="/img/default_loading.gif" lazyload width=600></li>
+</ul>
+</li>
+<li>机构接入网络(学校,公司) </li>
+<li>无线接入网络<ul>
+<li>通过基站</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="物理介质"><a href="#物理介质" class="headerlink" title="物理介质"></a>物理介质</h5><blockquote>
+<ul>
+<li><p>物理链路:在发送方和接受方间,传播位(bit)信号</p>
+</li>
+<li><p>导引型媒体</p>
+<blockquote>
+<p>信号在固态介质中有向传播</p>
+<ul>
+<li>光纤、双绞线和同轴电缆  </li>
+</ul>
+</blockquote>
+</li>
+<li><p>非导引型媒体</p>
+<blockquote>
+<p>信号在大气空间或外太空 空间自由传播</p>
+<ul>
+<li>无线电</li>
+</ul>
+</blockquote>
+</li>
+<li><p>物理介质</p>
+<blockquote>
+<p>双绞线:两根彼此绝缘、相互缠绕成螺旋状的铜线</p>
+<blockquote>
+<p>缠绕的目的是减少电磁干扰</p>
+<ul>
+<li>屏蔽双绞线 STP</li>
+<li>非屏蔽双绞线 UTP</li>
+</ul>
+</blockquote>
+<p>同轴电缆</p>
+<blockquote>
+<p>两根彼此绝缘的同心导体</p>
+<p>双向传输 </p>
+</blockquote>
+<p>光纤线缆</p>
+<blockquote>
+<p>光纤传导光脉冲, 每个光脉冲代表1位</p>
+<p>高速传输</p>
+<p>低误码率</p>
+</blockquote>
+<p>无线电磁波</p>
+<blockquote>
+<ul>
+<li>地面微波</li>
+<li>局域无线通道 </li>
+<li>广域无线通道 </li>
+<li>卫星通信 </li>
+</ul>
+<p>电磁频谱承载信号</p>
+<p>双向 </p>
+<p>传播环境的影响 </p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h5 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h5><blockquote>
+<ul>
+<li><p>第一层:国家/国际级ISP (NAP)</p>
+<blockquote>
+<p>ISP彼此对等，直接互连或通过网络接入点互连</p>
+</blockquote>
+</li>
+<li><p>第二层：区域级ISP(向第一层付费)</p>
+<blockquote>
+<p>可以使用专用对等点互连，或使用NAP互连</p>
+</blockquote>
+</li>
+<li><p>第三层：本地ISP</p>
+<blockquote>
+<p>最后的接入网络 </p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="网络攻击"><a href="#网络攻击" class="headerlink" title="网络攻击"></a>网络攻击</h3><h5 id="植入恶意软件"><a href="#植入恶意软件" class="headerlink" title="植入恶意软件"></a>植入恶意软件</h5><ul>
+<li>病毒 </li>
+<li>蠕虫 </li>
+<li>特洛伊木马  </li>
+</ul>
+<h5 id="攻击服务器和网络基础设施"><a href="#攻击服务器和网络基础设施" class="headerlink" title="攻击服务器和网络基础设施"></a>攻击服务器和网络基础设施</h5><ul>
+<li>拒绝服务攻击(DoS) </li>
+<li>三种类型 <ul>
+<li>弱点攻击 </li>
+<li>带宽洪泛 </li>
+<li>连接洪泛 </li>
+</ul>
+</li>
+</ul>
+<h5 id="嗅探分组"><a href="#嗅探分组" class="headerlink" title="嗅探分组"></a>嗅探分组</h5><ul>
+<li>分组嗅探器:记录每个流经的分组拷贝的被动接收机 </li>
+<li>容易受到攻击的网络:无线网络和以太网LAN </li>
+</ul>
+<h5 id="伪装"><a href="#伪装" class="headerlink" title="伪装"></a>伪装</h5><ul>
+<li>ip哄骗</li>
+</ul>
+<h5 id="修改或删除报文"><a href="#修改或删除报文" class="headerlink" title="修改或删除报文"></a>修改或删除报文</h5><ul>
+<li>中间人攻击</li>
+</ul>
+<hr>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><h3 id="应用层协议原理"><a href="#应用层协议原理" class="headerlink" title="应用层协议原理"></a>应用层协议原理</h3><h5 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h5><blockquote>
+<p>网页(Web页，或称文档) </p>
+<p>每个对象被一个URL(Uniform Resource Locator统一资源定位符)寻址 </p>
+</blockquote>
+<h5 id="没有应用程序写在网络核心设备上"><a href="#没有应用程序写在网络核心设备上" class="headerlink" title="没有应用程序写在网络核心设备上"></a>没有应用程序写在网络核心设备上</h5><h5 id="应用层体系结构"><a href="#应用层体系结构" class="headerlink" title="应用层体系结构"></a>应用层体系结构</h5><blockquote>
+<p>客户机/服务器体系结构</p>
+<blockquote>
+<p>服务器: </p>
+<ul>
+<li>总是打开的主机 </li>
+<li>具有固定的、众所周知的IP地址 </li>
+<li>主机群集常被用于创建强大的虚拟服务器</li>
+</ul>
+<p>客户机</p>
+<ul>
+<li>同服务器端通信 </li>
+<li>可以间断的同服务器连接 </li>
+<li>可以拥有动态IP地址 </li>
+<li>客户机相互之间不直接通信</li>
+</ul>
+</blockquote>
+<p>纯P2P体系结构</p>
+<blockquote>
+<ul>
+<li>没有总是打开的服务器</li>
+<li>任意一对主机直接相互通信 </li>
+<li>对等方间歇连接并且可以改变IP地址</li>
+</ul>
+<p>优点：自扩展性</p>
+<p>缺点：难以管理</p>
+</blockquote>
+<p>客户机/服务器和P2P混合的体系结构 </p>
+</blockquote>
+<h5 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h5><blockquote>
+<p><strong>进程</strong>：运行在端系统上的程序</p>
+<p><strong>客户机进程</strong>：发起通信的进程</p>
+<p><strong>服务器进程</strong>：等待联系的进程</p>
+<ul>
+<li>同一主机上的两个进程通过内部进程通信机制进行通信</li>
+<li>不同主机上的进程通过交换报文相互通信</li>
+<li>具有P2P体系结构的应用程序有客户机进程和服务器进程</li>
+</ul>
+<p><strong>套接字</strong></p>
+<blockquote>
+<p>进程与计算机网络的接口</p>
+<p>进程通过它的套接字在网络上发送和接收报文</p>
+<ul>
+<li>套接字又叫做应用程序编程接口API</li>
+<li>用户通过API对运输层的控制仅限于<ul>
+<li>选择传输协议</li>
+<li>能设定几个参数 </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h5 id="进程寻址"><a href="#进程寻址" class="headerlink" title="进程寻址"></a>进程寻址</h5><blockquote>
+<p> 主机上的进程标识包括<strong>IP地址</strong>和<strong>端口号</strong></p>
+</blockquote>
+<h5 id="传输服务需求"><a href="#传输服务需求" class="headerlink" title="传输服务需求"></a>传输服务需求</h5><blockquote>
+<p><img src="5.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+<h5 id="因特网运输协议􏰀供的服务"><a href="#因特网运输协议􏰀供的服务" class="headerlink" title="因特网运输协议􏰀供的服务"></a>因特网运输协议􏰀供的服务</h5><ul>
+<li>TCP</li>
+<li>UDP</li>
+</ul>
+<h5 id="应用层的网络应用"><a href="#应用层的网络应用" class="headerlink" title="应用层的网络应用"></a>应用层的网络应用</h5><blockquote>
+<p><img src="6.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+<h3 id="Web和HTTP"><a href="#Web和HTTP" class="headerlink" title="Web和HTTP"></a>Web和HTTP</h3><h5 id="HTTP概况"><a href="#HTTP概况" class="headerlink" title="HTTP概况"></a>HTTP概况</h5><blockquote>
+<p> 超文本传输协议(hypertext transfer protocol)</p>
+<ul>
+<li><strong>端口号：80</strong></li>
+<li>C/S模式</li>
+<li>使用TCP(步骤)<ul>
+<li>客户初始化与HTTP服务器80端口的TCP连接(创建套接字)</li>
+<li>HTTP服务器接受来自客户的TCP连接请求, 建立连接</li>
+<li>Browser (HTTP client)和 Web服务器 (HTTP server) 交换HTTP消息(应用层协议消息)包括HTTP请求和响应消息 </li>
+<li>关闭TCP连接</li>
+</ul>
+</li>
+<li>无状态协议<ul>
+<li>HTTP服务器不维护客户先前的状态信息 </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="HTTP连接"><a href="#HTTP连接" class="headerlink" title="HTTP连接"></a>HTTP连接</h5><blockquote>
+<ul>
+<li><p>定义往返时间RTT</p>
+<blockquote>
+<p>1个小分组从客户主机到服务器再到客 户主机所花费的时间</p>
+<p><img src="7.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+</blockquote>
+</li>
+<li><p>非持久HTTP连接</p>
+<blockquote>
+<p>每个TCP连接上只传送一个对象</p>
+<p>HTTP/1.0默认</p>
+<p>步骤</p>
+<ul>
+<li>HTTP客户初始化1个与HTTP服务器的TCP连接</li>
+<li>HTTP服务器在80端口监听来自HTTP客户的TCP连接请求。收到连接请求, 接受, 建立连接, 通知客户</li>
+<li>HTTP客户发送1个HTTP请求消息(含URL到TCP连接套接字) </li>
+<li>HTTP服务器接收请求消息, 产生1个响应消息</li>
+<li>HTTP服务器结束TCP连接</li>
+<li>HTTP 客户接收消息</li>
+<li>重复步骤</li>
+</ul>
+<p>响应时间</p>
+<ul>
+<li><p>1个RTT用于建立TCP连接</p>
+</li>
+<li><p>1个RTT用于HTTP请求</p>
+</li>
+<li><p>Html文件传输时间 </p>
+<blockquote>
+<p>total = 2RTT+transmit time</p>
+</blockquote>
+</li>
+</ul>
+<p>遇到的问题</p>
+<blockquote>
+<ul>
+<li>每个对象需要2个RTT </li>
+<li>OS必须为每个TCP连接分配主机资源</li>
+<li>大量客户的并发TCP连接形成服务器的严重负担 </li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+<li><p>持久HTTP连接</p>
+<blockquote>
+<p>一个TCP连接上可以传送多个对象</p>
+<p>HTTP/1.1默认 </p>
+<ul>
+<li>服务器发送响应消息后保持连接</li>
+<li>同1客户/服务器的后续HTTP消息继续在该连接上传送 </li>
+</ul>
+<p><strong>分类</strong></p>
+<blockquote>
+<ul>
+<li>不带流水线的持久HTTP连接<ul>
+<li>客户先前响应消息收到,才发出新的请求消息</li>
+<li>每个引用对象经历1个RTT </li>
+</ul>
+</li>
+<li>带流水线的持久HTTP连接<ul>
+<li>HTTP/1.1默认使用</li>
+<li>客户遇到1个引用对象就发送请求消息</li>
+<li>所有引用对象只经历1个RTT </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h5 id="HTTP请求报文"><a href="#HTTP请求报文" class="headerlink" title="HTTP请求报文"></a>HTTP请求报文</h5><blockquote>
+<p>ASCII文本</p>
+<p><img src="8.png" srcset="/img/default_loading.gif" lazyload widht=600></p>
+<p><img src="9.png" srcset="/img/default_loading.gif" lazyload widht=600></p>
+<p><img src="10.png" srcset="/img/default_loading.gif" lazyload widht=600></p>
+<ul>
+<li>POST:输入值在请求报文的实体主体中被上载到服务器</li>
+<li>GET:表单(各字段)输入值被上载,以URL请求行的字段</li>
+</ul>
+</blockquote>
+<h5 id="HTTP响应消息"><a href="#HTTP响应消息" class="headerlink" title="HTTP响应消息"></a>HTTP响应消息</h5><blockquote>
+<p><img src="11.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p>HTTP 响应的状态码</p>
+<ul>
+<li><p>200 OK</p>
+<ul>
+<li>请求成功, 所请求信息在响应消息中返回 </li>
+</ul>
+</li>
+<li><p>301 Moved Permanently</p>
+<ul>
+<li>所请求的对象已永久迁移, 新的URL在本响应消息的(location:)头部指出</li>
+</ul>
+</li>
+<li>400 Bad Request<ul>
+<li>该请求不能被服务器解读</li>
+</ul>
+</li>
+<li>404 Not Found <ul>
+<li>服务器上不存在所请求文档  </li>
+</ul>
+</li>
+<li>505 HTTP Version Not Supported </li>
+</ul>
+</blockquote>
+<h5 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h5><blockquote>
+<ul>
+<li>Cookie首部行在 HTTP响应消息中 </li>
+<li>Cookie首部行在 HTTP请求消息中 </li>
+<li>cookie文件保存在用户主机中并被用户浏览器管理</li>
+<li>cookie也保存在Web站点的后端数据库 </li>
+</ul>
+<p>作用</p>
+<ul>
+<li>身份认证 </li>
+<li>虚拟购物车</li>
+<li>推荐广告 </li>
+<li>用户会话状态  </li>
+</ul>
+</blockquote>
+<h5 id="Web缓存"><a href="#Web缓存" class="headerlink" title="Web缓存"></a>Web缓存</h5><blockquote>
+<p>代理服务器</p>
+<p>用户配置浏览器: Web 访问经由缓存 </p>
+<ul>
+<li>所有HTTP请求指向缓存 <ul>
+<li>对象在缓存中:缓存器返回对象</li>
+<li>否则缓存器向起始服务器发出请求,接收对象后转发给客户机 </li>
+</ul>
+</li>
+</ul>
+<p>优点</p>
+<ul>
+<li>减少对客户机请求的响应</li>
+<li>减少内部网络与接入链路上的通信量 </li>
+<li>能从整体上大大降低因特网上的Web流量 </li>
+</ul>
+</blockquote>
+<h3 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h3><blockquote>
+<p>文件传输协议</p>
+<ul>
+<li>传输文件到远程主机/从远程主机下载文件</li>
+<li>C/S架构</li>
+<li><strong>端口号：20,21</strong></li>
+</ul>
+<p>步骤</p>
+<ul>
+<li><img src="12.png" srcset="/img/default_loading.gif" lazyload width=600></li>
+</ul>
+<p>文件传输模型</p>
+<blockquote>
+<ul>
+<li><img src="13.png" srcset="/img/default_loading.gif" lazyload width=600></li>
+<li><img src="14.png" srcset="/img/default_loading.gif" lazyload width=600></li>
+</ul>
+</blockquote>
+<p>ftp数据连接建立方式</p>
+<blockquote>
+<p><img src="15.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+<p>ftp命令</p>
+<blockquote>
+<ul>
+<li>USER username</li>
+<li>PASS password </li>
+<li>LIST:返回当前远程目录的文件列表</li>
+<li>RETR filename:获取 远程主机当前目录下的1个文件(get) </li>
+<li>STOR filename:存放 1个文件到远程主机当前目录下(put) </li>
+</ul>
+</blockquote>
+<p>ftp应答</p>
+<blockquote>
+<ul>
+<li>状态码及其相应短语(同HTTP)</li>
+<li>331 Username OK,password required</li>
+<li>125 data connection already open; transfer starting</li>
+<li>425 Can’t open data connection</li>
+<li>452 Error writing file</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h3><h5 id="组成成分"><a href="#组成成分" class="headerlink" title="组成成分"></a>组成成分</h5><ul>
+<li>用户代理</li>
+<li>邮件服务器 </li>
+<li>简单邮件传送协议和邮件接收协议 </li>
+</ul>
+<h5 id="SMTP协议"><a href="#SMTP协议" class="headerlink" title="SMTP协议"></a>SMTP协议</h5><blockquote>
+<ul>
+<li>客户使用TCP来可靠传输邮件消息到服务器<strong>端口号25</strong> </li>
+<li>直接传送: 发送服务器到接收服务器</li>
+<li><p>传输的3个阶段 </p>
+<ul>
+<li><p>握手 (问候)</p>
+</li>
+<li><p>邮件消息的传输 </p>
+</li>
+<li><p>结束 </p>
+</li>
+</ul>
+</li>
+<li>命令/应答的交互 <ul>
+<li>命令: ASCII文本格式 </li>
+<li>应答: 状态码及其短语 </li>
+</ul>
+</li>
+<li>邮件消息必须是7-bit ASCII </li>
+<li>使用持久连接</li>
+<li>crlf .crlf判断邮件结束</li>
+</ul>
+</blockquote>
+<h5 id="邮件消息格式"><a href="#邮件消息格式" class="headerlink" title="邮件消息格式"></a>邮件消息格式</h5><blockquote>
+<p><img src="16.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p><img src="17.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+<h5 id="邮件访问协议"><a href="#邮件访问协议" class="headerlink" title="邮件访问协议"></a>邮件访问协议</h5><blockquote>
+<p>SMTP</p>
+<blockquote>
+<p>递送/存储邮件消息到接收者邮件服务器</p>
+</blockquote>
+<p>邮件访问协议</p>
+<blockquote>
+<p>从服务器获取邮件消息</p>
+<ul>
+<li><p>POP: Post Office Protocol 邮局协议</p>
+<ul>
+<li><p><strong>110端口</strong></p>
+</li>
+<li><p>身份认证 (代理 &lt;—&gt;服务器)</p>
+<ul>
+<li><p>客户命令</p>
+<blockquote>
+<p>user username</p>
+<p>pass password</p>
+</blockquote>
+</li>
+<li><p>服务器响应</p>
+<blockquote>
+<p>+OK</p>
+<p>-ERR</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>下载邮件消息 </p>
+<ul>
+<li>list: 列出邮件编号</li>
+<li>retr: 按编号取邮件  </li>
+<li>dele: 删除 </li>
+<li>quit </li>
+</ul>
+</li>
+<li><p><img src="18.png" srcset="/img/default_loading.gif" lazyload width=300></p>
+</li>
+<li><p>POP3会话无状态</p>
+</li>
+<li><p>POP3模式</p>
+<ul>
+<li>Download-and-delete</li>
+<li>Download-and-keep </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IMAP: Internet Message Access Protocol</p>
+<ul>
+<li><strong>143端口</strong></li>
+<li>更多功能特征 </li>
+<li>允许用户像对待本地邮箱那样操纵远程邮箱的邮件</li>
+<li>保存所有邮件消息在服务器</li>
+<li>允许用户在服务器的各文件夹中管理邮件消息</li>
+<li>IMAP跟踪用户状态信息 </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="DNS-Domain-Name-System"><a href="#DNS-Domain-Name-System" class="headerlink" title="DNS(Domain Name System)"></a>DNS(Domain Name System)</h3><h5 id="DNS提供的功能"><a href="#DNS提供的功能" class="headerlink" title="DNS提供的功能"></a>DNS提供的功能</h5><ul>
+<li>53port</li>
+<li>主机名到IP地址的转换</li>
+<li>主机别名<ul>
+<li>一个主机可以有一个规范主机名和多个主机别名</li>
+</ul>
+</li>
+<li>邮件服务器别名</li>
+<li>负载分配 <ul>
+<li>DNS实现冗余服务器:一 个IP地址集合可以对应于同一个规范主机名 </li>
+</ul>
+</li>
+</ul>
+<h5 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h5><blockquote>
+<p>采用分布式数据库</p>
+<p>不采用集中式DNS的原因</p>
+<ul>
+<li>单点故障 </li>
+<li>巨大访问量</li>
+<li>远距离集中式数据库 </li>
+<li>维护</li>
+<li>不可扩展 </li>
+</ul>
+<p><img src="19.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p>13个DNS根服务器</p>
+<ul>
+<li>10个美国</li>
+<li>1个英国</li>
+<li>1个瑞典</li>
+<li>1个日本</li>
+</ul>
+<p>顶级域名服务器：TLD：top level domain</p>
+<p><img src="20.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p><img src="21.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+<h5 id="DNS工作机制"><a href="#DNS工作机制" class="headerlink" title="DNS工作机制"></a>DNS工作机制</h5><blockquote>
+<p>DNS查询方式</p>
+<ul>
+<li><p>递归查询</p>
+<blockquote>
+<p><img src="25.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+</li>
+<li><p>迭代查询</p>
+<blockquote>
+<p><img src="26.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+</li>
+</ul>
+<p>DNS缓存</p>
+<blockquote>
+<p>一旦名字服务器获得DNS映射, 它将缓存该映射到局部内存</p>
+<ul>
+<li>服务器在一定时间后将丢弃缓存的信息 </li>
+<li>本地DNS服务器可以缓存TLD服务器的IP地址</li>
+<li>因此根DNS服务器不会被经常访问 </li>
+</ul>
+</blockquote>
+<p>权威DNS服务器记录更新:IETF动态更新/通报机制</p>
+<p>DNS记录</p>
+<blockquote>
+<p><img src="22.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+</blockquote>
+<h5 id="DNS协议"><a href="#DNS协议" class="headerlink" title="DNS协议"></a>DNS协议</h5><blockquote>
+<p>查询报文与应答报文</p>
+<p>查询报文</p>
+<blockquote>
+<p><img src="23.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+<p>应答报文</p>
+<blockquote>
+<p><img src="24.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+</blockquote>
+<h5 id="在DNS数据库中插入记录"><a href="#在DNS数据库中插入记录" class="headerlink" title="在DNS数据库中插入记录"></a>在DNS数据库中插入记录</h5><blockquote>
+<p>如果你想在注册登记机构注册你的域名network.com，则 </p>
+<ul>
+<li>需要􏰀供你自己的基本权威DNS服务器和辅助权威DNS服 务器的名字和IP地址 </li>
+<li>该注册登记机构将下列两条资源记录插入注册机构的DNS 系统中: <ul>
+<li>(network.com, dns1.network.com, NS)</li>
+<li>(dns1.network.com, 212.212.212.1, A) </li>
+</ul>
+</li>
+<li>如果你想建立一个网站，则可以将网址www.network.com以 类型A的方式记录到你的权威DNS服务器dns1.network.com中</li>
+<li>如果你想建一个邮件服务器，则可以将mail.network.com以 类型MX的方式记录到你的权威DNS服务器 dns1.network.com中</li>
+</ul>
+</blockquote>
+<h3 id="P2P"><a href="#P2P" class="headerlink" title="P2P"></a>P2P</h3><h5 id="P2P集中式目录"><a href="#P2P集中式目录" class="headerlink" title="P2P集中式目录"></a>P2P集中式目录</h5><blockquote>
+<p><img src="27.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p>问题</p>
+<ul>
+<li>单点故障  </li>
+<li>性能瓶颈 </li>
+<li>侵犯版权 </li>
+</ul>
+</blockquote>
+<h5 id="Gnutella协议"><a href="#Gnutella协议" class="headerlink" title="Gnutella协议"></a>Gnutella协议</h5><blockquote>
+<ul>
+<li>全分布</li>
+<li>没有集中式服务器 </li>
+<li>公共域协议 </li>
+<li>许多Gnutella客户机实现 Gnutella协议</li>
+<li>查询洪泛</li>
+</ul>
+<p><img src="28.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p>加入对等方</p>
+<blockquote>
+<ul>
+<li>加入对等方X必须发现在Gnutella网络中的其他对等方:使用对等方列表 </li>
+<li>X试图与该列表上的对等方建立一条TCP连接，直到与Y 创建一条连接</li>
+<li>X向Y发送一个Ping报文;Y转发该Ping报文</li>
+<li>所有的对等方接收Ping报文并响应一个Pong报文</li>
+<li>X接收到许多Pong报文。然后能同某些其他对等方建立 TCP连接</li>
+</ul>
+</blockquote>
+<p>对等方离开</p>
+<blockquote>
+<ul>
+<li><p>主动离开</p>
+<blockquote>
+<p>离开节点的所有对等方都会刷新自身的激活对等方列表,并开始与列表中的新的对等方建立连接 </p>
+</blockquote>
+</li>
+<li><p>断网</p>
+<blockquote>
+<p>发送信息的时候对等方没有响应,则表明对等方离开,节点刷新自身的激活对等方列表,并开始与列表中的 新的对等方建立连接 </p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h5 id="KaZaA协议"><a href="#KaZaA协议" class="headerlink" title="KaZaA协议"></a>KaZaA协议</h5><blockquote>
+<ul>
+<li>对等方成为组长或被指派给一个组长</li>
+<li>对等方和组长之间建立 TCP连接 </li>
+<li>组长之间建立TCP连接 </li>
+<li>组长维护它的子对等方共享的内容</li>
+<li>每个文件有文件的散列码标识 </li>
+<li>客户机送向组长发送关键词的查询  </li>
+<li>组长响应匹配 <ul>
+<li>逐项匹配:元数据，散列值，IP地址 </li>
+</ul>
+</li>
+<li>如果组长转发查询给其他组长则其他组长响应匹配 </li>
+<li>客户端选择要下载的文件 </li>
+<li>请求排队:限制对等方并行上载数量，新的请求进行排队</li>
+<li>激励优先权:根据不同的上载下载比例,优先服务贡献大者 </li>
+<li>并行下载:将一个文件分成若干段，从多个对等方并行下载 </li>
+</ul>
+</blockquote>
+<h3 id="套接字编程"><a href="#套接字编程" class="headerlink" title="套接字编程"></a>套接字编程</h3><h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><h3 id="运输层-1"><a href="#运输层-1" class="headerlink" title="运输层"></a>运输层</h3><blockquote>
+<p>为两个实体<strong>进程</strong>提供逻辑通信</p>
+<p>网络层：<strong>实体</strong>间的逻辑通信</p>
+<p>运输层协议运行在端系统</p>
+<ul>
+<li>发送方:将应用程序报文分成数据段传递给网络层 </li>
+<li>接受方:将数据段重新组装成报文传递到应用层</li>
+</ul>
+<p>运输层协议</p>
+<blockquote>
+<ul>
+<li>可靠按序递交(TCP) <ul>
+<li>流量控制</li>
+<li>拥塞控制</li>
+<li>连接建立</li>
+</ul>
+</li>
+<li>不可靠的无序传递(UDP)</li>
+<li>不提供<ul>
+<li>时延保证</li>
+<li>带宽保证 </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="多路复用多路分解"><a href="#多路复用多路分解" class="headerlink" title="多路复用多路分解"></a>多路复用多路分解</h3><h5 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h5><blockquote>
+<blockquote>
+<p>在发送主机从多个套接字收集数据, 用首部封装数据，然后将报文段传递到网络层在发送主机从多个套接字收集数据, 用首部封装数据，然后将报文段传递到网络层</p>
+</blockquote>
+</blockquote>
+<h5 id="多路分解"><a href="#多路分解" class="headerlink" title="多路分解"></a>多路分解</h5><blockquote>
+<blockquote>
+<p>在接收主机将接收到的数据段传递到正确的套接字 </p>
+<blockquote>
+<p>工作方式</p>
+<ul>
+<li>主机接收IP数据报<ul>
+<li>每个数据报有源IP地址，目的IP地址 </li>
+<li>每个数据报搬运一个数据段 </li>
+<li>每个数据段有源和目的端口号</li>
+</ul>
+</li>
+<li>主机用IP地址和端口号指明数据段属于哪个合适的套接字</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<h5 id="面向连接的多路分解"><a href="#面向连接的多路分解" class="headerlink" title="面向连接的多路分解"></a>面向连接的多路分解</h5><blockquote>
+<ul>
+<li>TCP套接字由4部分<strong>指定和表示</strong>，服务器支持多个同时的TCP套接字<ul>
+<li>源IP地址(S-IP)</li>
+<li>源端口号(SP)</li>
+<li>目的IP地址(D-IP)</li>
+<li>目的端口号(DP)</li>
+</ul>
+</li>
+<li>Web服务器对每个连接的客户都有不同的套接字</li>
+<li>非持久HTTP将对每个请求有一个不同的套接字 </li>
+</ul>
+</blockquote>
+<h5 id="无连接多路分解"><a href="#无连接多路分解" class="headerlink" title="无连接多路分解"></a>无连接多路分解</h5><blockquote>
+<ul>
+<li>UDP套接字由2个因素<strong>指定</strong><ul>
+<li>目的IP地址(D-IP)</li>
+<li>目的端口号(DP)</li>
+<li>因此具有不同的源IP地址且/或源端口号，但具有相同的目的IP地址和目的端口号的IP数据报指向同样的套接字 </li>
+</ul>
+</li>
+<li>UDP套接字由2部分<strong>表示</strong><ul>
+<li>源端口号(SP)</li>
+<li>目的端口号(DP)</li>
+</ul>
+</li>
+<li>请求报文段中提供返回地址(包括IP地址和端口号) </li>
+</ul>
+</blockquote>
+<h3 id="无连接传输UDP"><a href="#无连接传输UDP" class="headerlink" title="无连接传输UDP"></a>无连接传输UDP</h3><h5 id="UDP用户数据报协议"><a href="#UDP用户数据报协议" class="headerlink" title="UDP用户数据报协议"></a>UDP用户数据报协议</h5><blockquote>
+<ul>
+<li>不可靠数据传输<ul>
+<li>数据段可能丢失</li>
+</ul>
+</li>
+<li>无序提交<ul>
+<li>可能会传递失序的报文段到应用程序</li>
+</ul>
+</li>
+<li>面向报文(有多大发多大，有多大收多大)<ul>
+<li>发送方UDP对应用程序交下来的报文，在添加首部后就向下交付 IP 层。UDP 对应用层交下来的报文，既不合并， 也不拆分，而是保留这些报文的边界</li>
+<li>接收方UDP对IP层交上来的UDP用户数据报，在去除首部后就原封不动地交付上层的应用进程，一次交付一个完整的报文</li>
+<li>应用程序必须选择合适大小的报文  </li>
+</ul>
+</li>
+<li>无流量控制</li>
+<li>无拥塞控制</li>
+<li>无连接<ul>
+<li>在UDP接收者发送者之间没有握手 </li>
+<li>每个UDP数据段的处理独立于其他数据段</li>
+</ul>
+</li>
+</ul>
+<p>UDP数据报</p>
+<blockquote>
+<ul>
+<li>首部<ul>
+<li>源端口(SP) 2bytes</li>
+<li>目的端口(DP) 2bytes</li>
+<li>报文长度 2bytes</li>
+<li>检验和 2bytes</li>
+</ul>
+</li>
+<li>数据</li>
+</ul>
+</blockquote>
+</blockquote>
+<h5 id="UPD协议的优点-小、简单、快"><a href="#UPD协议的优点-小、简单、快" class="headerlink" title="UPD协议的优点(小、简单、快)"></a>UPD协议的优点(小、简单、快)</h5><blockquote>
+<ul>
+<li>无连接<ul>
+<li>减少时延</li>
+<li>简单，无需建立连接</li>
+</ul>
+</li>
+<li>很小的数据段首部(8 bytes)</li>
+<li>没有拥塞控制<ul>
+<li>UDP能够用想象的快的速度传递</li>
+<li>适合多媒体通信的要求</li>
+</ul>
+</li>
+<li>支持一对一、一对多、多对一和多对多的交互通信</li>
+</ul>
+</blockquote>
+<h5 id="UDP校验和"><a href="#UDP校验和" class="headerlink" title="UDP校验和"></a>UDP校验和</h5><blockquote>
+<p>在计算检验和时，临时把“<strong>伪首部</strong>”和 UDP 用户数据报连接在一起</p>
+<p>目的：对传输的数据进行差错检测</p>
+<p>发送方</p>
+<blockquote>
+<ul>
+<li>将数据段看成16bit的整数序列</li>
+<li>计算校验和</li>
+<li>送者将校验和值放入UDP的校验和域  </li>
+</ul>
+</blockquote>
+<p>接收方</p>
+<blockquote>
+<ul>
+<li>计算接收到数据段的校验和</li>
+<li>检查计算的校验和是否等于校验和域中的值<ul>
+<li>是，没有校验错误，提交数据</li>
+<li>否，有校验错误，进行错误处理</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>计算方法</p>
+<blockquote>
+<ul>
+<li>按反码的加法进行和运算，<strong>循环进位</strong></li>
+<li>结果取反为校验和</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="可靠数据传输"><a href="#可靠数据传输" class="headerlink" title="可靠数据传输"></a>可靠数据传输</h3><h5 id="可靠数据传输服务"><a href="#可靠数据传输服务" class="headerlink" title="可靠数据传输服务"></a>可靠数据传输服务</h5><blockquote>
+<ul>
+<li><p>停等协议：发送方发送一个报文，然后等待接受方的响应</p>
+</li>
+<li><p>可能用到的响应</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">rdt_send</span>()	<span class="hljs-comment">//发送数据</span><br><span class="hljs-built_in">rdt_rcv</span>()	<span class="hljs-comment">//接收数据</span><br><span class="hljs-built_in">make_pkt</span>()	<span class="hljs-comment">//数据打包</span><br><span class="hljs-built_in">udt_send</span>()	<span class="hljs-comment">//不可靠发送</span><br><span class="hljs-built_in">extract</span>()	<span class="hljs-comment">//取出数据</span><br><span class="hljs-built_in">deliver_data</span>()	<span class="hljs-comment">//传输数据</span><br><span class="hljs-built_in">corrupt</span>()	<span class="hljs-comment">//数据乱序</span><br><span class="hljs-built_in">notcorrupt</span>()<span class="hljs-comment">//数据有序</span><br><span class="hljs-built_in">isACK</span>()		<span class="hljs-comment">//接收无误    </span><br><span class="hljs-built_in">isNAK</span>()		<span class="hljs-comment">//接收有错</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Rdt1.0：完全可靠信道上的可靠数据传输</p>
+<blockquote>
+<p> 在完美可靠的信道上 </p>
+<p> 没有bit错误  </p>
+<p> 没有分组丢失 </p>
+<ul>
+<li>发送方发送数据到下层信道</li>
+<li>接收方从下层信道接收数据</li>
+<li><img src="29.png" srcset="/img/default_loading.gif" lazyload width=600></li>
+</ul>
+</blockquote>
+</li>
+<li><p>Rdt2.0：具有bit错误的信道 </p>
+<blockquote>
+<p>下层信道可能使发送报文Bit受损(失序、死锁)</p>
+<hr>
+<p>发送报文引入校验和</p>
+<p>接收方判断接收报文的校验和</p>
+<p>发送ACK或者NAK(停等协议)</p>
+<p>发送方收到NAK重传上一个报文</p>
+<ul>
+<li>ACK: 接收方明确告诉发送方，分组接收<strong>正确</strong></li>
+<li>NAK: 接收方明确告诉发送方，分组接收<strong>错误</strong></li>
+</ul>
+<p><img src="30.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p>致命错误</p>
+<ul>
+<li>ACK/NAK出错<ul>
+<li>发送方并不知道接收方发生了什么</li>
+<li>接收方不能判定接收的报文是重复的还是新报文  </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Rdt2.1</p>
+<blockquote>
+<p>ACK/NAK bit错(失序、死锁) </p>
+<hr>
+<p>发送报文引入0、1序号 </p>
+<p>ACK/NAK引入校验</p>
+<p><img src="31.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+<p><img src="32.png" srcset="/img/default_loading.gif" lazyload width=600></p>
+</blockquote>
+</li>
+<li><p>Rdt2.2</p>
+<blockquote>
+<p>ACKs引入0，1 </p>
+<hr>
+<p>不需要NAK</p>
+<p>发送方收到重复ACK将导致和NAK一样的处理</p>
+</blockquote>
+</li>
+<li><p>Rdt3.0</p>
+<blockquote>
+<p>丢包(失序、死锁) </p>
+<hr>
+<p>发送方对每个报文启动超时重传机制</p>
+</blockquote>
+</li>
+<li><p>GBN</p>
+<blockquote>
+<p>0、1效率太低 </p>
+<hr>
+<p>发送端滑动窗口(大小N) </p>
+<p>接收端ACK期望接收的序号i </p>
+<p>丢弃失序的报文</p>
+<p>发送端发i+1,i+2,…i+N报</p>
+</blockquote>
+</li>
+<li><p>GS</p>
+<blockquote>
+<p>N重传损失太大</p>
+<hr>
+<p>接收端滑动窗口(大小N) </p>
+<p>接收端缓冲接受的失序报文 </p>
+<p>接收端对失序报文ACK </p>
+<p>发送端对窗口内报文ACK做标记 </p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><h5 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h5><blockquote>
+<ul>
+<li><p>全双工数据: </p>
+<ul>
+<li><p>同一个连接上的双向数 据流 </p>
+</li>
+<li><p>MSS:最大报文段长 </p>
+</li>
+</ul>
+</li>
+<li>面向连接: <ul>
+<li>在数据交换前握手,初始化发送方和接收方的状态 </li>
+<li>流量控制:<ul>
+<li>发送方不会淹没接收方 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="TCP可靠数据传输"><a href="#TCP可靠数据传输" class="headerlink" title="TCP可靠数据传输"></a>TCP可靠数据传输</h5><blockquote>
+<ul>
+<li>TCP在IP不可靠服务之上创建rdt服务 </li>
+<li>流水线技术处理报文段 </li>
+<li>累积确认 </li>
+<li>TCP使用单个重发定时器 </li>
+<li>触发重发:<ul>
+<li>超时事件  </li>
+<li>重复确认 </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><h5 id="网络层-1"><a href="#网络层-1" class="headerlink" title="网络层"></a>网络层</h5><blockquote>
+<ul>
+<li>将分组从发送方主机传送到接收方主机 </li>
+</ul>
+<ul>
+<li>发送方将数据段封装成分组 </li>
+<li>接收方将分组解封装后将数据段递交给传输层 </li>
+<li>网络层协议存在于每台主机和路由器上 </li>
+<li>路由器检查所有经过它的IP分组的分组头 </li>
+</ul>
+</blockquote>
+<p>网络层功能</p>
+<blockquote>
+<ul>
+<li>转发 forwarding<ul>
+<li>将分组移动到合适的链路层接口</li>
+</ul>
+</li>
+<li>选路 routing<ul>
+<li>决定分组从源到端的路径</li>
+</ul>
+</li>
+<li>建立连接</li>
+</ul>
+</blockquote>
+<h5 id="网络层服务模型"><a href="#网络层服务模型" class="headerlink" title="网络层服务模型"></a>网络层服务模型</h5><blockquote>
+<ul>
+<li>单个数据<ul>
+<li>确保交付</li>
+<li>具有时延上界</li>
+</ul>
+</li>
+<li>分组的流<ul>
+<li>有序的分组提交</li>
+<li>确保最小带宽</li>
+<li>确保最大时延抖动</li>
+<li>安全性服务</li>
+</ul>
+</li>
+<li>现在的因特网网络层并没有􏰀供上述服务</li>
+</ul>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">网路体系结构</th>
+<th style="text-align:center">服务模型</th>
+<th style="text-align:center">带宽保证</th>
+<th style="text-align:center">无丢包保证</th>
+<th style="text-align:center">排序</th>
+<th style="text-align:center">定时</th>
+<th style="text-align:center">拥塞指示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Internet</td>
+<td style="text-align:center">尽力而为</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">任何顺序</td>
+<td style="text-align:center">不维持</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">ATM</td>
+<td style="text-align:center">CBR</td>
+<td style="text-align:center">恒定速率</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">有序</td>
+<td style="text-align:center">维持</td>
+<td style="text-align:center">无拥塞</td>
+</tr>
+<tr>
+<td style="text-align:center">ATM</td>
+<td style="text-align:center">ABR</td>
+<td style="text-align:center">保证最小速率</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">有序</td>
+<td style="text-align:center">不维持</td>
+<td style="text-align:center">提供拥塞指示</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="虚电路网络和数据报网络"><a href="#虚电路网络和数据报网络" class="headerlink" title="虚电路网络和数据报网络"></a>虚电路网络和数据报网络</h3><h5 id="虚电路-VC"><a href="#虚电路-VC" class="headerlink" title="虚电路(VC)"></a>虚电路(VC)</h5><blockquote>
+<ul>
+<li>数据传输前建立虚电路，传输完毕后拆除虚电路  </li>
+<li>每个分组携带VC标识(并非目的地址)  </li>
+<li>在源-目的路径上每个路由器要维护每个连结的状态信息 </li>
+<li>链路、路由器资源(带宽、缓冲区)可能分配给VC </li>
+</ul>
+</blockquote>
+<h5 id="vc的组成"><a href="#vc的组成" class="headerlink" title="vc的组成"></a>vc的组成</h5><blockquote>
+<ul>
+<li>路径</li>
+<li>VC号</li>
+<li>转发表项</li>
+</ul>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Lecture-Notes/">Lecture Notes</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/23/C/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++ note</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/06/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">
+                        <span class="hidden-mobile">计算机系统结构</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
