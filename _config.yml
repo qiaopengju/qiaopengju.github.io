@@ -8,8 +8,8 @@ subtitle: ''
 description: '樵鹏举'
 keywords:
 author: 樵鹏举
-  #language: zh-CN 
-language: en 
+language: zh-CN 
+  #language: en 
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -123,7 +123,7 @@ live2d:
     width: 150
     height: 300
   mobile:
-    show: flase
+    show: true
     scale: 0.7
   react:
     opacity: 0.7
