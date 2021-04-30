@@ -576,7 +576,7 @@ post:
   # 文章底部自定义区域（位于 footer 上方），支持 HTML，可插入赞赏码、公众号这类内容内容
   # Custom content at the bottom of the post page (located above the footer)
   custom:
-    enable: false
+    enable: false 
     content: '<img src="https://octodex.github.com/images/jetpacktocat.png" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">'
 
   # 文章图片可点击放大
@@ -694,7 +694,7 @@ gitalk:
 valine:
   appid: xsVJdJy2S5FwG6mmW2YPfvB8-gzGzoHsz
   appkey: AAjqnbedJOiSfIxIGx14LnUp
-  placeholder: 说点什么
+  placeholder: 说点什么~
   path: window.location.pathname
   avatar: retro
   meta: ['nick', 'mail', 'link']
@@ -830,13 +830,14 @@ about:
   subtitle:
   avatar: /img/avatar.jpg
   name: "樵小乔"
-  intro: "国科大CS在读"
+  intro: "电子科大CS&工商管理 & 国科大CS拟录取"
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
   icons:
-    - { class: "iconfont icon-github-fill", link: "https://github.com", tip: "GitHub" }
+    - { class: "iconfont icon-github-fill", link: "https://github.com/qiaopengju", tip: "GitHub" }
       #- { class: "iconfont icon-douban-fill", link: "https://douban.com", tip: "豆瓣" }
-    - { class: "iconfont icon-wechat-fill", qrcode: "/img/favicon.jpg" }
+      #- { class: "iconfont icon-wechat-fill", qrcode: "/img/avatar.jpg" }
+    - { class: "iconfont icon-mini-program-fill", link: "http://118.24.109.65", tip: "Online photo album" }
 
 
 #---------------------------
