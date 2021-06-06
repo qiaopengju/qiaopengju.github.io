@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="准备阿里素质测评时记录的图形推理笔记,抽空再做补充">
+  <meta name="description" content="随便做的笔记">
   <meta name="author" content="樵鹏举">
   <meta name="keywords" content="">
   
-  <title>图形推理 - QiaoPengju</title>
+  <title>OpenGL - QiaoPengju</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="图形推理">
+            <span class="h2" id="subtitle" title="OpenGL">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-19 23:29" pubdate>
-        2021年5月19日 晚上
+      <time datetime="2021-05-27 13:37" pubdate>
+        2021年5月27日 下午
       </time>
     </span>
   
@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      390 字
+      602 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      7
        分钟
     </span>
   
@@ -245,107 +245,59 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">图形推理</h1>
+            <h1 style="display: none">OpenGL</h1>
             
             <div class="markdown-body">
-              <h4 id="位置规律-元素组成相同"><a href="#位置规律-元素组成相同" class="headerlink" title="位置规律(元素组成相同)"></a>位置规律(元素组成相同)</h4><h5 id="1-平移"><a href="#1-平移" class="headerlink" title="1.平移"></a>1.平移</h5><ul>
-<li>上下左右、顺逆时针、斜对角</li>
-<li>步数</li>
-<li><p>隐藏</p>
+              <h1 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h1><p><img src="https://learnopengl.com/img/getting-started/opengl.jpg" srcset="/img/default_loading.gif" lazyload width = 200></p>
+<h4 id="OpenGL简介"><a href="#OpenGL简介" class="headerlink" title="OpenGL简介"></a>OpenGL简介</h4><ul>
+<li><p>实质: 图形规范，并非API；具体由显卡商实现;</p>
+</li>
+<li><p>特点: 状态机</p>
+</li>
+</ul>
+<h4 id="GLAT"><a href="#GLAT" class="headerlink" title="GLAT"></a>GLAT</h4><p>OpenGL具体代码由硬件厂家实现，调用函数时需要实际函数的指针，GLAT库可以用来将函数指向具体实现。</p>
+<p>图形渲染管线</p>
+<p>着色器</p>
+<p>标准化设备坐标</p>
+<p>顶点着色器</p>
+<h4 id="Term"><a href="#Term" class="headerlink" title="Term"></a>Term</h4><p>perspective:透视</p>
+<p>orthographic:正射投影</p>
+<p>frustum:平截头体</p>
+<hr>
+<h4 id="深度测试-Depth-Testing"><a href="#深度测试-Depth-Testing" class="headerlink" title="深度测试 Depth Testing"></a>深度测试 Depth Testing</h4><p>默认禁用，启用深度测试：</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs glsl">glEnalbe(GL_DEPTH_TEST);					<span class="hljs-comment">// 启用深度测试</span><br>...<br><span class="hljs-keyword">while</span>(renderCondition)&#123;<br>    glClear(GL_DEPTH_BUFFER_BIT);	<span class="hljs-comment">// 清除深度缓冲</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
-<li>元素</li>
-<li>轨迹<ul>
-<li>“回”字：16/25宫格</li>
+<li>glsl中 gl_FragCoord.z表示片段的深度缓冲值</li>
 </ul>
-</li>
-</ul>
-<h5 id="2-旋转"><a href="#2-旋转" class="headerlink" title="2.旋转"></a>2.旋转</h5><h5 id="3-翻转"><a href="#3-翻转" class="headerlink" title="3.翻转"></a>3.翻转</h5></li>
-<li><p>上下/左右位置变化</p>
-</li>
+<p>禁止深度缓冲写入</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs glsl">glDepthMask(GL_FALSE);						<span class="hljs-comment">// 深度掩码设为false，禁止写入</span><br></code></pre></td></tr></table></figure>
+<p>深度缓冲将深度值映射到[0, 1]，是非线性函数，物体离平截头体近平面越近，精度越高，离近平面越远，精度越低：$F_{depth} = \frac{1/z - 1/near}{1/far - 1/near}$</p>
+<p><img src="https://learnopengl.com/img/advanced/depth_non_linear_graph.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<p>深度测试函数，规定在什么情况通过深度测试</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs glsl">glDepthFunc(GL_LESS);	<span class="hljs-comment">// default</span><br><span class="hljs-comment">/* parameter:</span><br><span class="hljs-comment">GL_ALWAYS</span><br><span class="hljs-comment">GLNEVER</span><br><span class="hljs-comment">GL_LESS</span><br><span class="hljs-comment">GL_EQUAL</span><br><span class="hljs-comment">GL_LEQUAL</span><br><span class="hljs-comment">GL_GRETER</span><br><span class="hljs-comment">GL_GEAUAL</span><br><span class="hljs-comment">GL_NOTEQUAL</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+<h5 id="深度冲突-Z-fighting"><a href="#深度冲突-Z-fighting" class="headerlink" title="深度冲突 Z-fighting"></a>深度冲突 Z-fighting</h5><p>当物体紧密排列时，深度缓冲没有足够精度决定谁在前面，两个形状抢夺显示先后顺序。会有奇怪的显示，冲突解决方法：</p>
+<ul>
+<li>不要把物体摆放太近</li>
+<li>使用高精度深度缓冲</li>
+<li>近平面设置远一点</li>
 </ul>
 <hr>
-<h4 id="样式规律-元素重复出现"><a href="#样式规律-元素重复出现" class="headerlink" title="样式规律(元素重复出现)"></a>样式规律(元素重复出现)</h4><ul>
-<li>遍历：缺啥补啥</li>
-<li>加减同异<ul>
-<li>求同/求异</li>
+<h4 id="模板测试-Stencil-testing"><a href="#模板测试-Stencil-testing" class="headerlink" title="模板测试 Stencil testing"></a>模板测试 Stencil testing</h4><p>由窗口库(GLFW)配置模板缓冲，默认禁用，启用模板测试：</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs glsl">glEnable(GL_STENCIL_TEST);		<span class="hljs-comment">// 启用模板缓冲</span><br>...<br><span class="hljs-keyword">while</span>(renderCondition)&#123;<br>    glClear(GL_STENCIL_BUFFER_BIT);	<span class="hljs-comment">// 清除模板缓冲</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>模板掩码，stencil写入缓冲前先与stencil mask做与运算</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs glsl">glStencilMask(<span class="hljs-number">0xFF</span>);	<span class="hljs-comment">// 每位写入模板缓冲都会保持原样</span><br>glStencilMask(<span class="hljs-number">0x00</span>);	<span class="hljs-comment">// 所有写入缓冲都为0，相当于禁用写入</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>模板函数：</li>
 </ul>
-</li>
-<li>黑白运算(分割区域相同/黑块数量不同)<ul>
-<li>相同位置做运算</li>
-</ul>
-</li>
-</ul>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><br>glStencilFunc(GLenum func, GLint ref, GLuint mask);		<span class="hljs-comment">// 何时通过模板测试</span><br>glStencilFunc(GL_EQUAL, <span class="hljs-number">1</span>, <span class="hljs-number">0xFF</span>);	<span class="hljs-comment">// default</span><br><span class="hljs-comment">/* parameter:</span><br><span class="hljs-comment">GL_ALWAYS</span><br><span class="hljs-comment">GLNEVER</span><br><span class="hljs-comment">GL_LESS</span><br><span class="hljs-comment">GL_EQUAL</span><br><span class="hljs-comment">GL_LEQUAL</span><br><span class="hljs-comment">GL_GRETER</span><br><span class="hljs-comment">GL_GEAUAL</span><br><span class="hljs-comment">GL_NOTEQUAL</span><br><span class="hljs-comment">*/</span><br>glStencilOp(GLenum sfail, GLenum dpfail, GLenum dppass);<br><span class="hljs-comment">// sfail：模板测试失败时采取的行为</span><br><span class="hljs-comment">// dpfail: 模板测试通过，深度测试失败</span><br><span class="hljs-comment">// dppass: 深度测试通过时采取的行为</span><br>glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);	<span class="hljs-comment">// default</span><br><span class="hljs-comment">/* parameter:</span><br><span class="hljs-comment">GL_KEEP</span><br><span class="hljs-comment">GL_ZERO</span><br><span class="hljs-comment">GL_REPLACE</span><br><span class="hljs-comment">GL_INCR: 模板值加一(加一后要小于模板最大值)</span><br><span class="hljs-comment">GL_INCR_WRAP:	模板值加一，若超过最大值置零</span><br><span class="hljs-comment">GL_DECR</span><br><span class="hljs-comment">GL_DECR_WRAP:	模板值减一，若小于0则置为最大值</span><br><span class="hljs-comment">GL_INVERT:	按位翻转</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+<p>用模板测试绘制物体边框</p>
 <hr>
-<h4 id="属性规律-元素组成不同"><a href="#属性规律-元素组成不同" class="headerlink" title="属性规律(元素组成不同)"></a>属性规律(元素组成不同)</h4><h5 id="1-对称性"><a href="#1-对称性" class="headerlink" title="1.对称性"></a>1.对称性</h5><ul>
-<li>轴对称/中心对称</li>
-<li>对称轴<ul>
-<li>数量</li>
-<li>方向</li>
-<li>与图形的关系</li>
+<h4 id="Blending"><a href="#Blending" class="headerlink" title="Blending"></a>Blending</h4><ul>
+<li>source：源颜色，上面叠的颜色</li>
+<li>destination：目标颜色，底色</li>
 </ul>
-</li>
-</ul>
-<h5 id="2-曲直性"><a href="#2-曲直性" class="headerlink" title="2.曲直性"></a>2.曲直性</h5><ul>
-<li>全曲线</li>
-<li>全直线</li>
-<li>曲线+直线</li>
-</ul>
-<h5 id="3-开闭性-完整图形留了缺口"><a href="#3-开闭性-完整图形留了缺口" class="headerlink" title="3.开闭性(完整图形留了缺口)"></a>3.开闭性(完整图形留了缺口)</h5><ul>
-<li>全封闭</li>
-<li>全开放</li>
-</ul>
-<hr>
-<h3 id="数量规律"><a href="#数量规律" class="headerlink" title="数量规律"></a>数量规律</h3><h5 id="1-点-交叉明显-乱线-相切"><a href="#1-点-交叉明显-乱线-相切" class="headerlink" title="1.点(交叉明显/乱线/相切)"></a>1.点(交叉明显/乱线/相切)</h5><ul>
-<li>曲直交点</li>
-<li>内外交点<ul>
-<li>存在明显外框</li>
-<li>点: 框内/框上/框外</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-线"><a href="#2-线" class="headerlink" title="2.线"></a>2.线</h5><p>直线数量</p>
-<ul>
-<li>多边形/单一直线</li>
-</ul>
-<p>曲线数量</p>
-<p>笔画问题(五角星/日/田/圆相交/相切/<strong>多端点</strong>)</p>
-<ul>
-<li><strong>一笔画</strong>(需同时满足)<ul>
-<li>线条直接连通</li>
-<li>奇点数为0或2<ul>
-<li>奇点：发射出奇数条线的点</li>
-<li><strong>端点都是奇点</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>多笔画</strong>数=奇点数/2</li>
-</ul>
-<h5 id="3-面-封闭空间"><a href="#3-面-封闭空间" class="headerlink" title="3.面:封闭空间"></a>3.面:封闭空间</h5><ul>
-<li>图形分割/封闭面明显</li>
-<li>生活化图形/粗线条图形的留白区域</li>
-</ul>
-<p>细分：</p>
-<ul>
-<li>面的形状:三角形/四边形</li>
-<li>最大面/最小面<ul>
-<li>形状</li>
-<li>属性</li>
-<li>与外框的关系</li>
-</ul>
-</li>
-</ul>
-<h5 id="4-素-多个独立小图形"><a href="#4-素-多个独立小图形" class="headerlink" title="4.素(多个独立小图形)"></a>4.素(多个独立小图形)</h5><ul>
-<li><p>元素个数</p>
-</li>
-<li><p>元素种类</p>
-</li>
-<li>部分数(连在一起的是一部分)<ul>
-<li>生活化图形/粗线条</li>
-</ul>
-</li>
-</ul>
-<h5 id="5-角-直线的交-扇形-折线多-留了小缺口"><a href="#5-角-直线的交-扇形-折线多-留了小缺口" class="headerlink" title="5.角(直线的交:扇形/折线多/留了小缺口)"></a>5.角(直线的交:扇形/折线多/留了小缺口)</h5>
+<p>个人想法：destination和source和绘制顺序相关</p>
+
             </div>
             <hr>
             <div>
@@ -365,18 +317,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/27/OpenGL/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">OpenGL</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/04/28/hexo-note/">
-                        <span class="hidden-mobile">Hexo note</span>
+                      <a href="/2021/05/19/%E5%9B%BE%E5%BD%A2%E6%8E%A8%E7%90%86/">
+                        <span class="hidden-mobile">图形推理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
