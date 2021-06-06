@@ -1,7 +1,7 @@
 ---
 title: OpenGL
 hide: false
-math: false
+math: true
 mermaid: false
 comment: true
 date: 2021-05-27 13:37:37
