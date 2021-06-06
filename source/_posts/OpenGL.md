@@ -16,13 +16,12 @@ excerpt: 随便做的笔记
 
 <img src="https://learnopengl.com/img/getting-started/opengl.jpg" width = 200>
 
-#### OpenGL简介
+### OpenGL简介
 
 * 实质: 图形规范，并非API；具体由显卡商实现;
-
 * 特点: 状态机
 
-#### GLAT
+### GLAT
 
 OpenGL具体代码由硬件厂家实现，调用函数时需要实际函数的指针，GLAT库可以用来将函数指向具体实现。
 
@@ -38,7 +37,7 @@ OpenGL具体代码由硬件厂家实现，调用函数时需要实际函数的�
 
 
 
-#### Term
+### Term
 
 perspective:透视
 
@@ -48,7 +47,7 @@ frustum:平截头体
 
 ---
 
-####深度测试 Depth Testing
+### 深度测试 Depth Testing
 
 默认禁用，启用深度测试：
 
@@ -88,7 +87,7 @@ GL_NOTEQUAL
 */
 ```
 
-##### 深度冲突 Z-fighting
+#### 深度冲突 Z-fighting
 
 当物体紧密排列时，深度缓冲没有足够精度决定谁在前面，两个形状抢夺显示先后顺序。会有奇怪的显示，冲突解决方法：
 
@@ -98,7 +97,7 @@ GL_NOTEQUAL
 
 ---
 
-#### 模板测试 Stencil testing
+### 模板测试 Stencil testing
 
 由窗口库(GLFW)配置模板缓冲，默认禁用，启用模板测试：
 
@@ -154,7 +153,7 @@ GL_INVERT:	按位翻转
 
 ---
 
-#### Blending
+### Blending
 
 * source：源颜色，上面叠的颜色
 * destination：目标颜色，底色
