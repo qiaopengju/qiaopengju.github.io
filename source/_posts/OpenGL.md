@@ -158,5 +158,122 @@ GL_INVERT:	按位翻转
 * source：源颜色，上面叠的颜色
 * destination：目标颜色，底色
 
-个人想法：destination和source和绘制顺序相关
+destination和source和绘制顺序相关
+
+---
+
+### Framebuffer
+
+
+
+---
+
+### Matrix
+
+* Scale:
+
+$$
+\begin{bmatrix}
+S_1 & 0 & 0 & 0 \\
+0 & S_2 & 0 & 0 \\
+0 & 0 & S_3 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\begin{pmatrix}
+x_1\\ x2\\ x3\\ 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+S_1x_1\\ S_2x_2\\ S_3x_3 \\1
+\end{pmatrix}
+$$
+
+* Translate:
+
+$$
+\begin{bmatrix}
+1 & 0 & 0 & T_x\\
+0 & 1 & 0 & T_y\\
+0 & 0 & 1 & T_z\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\begin{pmatrix}
+x\\ y\\ z\\ 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+x+T_x\\ y+T_y\\ z+T_y\\ 1
+\end{pmatrix}
+$$
+
+<p class="note note-primary">Translate using w(Homogeneous Coordinates-齐次坐标)</p>
+
+* Rotate:
+
+  * 两个向量的内积，在被同一个旋转矩阵M操作后不变，得旋转矩阵是正交矩阵
+
+  $$
+  a^T \centerdot b = (Ma)^T \centerdot (Mb) =a^TM^TMa \\ \Rightarrow M^TM = M^{-1}M=E
+  $$
+
+  * 二维向量旋转矩阵：
+
+$$
+\begin{bmatrix}
+cos\theta & -sin\theta\\
+sin\theta & cos\theta
+\end{bmatrix}
+$$
+
+![](rotate.png)
+
+现在推导**顺时针**旋转$\theta$度的旋转矩阵，将$\vec{OP}$顺时针旋转$\theta$度，相当于将坐标系逆时针旋转$\theta$度：
+$$
+X_b=OB+BC;
+\quad OB=X_acos\theta,
+\quad BC=AD=APsin\theta = Y_a sin\theta\\
+$$
+
+$$
+\Rightarrow X_b = X_acos\theta + Y_asin\theta\\
+$$
+
+$$
+Y_b = OF-GF; 
+\quad OF=OE cos\theta=Y_a cos\theta,
+\quad GF=EH=EP sin\theta = X_a sin\theta\\
+$$
+
+$$
+\Rightarrow Y_b = - X_a sin\theta + Y_a cos\theta\\
+$$
+
+$$
+\Rightarrow
+\begin{pmatrix}
+X_b\\ Y_b
+\end{pmatrix}
+=
+\begin{bmatrix}
+cos\theta & sin\theta\\
+-sin\theta & cos\theta
+\end{bmatrix}
+\begin{pmatrix}
+X_a\\ Y_a
+\end{pmatrix}
+$$
+
+所以顺时针旋转$\theta$度的矩阵是：
+$$
+\begin{bmatrix}
+cos\theta & sin\theta\\
+-sin\theta & cos\theta
+\end{bmatrix}
+$$
+
+<p class="note note-danger">逆时针是正角，上述推导为顺时针旋转矩阵</p>
+
+<p class="note not-info">Translate Order: Scale->Rotate->Translate</p>
+
+* Perspective(透视投影):   
 
