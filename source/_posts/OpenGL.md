@@ -1,5 +1,5 @@
 ---
-title: OpenGL
+title: OpenGL-learn
 hide: false
 math: true
 mermaid: false
@@ -164,3 +164,11 @@ destination和source和绘制顺序相关
 
 ### Framebuffer
 
+
+
+### point light
+
+1. create a cube map texture
+2. setting cube texture to GL_DEPTH_COMPONENT
+3. setting texture parameter
+4. shadow Projection & shadow view matrix
