@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>算法导论课</title>
+    <link href="/2021/09/09/algorithm/"/>
+    <url>/2021/09/09/algorithm/</url>
+    
+    <content type="html"><![CDATA[<h3 id="Asymptotic-notations"><a href="#Asymptotic-notations" class="headerlink" title="Asymptotic notations"></a>Asymptotic notations</h3><ul><li>O notion<ul><li>f(n) $\in$ O(g(n)), $\exists n_0 &gt; 0, c &gt; 0, n &gt;= n_0 \Rightarrow f(n) \leqslant cg(n)$</li></ul></li><li>o notion</li><li>$\Theta$ notion</li><li>$\Omega$ notion</li><li>$\omega$ notion</li></ul><h3 id="Common-functions"><a href="#Common-functions" class="headerlink" title="Common functions"></a>Common functions</h3><ul><li>Floors and Ceilings</li><li>Fibonacci Number<ul><li>$ F<em>i = F</em>{i-1} + F_{i-2}$</li><li>$F_i = \frac{\frac{(1+\sqrt{5}}{2})^i - \frac{(1-\sqrt{5}}{2})^i}{\sqrt{5}}$</li><li>$F_i \in \Theta(2^n)$</li></ul></li></ul><h3 id="Master-Theorem"><a href="#Master-Theorem" class="headerlink" title="Master Theorem"></a>Master Theorem</h3><script type="math/tex; mode=display">T(1) = \Theta(1), T(n) = \sum_{i = 1}^{a}T(n_i) + f(n)</script>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>OpenGL-Matrix</title>
     <link href="/2021/06/10/OpenGL-Matrix/"/>
     <url>/2021/06/10/OpenGL-Matrix/</url>
