@@ -311,7 +311,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="Whitted-Style-Ray-Tracing"><a href="#Whitted-Style-Ray-Tracing" class="headerlink" title="Whitted-Style Ray Tracing"></a>Whitted-Style Ray Tracing</h4><p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_Whitted-Style-Ray-Tracing.png" srcset="/img/default_loading.gif" lazyload alt="Whitted-Style-Ray-Tracing"></p>
+<h4 id="Whitted-Style-Ray-Tracing"><a href="#Whitted-Style-Ray-Tracing" class="headerlink" title="Whitted-Style Ray Tracing"></a>Whitted-Style Ray Tracing</h4><p><img src="Whitted-Style-Ray-Tracing.png" srcset="/img/default_loading.gif" lazyload alt="Whitted-Style-Ray-Tracing"></p>
 <ul>
 <li>考虑玻璃球/镜面的折射/反射</li>
 <li>缺点：没考虑漫反射光线弹射</li>
@@ -321,7 +321,7 @@
 <p>Radiant Intensity: 一个立体角上的能量</p>
 <ul>
 <li><p>power per unit solid angle(立体角) </p>
-<p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_solid-angle.png" srcset="/img/default_loading.gif" lazyload alt="solid-angle"></p>
+<p><img src="solid-angle.png" srcset="/img/default_loading.gif" lazyload alt="solid-angle"></p>
 <ul>
 <li>微分立体角：$d\omega = \frac{dA}{r^2} = sin\theta d\theta d\phi$</li>
 <li>立体角：$\omega = S / r^2$<ul>
@@ -341,7 +341,7 @@
 <ul>
 <li>方向性</li>
 </ul>
-<p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_Radiance.png" srcset="/img/default_loading.gif" lazyload alt="Radiance"></p>
+<p><img src="Radiance.png" srcset="/img/default_loading.gif" lazyload alt="Radiance"></p>
 <ul>
 <li>Incident Radiance入射吸收的能量<ul>
 <li>Irradiance / solid angle<ul>
@@ -360,7 +360,7 @@
 </ul>
 <h3 id="Bidirectional-Reflectance-Distribution-Function-BRDF"><a href="#Bidirectional-Reflectance-Distribution-Function-BRDF" class="headerlink" title="Bidirectional Reflectance Distribution Function(BRDF)"></a>Bidirectional Reflectance Distribution Function(BRDF)</h3><p>从一个方向入射后，从其他方向发出的能量多少</p>
 <p>$\Rightarrow$The Reflection Equation</p>
-<h3 id="The-Rendering-Equation"><a href="#The-Rendering-Equation" class="headerlink" title="The Rendering Equation"></a>The Rendering Equation</h3><p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_Rendering-Equation.png" srcset="/img/default_loading.gif" lazyload alt="Rendering-Equation"></p>
+<h3 id="The-Rendering-Equation"><a href="#The-Rendering-Equation" class="headerlink" title="The Rendering Equation"></a>The Rendering Equation</h3><p><img src="Rendering-Equation.png" srcset="/img/default_loading.gif" lazyload alt="Rendering-Equation"></p>
 <ul>
 <li>全局光照=自发光物体光+直接光照+间接光照</li>
 <li>光=物体本身的光+从其他物体处接受的光线</li>
@@ -371,7 +371,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Monte-Carlo-Path-Tracing"><a href="#Monte-Carlo-Path-Tracing" class="headerlink" title="Monte Carlo Path Tracing"></a>Monte Carlo Path Tracing</h3><h4 id="Monte-Carlo-Integration-蒙特卡罗积分"><a href="#Monte-Carlo-Integration-蒙特卡罗积分" class="headerlink" title="Monte Carlo Integration: 蒙特卡罗积分"></a>Monte Carlo Integration: 蒙特卡罗积分</h4><p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_Monte-Carlo-Integration.png" srcset="/img/default_loading.gif" lazyload alt="Monte-Carlo -Integration"></p>
+<h3 id="Monte-Carlo-Path-Tracing"><a href="#Monte-Carlo-Path-Tracing" class="headerlink" title="Monte Carlo Path Tracing"></a>Monte Carlo Path Tracing</h3><h4 id="Monte-Carlo-Integration-蒙特卡罗积分"><a href="#Monte-Carlo-Integration-蒙特卡罗积分" class="headerlink" title="Monte Carlo Integration: 蒙特卡罗积分"></a>Monte Carlo Integration: 蒙特卡罗积分</h4><p><img src="Monte-Carlo-Integration.png" srcset="/img/default_loading.gif" lazyload alt="Monte-Carlo -Integration"></p>
 <script type="math/tex; mode=display">\int f(x)dx = \frac{1}{N}\sum^N_{i=1} \frac{f(X_i)}{p(X_i)}, \qquad X_i ~ p(x)</script><ul>
 <li>用随机采样的方法求定积分的近似解</li>
 <li>采样越多，越准确 </li>
