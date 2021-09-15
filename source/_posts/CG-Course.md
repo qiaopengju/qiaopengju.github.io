@@ -5,7 +5,7 @@ math: false
 mermaid: false
 comment: true
 date: 2021-09-09 15:57:28
- categories:
+categories:
 tags:
 index_img:
 banner_img:
@@ -68,7 +68,7 @@ Acceleration(碰撞检测加速)
 
 #### Whitted-Style Ray Tracing
 
-![Whitted-Style-Ray-Tracing](/Users/kkyou/Desktop/Whitted-Style-Ray-Tracing.png)
+![Whitted-Style-Ray-Tracing](http://118.24.109.65/photo_db/233_Markdown_IMG_Whitted-Style-Ray-Tracing.png)
 
 * 考虑玻璃球/镜面的折射/反射
 * 缺点：没考虑漫反射光线弹射
@@ -85,7 +85,7 @@ Radiant Intensity: 一个立体角上的能量
 
 * power per unit solid angle(立体角) 
 
-  ![solid-angle](/Users/kkyou/Desktop/solid-angle.png)
+  ![solid-angle](http://118.24.109.65/photo_db/233_Markdown_IMG_solid-angle.png)
 
   * 微分立体角：$d\omega = \frac{dA}{r^2} = sin\theta d\theta d\phi$
   * 立体角：$\omega = S / r^2$
@@ -101,7 +101,7 @@ Irradiance： power per unit area(单位面积能量)
 
 * 方向性
 
-![Radiance](/Users/kkyou/Desktop/Radiance.png)
+![Radiance](http://118.24.109.65/photo_db/233_Markdown_IMG_Radiance.png)
 
 * Incident Radiance入射吸收的能量
   * Irradiance / solid angle
@@ -118,7 +118,7 @@ $\Rightarrow$The Reflection Equation
 
 ### The Rendering Equation 
 
-![Rendering-Equation](/Users/kkyou/Desktop/Rendering-Equation.png)
+![Rendering-Equation](http://118.24.109.65/photo_db/233_Markdown_IMG_Rendering-Equation.png)
 
 * 全局光照=自发光物体光+直接光照+间接光照
 * 光=物体本身的光+从其他物体处接受的光线
@@ -131,7 +131,7 @@ $\Rightarrow$The Reflection Equation
 
 #### Monte Carlo Integration: 蒙特卡罗积分
 
-![Monte-Carlo -Integration](/Users/kkyou/Desktop/Monte-Carlo -Integration.png)
+![Monte-Carlo -Integration](http://118.24.109.65/photo_db/233_Markdown_IMG_Monte-Carlo-Integration.png)
 
 $$\int f(x)dx = \frac{1}{N}\sum^N_{i=1} \frac{f(X_i)}{p(X_i)}, \qquad X_i ~ p(x)$$
 
