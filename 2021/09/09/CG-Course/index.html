@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="algorithm course">
+  <meta name="description" content="图形学课程笔记">
   <meta name="author" content="樵鹏举">
   <meta name="keywords" content="">
   
-  <title>算法导论课 - QiaoPengju</title>
+  <title>CG_Course - QiaoPengju</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="算法导论课">
+            <span class="h2" id="subtitle" title="CG_Course">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-09 08:53" pubdate>
-        2021年9月9日 早上
+      <time datetime="2021-09-09 15:57" pubdate>
+        2021年9月9日 下午
       </time>
     </span>
   
@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      84 字
+      597 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      7
        分钟
     </span>
   
@@ -245,29 +245,139 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">算法导论课</h1>
+            <h1 style="display: none">CG_Course</h1>
             
             <div class="markdown-body">
-              <h3 id="Asymptotic-notations"><a href="#Asymptotic-notations" class="headerlink" title="Asymptotic notations"></a>Asymptotic notations</h3><ul>
-<li>O notion<ul>
-<li>f(n) $\in$ O(g(n)), $\exists n_0 &gt; 0, c &gt; 0, n &gt;= n_0 \Rightarrow f(n) \leqslant cg(n)$</li>
+              <h2 id="Computer-graphis"><a href="#Computer-graphis" class="headerlink" title="Computer graphis"></a>Computer graphis</h2><h3 id="反走样"><a href="#反走样" class="headerlink" title="反走样"></a>反走样</h3><p>卷积：对信号做平均</p>
+<ul>
+<li>先模糊后再做采样<ul>
+<li>将图像频率降低</li>
 </ul>
 </li>
-<li>o notion</li>
-<li>$\Theta$ notion</li>
-<li>$\Omega$ notion</li>
-<li>$\omega$ notion</li>
+<li>增加采样点  MSAA</li>
+<li>FXAA (Fast approximate AA)<ul>
+<li>得到锯齿图像后，平滑图像边界</li>
 </ul>
-<h3 id="Common-functions"><a href="#Common-functions" class="headerlink" title="Common functions"></a>Common functions</h3><ul>
-<li>Floors and Ceilings</li>
-<li>Fibonacci Number<ul>
-<li>$ F<em>i = F</em>{i-1} + F_{i-2}$</li>
-<li>$F_i = \frac{\frac{(1+\sqrt{5}}{2})^i - \frac{(1-\sqrt{5}}{2})^i}{\sqrt{5}}$</li>
-<li>$F_i \in \Theta(2^n)$</li>
+</li>
+<li>TAA (Temporal AA)</li>
+<li>Super resolution 超分辨率<ul>
+<li>Deep learning</li>
 </ul>
 </li>
 </ul>
-<h3 id="Master-Theorem"><a href="#Master-Theorem" class="headerlink" title="Master Theorem"></a>Master Theorem</h3><script type="math/tex; mode=display">T(1) = \Theta(1), T(n) = \sum_{i = 1}^{a}T(n_i) + f(n)</script>
+<h3 id="Z-buffer"><a href="#Z-buffer" class="headerlink" title="Z-buffer"></a>Z-buffer</h3><h3 id="Texture"><a href="#Texture" class="headerlink" title="Texture"></a>Texture</h3><p>纹理太小：</p>
+<ul>
+<li>Bilinear:双线性插值<ul>
+<li>取周围4个像素Texture的颜色做插值</li>
+</ul>
+</li>
+<li>Bicubic<ul>
+<li>取周围16个像素Texture插值</li>
+</ul>
+</li>
+</ul>
+<p>纹理太大(走样)：</p>
+<ul>
+<li>超采样(性能消耗大)</li>
+<li>采用采样点均值<ul>
+<li>Range Query 范围查询<ul>
+<li>Mipmap: fast, approx., square<ul>
+<li>生成多张图，每张不同分辨率</li>
+</ul>
+</li>
+<li>各向异性过滤：矩形<ul>
+<li>不同方向表现不同</li>
+</ul>
+</li>
+<li>EWA filter<ul>
+<li>用圆形覆盖多边形，多次查询，性能消耗大</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Basic-ray-tracing"><a href="#Basic-ray-tracing" class="headerlink" title="Basic ray tracing"></a>Basic ray tracing</h3><ul>
+<li>Ray generation</li>
+<li>Ray object intersection</li>
+</ul>
+<p>Acceleration(碰撞检测加速)</p>
+<ul>
+<li>Ray AABB intersection</li>
+<li>Spatial partition vs object partitions<ul>
+<li>KD Tree</li>
+<li>BVH traversal</li>
+</ul>
+</li>
+</ul>
+<h4 id="Whitted-Style-Ray-Tracing"><a href="#Whitted-Style-Ray-Tracing" class="headerlink" title="Whitted-Style Ray Tracing"></a>Whitted-Style Ray Tracing</h4><p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_Whitted-Style-Ray-Tracing.png" srcset="/img/default_loading.gif" lazyload alt="Whitted-Style-Ray-Tracing"></p>
+<ul>
+<li>考虑玻璃球/镜面的折射/反射</li>
+<li>缺点：没考虑漫反射光线弹射</li>
+</ul>
+<h3 id="Radiometry-辐射度量学"><a href="#Radiometry-辐射度量学" class="headerlink" title="Radiometry (辐射度量学)"></a>Radiometry (辐射度量学)</h3><h4 id="Radiant-Energy-and-Vlux-Power"><a href="#Radiant-Energy-and-Vlux-Power" class="headerlink" title="Radiant Energy and Vlux(Power)"></a>Radiant Energy and Vlux(Power)</h4><p>Radiant Energy:能量</p>
+<p>Flux:de: Power:单位时间的能量 lumen</p>
+<p>Radiant Intensity: 一个立体角上的能量</p>
+<ul>
+<li><p>power per unit solid angle(立体角) </p>
+<p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_solid-angle.png" srcset="/img/default_loading.gif" lazyload alt="solid-angle"></p>
+<ul>
+<li>微分立体角：$d\omega = \frac{dA}{r^2} = sin\theta d\theta d\phi$</li>
+<li>立体角：$\omega = S / r^2$<ul>
+<li>角度投射到球的表面积与半价平方的比</li>
+<li>弧长 = l / r，立体角类比弧长</li>
+<li>椎在球面上张开了多大角度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Irradiance： power per unit area(单位面积能量)</p>
+<ul>
+<li>投影到垂直光线方向的面积</li>
+</ul>
+<p><strong>Radiance</strong>：power per unit solid angle, per projected unit area</p>
+<ul>
+<li>方向性</li>
+</ul>
+<p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_Radiance.png" srcset="/img/default_loading.gif" lazyload alt="Radiance"></p>
+<ul>
+<li>Incident Radiance入射吸收的能量<ul>
+<li>Irradiance / solid angle<ul>
+<li>单位面积上从一个方向传来的能量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Exiting Radiance<ul>
+<li>Intensity / projected unit area<ul>
+<li>向某一方向辐射出后单位面积的能量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Bidirectional-Reflectance-Distribution-Function-BRDF"><a href="#Bidirectional-Reflectance-Distribution-Function-BRDF" class="headerlink" title="Bidirectional Reflectance Distribution Function(BRDF)"></a>Bidirectional Reflectance Distribution Function(BRDF)</h3><p>从一个方向入射后，从其他方向发出的能量多少</p>
+<p>$\Rightarrow$The Reflection Equation</p>
+<h3 id="The-Rendering-Equation"><a href="#The-Rendering-Equation" class="headerlink" title="The Rendering Equation"></a>The Rendering Equation</h3><p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_Rendering-Equation.png" srcset="/img/default_loading.gif" lazyload alt="Rendering-Equation"></p>
+<ul>
+<li>全局光照=自发光物体光+直接光照+间接光照</li>
+<li>光=物体本身的光+从其他物体处接受的光线</li>
+<li>$L = E + KL = E + KE + K^2E + K^3E+\dots$<ul>
+<li>$KE$：光线一次弹射，直接光照</li>
+<li>$K^2E$：光线两次弹射，间接光照</li>
+<li>光栅化做到$E+KE$ </li>
+</ul>
+</li>
+</ul>
+<h3 id="Monte-Carlo-Path-Tracing"><a href="#Monte-Carlo-Path-Tracing" class="headerlink" title="Monte Carlo Path Tracing"></a>Monte Carlo Path Tracing</h3><h4 id="Monte-Carlo-Integration-蒙特卡罗积分"><a href="#Monte-Carlo-Integration-蒙特卡罗积分" class="headerlink" title="Monte Carlo Integration: 蒙特卡罗积分"></a>Monte Carlo Integration: 蒙特卡罗积分</h4><p><img src="http://118.24.109.65/photo_db/233_Markdown_IMG_Monte-Carlo-Integration.png" srcset="/img/default_loading.gif" lazyload alt="Monte-Carlo -Integration"></p>
+<script type="math/tex; mode=display">\int f(x)dx = \frac{1}{N}\sum^N_{i=1} \frac{f(X_i)}{p(X_i)}, \qquad X_i ~ p(x)</script><ul>
+<li>用随机采样的方法求定积分的近似解</li>
+<li>采样越多，越准确 </li>
+<li>对谁积分，对谁采样</li>
+</ul>
+<h3 id="Path-Tracing"><a href="#Path-Tracing" class="headerlink" title="Path Tracing"></a>Path Tracing</h3>
             </div>
             <hr>
             <div>
@@ -287,18 +397,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/09/CG-Course/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CG_Course</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/10/OpenGL-Matrix/">
-                        <span class="hidden-mobile">OpenGL-Matrix</span>
+                      <a href="/2021/09/09/algorithm/">
+                        <span class="hidden-mobile">算法导论课</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -489,45 +593,6 @@
 
 
 
-
-  
-
-  
-    <!-- MathJax -->
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
-        options: {
-          renderActions: {
-            findScript: [10, doc => {
-              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                const display = !!node.type.match(/; *mode=display/);
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                const text = document.createTextNode('');
-                node.parentNode.replaceChild(text, node);
-                math.start = { node: text, delim: '', n: 0 };
-                math.end = { node: text, delim: '', n: 0 };
-                doc.math.push(math);
-              });
-            }, '', false],
-            insertedScript: [200, () => {
-              document.querySelectorAll('mjx-container').forEach(node => {
-                let target = node.parentNode;
-                if (target.nodeName.toLowerCase() === 'li') {
-                  target.parentNode.classList.add('has-jax');
-                }
-              });
-            }, '', false]
-          }
-        }
-      };
-    </script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
-
-  
 
 
 
