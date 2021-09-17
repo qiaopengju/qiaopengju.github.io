@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      597 字
+      731 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      9
        分钟
     </span>
   
@@ -377,7 +377,30 @@
 <li>采样越多，越准确 </li>
 <li>对谁积分，对谁采样</li>
 </ul>
-<h3 id="Path-Tracing"><a href="#Path-Tracing" class="headerlink" title="Path Tracing"></a>Path Tracing</h3>
+<h3 id="Path-Tracing"><a href="#Path-Tracing" class="headerlink" title="Path Tracing"></a>Path Tracing</h3><p>每个像素，N = 1，只打出一条射线</p>
+<p>光线追踪问题：递归没有终止情况！，解决方法：</p>
+<ul>
+<li>Russia Roulette(RR)俄罗斯轮盘赌<ul>
+<li>以p的概率大一条光线</li>
+<li>以1-p的概率不打 </li>
+</ul>
+</li>
+</ul>
+<p>实现步骤：</p>
+<ul>
+<li>直接光照：直接对光源做采样，做$d\omega \rightarrow dA$的变换</li>
+<li>间接光照，使用RR随机朝一个方向打出射线 </li>
+</ul>
+<h3 id="Materia"><a href="#Materia" class="headerlink" title="Materia"></a>Materia</h3><p>Fresnel term:</p>
+<ul>
+<li>绝缘体<ul>
+<li>光线与表面相平时，大多光线反射</li>
+<li>光线与表面垂直时，大多光线折射 </li>
+</ul>
+</li>
+</ul>
+<p>Microfacet </p>
+
             </div>
             <hr>
             <div>
@@ -593,6 +616,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
