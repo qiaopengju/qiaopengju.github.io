@@ -1,7 +1,7 @@
 ---
 title: CG_Course
 hide: false
-math: false
+math: true
 mermaid: false
 comment: true
 date: 2021-09-09 15:57:28
@@ -141,7 +141,25 @@ $$\int f(x)dx = \frac{1}{N}\sum^N_{i=1} \frac{f(X_i)}{p(X_i)}, \qquad X_i ~ p(x)
 
 ### Path Tracing
 
+每个像素，N = 1，只打出一条射线
 
+光线追踪问题：递归没有终止情况！，解决方法：
 
+* Russia Roulette(RR)俄罗斯轮盘赌
+  * 以p的概率大一条光线
+  * 以1-p的概率不打 
 
+实现步骤：
 
+* 直接光照：直接对光源做采样，做$d\omega \rightarrow dA$的变换
+* 间接光照，使用RR随机朝一个方向打出射线 
+
+### Materia
+
+Fresnel term:
+
+* 绝缘体
+  * 光线与表面相平时，大多光线反射
+  * 光线与表面垂直时，大多光线折射 
+
+Microfacet 
