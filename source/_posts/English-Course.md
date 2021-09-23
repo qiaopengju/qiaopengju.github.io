@@ -32,14 +32,6 @@ Teacher mail: liyang@ucas.ac.cn
   * Promble based learning
   * Content based learning
 
-### Assessments
-
-| 单元主题      | 学术阅读技能                                            | 学术写作技能 | IMRD(introduction, results, discussion) |
-| ------------- | ------------------------------------------------------- | ------------ | --------------------------------------- |
-| Unit 1 心理学 | predicting theme and identifying pattens and structures | paraphrasing | Introduction; Discussion                |
-| Unit 3        |                                                         |              |                                         |
-| Unit 4        |                                                         |              |                                         |
-| Unit 5 计算机 |                                                         |              |                                         |
 
 ### Grading Policy
 
@@ -70,13 +62,6 @@ Teacher mail: liyang@ucas.ac.cn
   * 300 - 500单词
   * 学期最后一周研究计划的口头展示，每组10min，每人2.5min
 
-| Contents | time  |
-| -------- | ----- |
-| Unit 1   | 2-3周 |
-| Unit 3   |       |
-| Unit 4   |       |
-| Unit 5   |       |
-|          |       |
 
 ### Teaching Method
 
@@ -88,3 +73,18 @@ Academic reading & writing & speaking & listening
 2. Oral presentation by group 1 & 2 to analyse Text A 's main ideas and structrue & to present Reading Skill
 3. Discuss with your group which research topic you will do
 4. select a paper
+
+### Guidelines for achieving on Academic Style 
+
+* Formality
+  * Use more formal negative forms:
+    * not so may -> few
+    * not so much ->little
+  * Write a statement rather than a question
+  * Do not use contractions such as "won't", "don't", "we'll"
+    * $\rightarrow$ will not; do not; we will
+* Vocabulary choice
+* Obejctivity
+* Precision
+* Being specific
+* Reference
