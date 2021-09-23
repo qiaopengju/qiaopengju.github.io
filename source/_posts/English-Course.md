@@ -1,7 +1,7 @@
 ---
 title: 英语A 笔记
 hide: false
-math: false
+math: true
 mermaid: false
 comment: true
 date: 2021-09-23 13:32:45
