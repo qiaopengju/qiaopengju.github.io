@@ -84,7 +84,15 @@ Academic reading & writing & speaking & listening
   * Do not use contractions such as "won't", "don't", "we'll"
     * $\rightarrow$ will not; do not; we will
 * Vocabulary choice
+  * bring about $\rightarrow$ cause
+  * put off $\rightarrow$ postpone
+  * rack up $\rightarrow$ accumulate
 * Obejctivity
+  * Use nominalisations(名词)
+  * Avoid the use of personal pronouns(人称代词) such as 'you' & 'we' to address the audience
+  * use gender-neutral language(中性词汇)
 * Precision
-* Being specific
+  * Employ tentative rather than assertive or overly positive language(话别说太绝对)
+    * Writing is the most difficult part in IELTS test $\rightarrow$ Writing seems to be the most difficult part in IELTS test for international students.
+* Being specific: Coose the best word for your meaning
 * Reference
