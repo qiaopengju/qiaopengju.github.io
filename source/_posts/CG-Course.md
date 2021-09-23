@@ -79,7 +79,7 @@ Acceleration(碰撞检测加速)
 
 Radiant Energy:能量
 
-Flux:de: Power:单位时间的能量 lumen
+Flux: Power:单位时间的能量 lumen
 
 Radiant Intensity: 一个立体角上的能量
 
