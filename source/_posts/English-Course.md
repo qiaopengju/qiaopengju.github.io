@@ -96,3 +96,11 @@ Academic reading & writing & speaking & listening
     * Writing is the most difficult part in IELTS test $\rightarrow$ Writing seems to be the most difficult part in IELTS test for international students.
 * Being specific: Coose the best word for your meaning
 * Reference
+
+
+
+## LECTURE 2
+
+#### Unit 1 Text A
+
+* 
