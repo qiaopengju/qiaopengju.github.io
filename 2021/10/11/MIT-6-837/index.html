@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="MIT.6837 Assignment">
+  <meta name="author" content="樵鹏举">
+  <meta name="keywords" content="">
+  
+  <title>MIT.6.837 - QiaoPengju</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"qiaopengju.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/default_loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"xsVJdJy2S5FwG6mmW2YPfvB8-gzGzoHsz","app_key":"AAjqnbedJOiSfIxIGx14LnUp","server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>QiaoPengju's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/to-do-list/">
+                <i class="iconfont icon-plan"></i>
+                To Do List
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default_post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="MIT.6.837">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-11 09:36" pubdate>
+        2021年10月11日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MIT.6.837</h1>
+            
+            <div class="markdown-body">
+              <h1 id="MIT-6-837"><a href="#MIT-6-837" class="headerlink" title="MIT 6.837"></a>MIT 6.837</h1><h3 id="Assignment0"><a href="#Assignment0" class="headerlink" title="Assignment0:"></a>Assignment0:</h3><h4 id="Hint"><a href="#Hint" class="headerlink" title="Hint:"></a>Hint:</h4><ul>
+<li>依概率选择变换矩阵：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++">float sum(0), t(drand48());<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt; num_trans; k++)&#123;<br>  sum += probability[k];<br>  <span class="hljs-keyword">if</span> (sum &gt; t) <span class="hljs-keyword">break</span>;<br>&#125;<br>do_transform[k]_to_Vec();<br></code></pre></td></tr></table></figure>
+<ul>
+<li>需要特判仿射变换后点坐标是否在图像内</li>
+<li>int atoi(const char *str); 将字符串数字变为int</li>
+</ul>
+<h4 id="Result："><a href="#Result：" class="headerlink" title="Result："></a>Result：</h4><ul>
+<li>fern:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./ifs -input src/fern.txt -points 50000 -iters 30 -size 400 -output fern.tga<br></code></pre></td></tr></table></figure>
+<p><img src="0_fern.png" srcset="/img/default_loading.gif" lazyload alt="0_fern"></p>
+<ul>
+<li>dragon:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./ifs -input src/dragon.txt -points 50000 -iters 30 -size 400 -output dragon.tga<br></code></pre></td></tr></table></figure>
+<p><img src="0_dragon.png" srcset="/img/default_loading.gif" lazyload alt="0_dragon"></p>
+<ul>
+<li>giant X:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./ifs -input src/giant_x.txt -points 50000 -iters 30 -size 400 -output giant_x.tga<br></code></pre></td></tr></table></figure>
+<p><img src="0_giant_x.png" srcset="/img/default_loading.gif" lazyload alt="0_dragon"></p>
+<ul>
+<li>triangle iters 30 times:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./ifs -input src/sierpinski_triangle.txt -points 10000 -iters 30 -size 200 -output sierpinski_triangle_30.tga<br></code></pre></td></tr></table></figure>
+<p><img src="/0_sierpinski_triangle_30.png" srcset="/img/default_loading.gif" lazyload alt="0_dragon"></p>
+<hr>
+<h3 id="Assignment1"><a href="#Assignment1" class="headerlink" title="Assignment1:"></a>Assignment1:</h3><p>原理：相机从每个像素发出射线，显示最早击中物体的贴图</p>
+<h4 id="Hint-1"><a href="#Hint-1" class="headerlink" title="Hint:"></a>Hint:</h4><ul>
+<li>Orthographic Camera：</li>
+</ul>
+<p><img src="1_orthographic_camera.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li>在坐标运算时，最好在[0,1]标准化空间坐标进行，在遇到实际的屏幕时，可以用x = x’ <em> widht;  y = y’ </em> height来换算</li>
+<li>Image类中颜色坐标范围是[0,1]<ul>
+<li>输出t在[depth_min, depth_max]之间的灰度，要在Clamp之后，作如下变换：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">if</span> (t &gt;= depth_min &amp;&amp; t &lt;= depth_max)&#123;<br>  <span class="hljs-comment">//离摄像机越近的物体，t越小，越应该是白色，但是白色对应1，所以应该用1减去t变换</span><br>	<span class="hljs-keyword">float</span> grey = <span class="hljs-number">1</span> - (t - depth_min) / (depth_max - depth_min);<br>  <span class="hljs-function">Vec3f <span class="hljs-title">color</span><span class="hljs-params">(grey, grey, grey)</span></span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>隐式表示的球体求交点：</p>
+<p><img src="1_sphere_intersection.png" srcset="/img/default_loading.gif" lazyload alt="1_sphere_intersection"></p>
+<ul>
+<li>Ray: direction is an unit vector</li>
+</ul>
+</li>
+</ul>
+<p><img src="1_tp.png" srcset="/img/default_loading.gif" lazyload alt="1_tp"></p>
+<p><img src="1_d2.png" srcset="/img/default_loading.gif" lazyload alt="1_d2"></p>
+<p>如果d比球半径要大，说明Ray与Sphere不相交，反之Ray与Sphere相交</p>
+<p>相交在参数t时刻,射线原点在球内：</p>
+<p><img src="1_t.png" srcset="/img/default_loading.gif" lazyload alt="1_t"></p>
+<p>射线原点在球外：</p>
+<p><img src="1_t2.png" srcset="/img/default_loading.gif" lazyload alt="1_t2"></p>
+<p>判断物体射线交点，如果得到t比hit的t小，那么同时更新t和Material</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Sphere::intersect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Ray &amp;r, Hit &amp;h, <span class="hljs-keyword">float</span> tmin)</span></span>&#123;<br>    Vec3f o2c = center - r.<span class="hljs-built_in">getOrigin</span>();     <span class="hljs-comment">//射线原点指向球心向量</span><br>    <span class="hljs-keyword">float</span> tp = o2c.<span class="hljs-built_in">Dot3</span>(r.<span class="hljs-built_in">getDirection</span>());<br>    <span class="hljs-keyword">float</span> o2c2 = o2c.<span class="hljs-built_in">Dot3</span>(o2c);             <span class="hljs-comment">//ray, sphere中心距离的平方</span><br>    <span class="hljs-keyword">float</span> d2 = o2c2 - tp*tp;<br>    <span class="hljs-keyword">if</span> (d2 &gt; radius*radius) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;   <span class="hljs-comment">//不相交</span><br>    <span class="hljs-keyword">float</span> t = <span class="hljs-built_in">sqrt</span>(radius*radius - d2);<br>    <br>    <span class="hljs-keyword">if</span> (tp - t &lt; tmin)&#123;<br>        <span class="hljs-keyword">if</span> (tp + t &gt; tmin)&#123; <span class="hljs-comment">//射线在球内部，且相交</span><br>            <span class="hljs-keyword">if</span> (h.<span class="hljs-built_in">getMaterial</span>() == <span class="hljs-literal">NULL</span> || h.<span class="hljs-built_in">getT</span>() &gt; tp+t)&#123; <span class="hljs-comment">//如果t比hit中的t小，则更新h</span><br>          		h.<span class="hljs-built_in">set</span>(tp + t, material, r);<br>            &#125;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<span class="hljs-comment">//不相交</span><br><br>    &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">//射线在球外部，且相交</span><br>        <span class="hljs-keyword">if</span> (h.<span class="hljs-built_in">getMaterial</span>() == <span class="hljs-literal">NULL</span> || h.<span class="hljs-built_in">getT</span>() &gt; tp+t)&#123; <span class="hljs-comment">//如果t比hit中的t小，则更新h</span><br>      		h.<span class="hljs-built_in">set</span>(tp - t, material, r);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>类Group中的ObjectList应该用Object3D**类型，因为ObjectList应当是存Object3D的指针的数组，赋予ObjectList内存空间：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">ObjectList = <span class="hljs-keyword">new</span> Object3D*[n];	<span class="hljs-comment">//Group中有n个Objects</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>std::numeric_limits\<float\>::max 返回float最大值</li>
+<li>三个向量定义相机：Up, Right, LookAt，当Up和LookAt不垂直时要修正Up:<ul>
+<li>Right = LookAt x Up: 通过叉乘得到Right向量</li>
+<li>Up = Right x LookAt: 通过上一步得到的Right向量和LookAt向量，修正Up向量</li>
+<li>相机的三个向量需要标准化</li>
+</ul>
+</li>
+</ul>
+<h4 id="Result"><a href="#Result" class="headerlink" title="Result:"></a>Result:</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./raytracer -input src/scene1_01.txt -size 200 200 -output output1_01.tga -depth 9 10 depth1_01.tga<br></code></pre></td></tr></table></figure>
+<p><img src="1_output1_01.png" srcset="/img/default_loading.gif" lazyload alt="1_output1_01"></p>
+<p><img src="1_depth1_01.png" srcset="/img/default_loading.gif" lazyload alt="1_depth1_01"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./raytracer -input src/scene1_02.txt -size 200 200 -output output1_02.tga -depth 9 10 depth1_02.tga<br></code></pre></td></tr></table></figure>
+<p><img src="1_output1_02.png" srcset="/img/default_loading.gif" lazyload alt="1_output1_02"></p>
+<p><img src="1_depth1_02.png" srcset="/img/default_loading.gif" lazyload alt="1_depth1_02"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./raytracer -input src/scene1_07.txt -size 200 200 -output output1_07.tga -depth -2 2 depth1_07.tga<br></code></pre></td></tr></table></figure>
+<p><img src="1_output1_07.png" srcset="/img/default_loading.gif" lazyload alt="1_output1_07"></p>
+<p><img src="1_depth1_07.png" srcset="/img/default_loading.gif" lazyload alt="1_depth1_07"></p>
+<hr>
+<h3 id="Assignment2-Transformations-amp-Additional-Primitives"><a href="#Assignment2-Transformations-amp-Additional-Primitives" class="headerlink" title="Assignment2 Transformations &amp; Additional Primitives"></a>Assignment2 Transformations &amp; Additional Primitives</h3><h4 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h4><ul>
+<li>[x] Implement the new rendering mode, normal visualization:</li>
+</ul>
+<p><img src="2_normal.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<p>读取射线击中点的法向量，取法向量分量的绝对值作为rgb分量的值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">Vec3f normal = h.<span class="hljs-built_in">getNormal</span>();<br><span class="hljs-keyword">float</span> r = <span class="hljs-built_in">abs</span>(normal.<span class="hljs-built_in">r</span>()); <br><span class="hljs-keyword">float</span> g = <span class="hljs-built_in">abs</span>(normal.<span class="hljs-built_in">g</span>()); <br><span class="hljs-keyword">float</span> b = <span class="hljs-built_in">abs</span>(normal.<span class="hljs-built_in">b</span>()); <br>image_normal-&gt;<span class="hljs-built_in">SetPixel</span>(i, j, <span class="hljs-built_in">Vec3f</span>(r, g, b));<br></code></pre></td></tr></table></figure>
+<ul>
+<li>[x] Add diffuse shading</li>
+</ul>
+<p>任务要求加入diffuse(依赖光线与法线向量)与ambient，物体在该点最终的颜色为diffuse color + ambient color:</p>
+<ul>
+<li><p>漫反射颜色计算:</p>
+<p><img src="2_diffuse_color.png" srcset="/img/default_loading.gif" lazyload alt="diffuse"></p>
+<ul>
+<li>光线在物体背面时n dot I 为负，这时我们diffuse设为0</li>
+<li>作业要求加入shade back选项，故当光线在物体背面，并要求shade back时，diffuse = - n dot I</li>
+<li>多束光线作用物体，diffuse为这些作用的总和</li>
+</ul>
+</li>
+<li><p>环境光计算：ambient color = ambient coefficient * material</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">if</span> (group-&gt;<span class="hljs-built_in">intersect</span>(r, h, camera-&gt;<span class="hljs-built_in">getTMin</span>()))&#123;             <span class="hljs-comment">//光线与物体相交</span><br>	<span class="hljs-built_in">assert</span>(h.<span class="hljs-built_in">getMaterial</span>() != <span class="hljs-literal">NULL</span>);<br>	Vec3f ambient_color = sceneParser.<span class="hljs-built_in">getAmbientLight</span>();    <span class="hljs-comment">//读取环境光</span><br>	<span class="hljs-comment">/*caculate diffuse color*/</span><br>	Vec3f diffuse_color;                                    <span class="hljs-comment">//(0, 0, 0)</span><br>	Vec3f hit_pos = r.<span class="hljs-built_in">pointAtParameter</span>(h.<span class="hljs-built_in">getT</span>());<br>	<span class="hljs-comment">/*diffuse shading*/</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; num_light; i++)&#123;                    <span class="hljs-comment">//读取光线数据</span><br>  		sceneParser.<span class="hljs-built_in">getLight</span>(i)-&gt;<span class="hljs-built_in">getIllumination</span>(hit_pos, light_dir[i], light_color[i]);<br>    	<span class="hljs-keyword">float</span> diffuse = light_dir[i].<span class="hljs-built_in">Dot3</span>(h.<span class="hljs-built_in">getNormal</span>());<br>    	<span class="hljs-keyword">if</span> (diffuse &lt; <span class="hljs-number">0</span>)&#123; <span class="hljs-comment">//点积为负，光在物体背面</span><br>        	<span class="hljs-keyword">if</span> (shade_back) diffuse = -diffuse;             <span class="hljs-comment">//渲染背面</span><br>        	<span class="hljs-keyword">else</span> diffuse = <span class="hljs-number">0</span>;                               <span class="hljs-comment">//不渲染背面，diffuse为0</span><br>    	&#125;<br>    	diffuse_color += diffuse * light_color[i];<br>	&#125;<br>	<span class="hljs-comment">/*pixel color = diffuse + ambient + specular*/</span><br>	Vec3f pixel_color = (diffuse_color + ambient_color) * h.<span class="hljs-built_in">getMaterial</span>()-&gt;<span class="hljs-built_in">getDiffuseColor</span>();<br>	image-&gt;<span class="hljs-built_in">SetPixel</span>(i, j, pixel_color);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>[x] <strong>Perspective Camera</strong></li>
+</ul>
+<p><img src="2_perspective_camera.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li><p>通过up, direction, center三个向量可以确定一个透视投影相机</p>
+<ul>
+<li>三个向量必须标准化</li>
+<li>up可能不与direction垂直，要利用horizontal向量使up和direction垂直</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++">PerspectiveCamera::<span class="hljs-built_in">PerspectiveCamera</span>(Vec3f _center, Vec3f _direction, Vec3f _up, <span class="hljs-keyword">float</span> _angle_radius):<br>        <span class="hljs-built_in">center</span>(_center), <span class="hljs-built_in">direction</span>(_direction), <span class="hljs-built_in">up</span>(_up), <span class="hljs-built_in">angle_randians</span>(_angle_radius)&#123;<br>    direction.<span class="hljs-built_in">Normalize</span>();	<span class="hljs-comment">//标准化方向向量</span><br>    Vec3f::<span class="hljs-built_in">Cross3</span>(horizontal, direction, up);	<span class="hljs-comment">//通过叉乘direction, up向量得horizontal向量</span><br>    Vec3f::<span class="hljs-built_in">Cross3</span>(up, horizontal, direction);	<span class="hljs-comment">//通过叉乘horizontal, direction向量使up与direction向量垂直</span><br>    up.<span class="hljs-built_in">Normalize</span>();	<span class="hljs-comment">//标准化up向量</span><br>    horizontal.<span class="hljs-built_in">Normalize</span>();	<span class="hljs-comment">//标准化horizontal向量</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>透视投影相机如何打出射线？</strong></p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">Ray <span class="hljs-title">PerspectiveCamera::generateRay</span><span class="hljs-params">(Vec2f point)</span></span>&#123;<br>    Vec3f pos = center;<br>    Vec3f ray_dir = direction + up * (point.<span class="hljs-built_in">y</span>()<span class="hljs-number">-0.5</span>) * <span class="hljs-built_in">tan</span>(angle_randians/<span class="hljs-number">2</span>) *<span class="hljs-number">2</span> + <br>    		horizontal * (point.<span class="hljs-built_in">x</span>()<span class="hljs-number">-0.5</span>) * <span class="hljs-built_in">tan</span>(angle_randians/<span class="hljs-number">2</span>) * <span class="hljs-number">2</span>;<br>    ray_dir.<span class="hljs-built_in">Normalize</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Ray</span>(pos, ray_dir);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>[x] Plane</li>
+</ul>
+<p>通过平面一点和平面法向量可以确定平面方程，我们可以这样定义平面：P dot n = d，故通过normal和d可以唯一确定一个平面</p>
+<ul>
+<li>射线相交判断：<ul>
+<li>射线方向向量与平面法向量垂直：射线与平面平行，不相交</li>
+<li>将Ray的方程带入平面，得到t<ul>
+<li>t &gt;= tmin，相交;</li>
+<li>t &lt; tmin，不相交;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Plane::intersect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Ray &amp;r, Hit &amp;h, <span class="hljs-keyword">float</span> tmin)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (dir_nor.<span class="hljs-built_in">Dot3</span>(normal) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">//光线方向与平面平行</span><br>    <span class="hljs-keyword">float</span> t = (d - r.<span class="hljs-built_in">getOrigin</span>().<span class="hljs-built_in">Dot3</span>(normal)) / (dir_nor.<span class="hljs-built_in">Dot3</span>(normal));<br>    <span class="hljs-keyword">if</span> (t &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">//在光线背面</span><br>    <span class="hljs-comment">//与射线相交</span><br>    <span class="hljs-keyword">if</span> (t &lt; tmin) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">if</span> (h.<span class="hljs-built_in">getMaterial</span>() != <span class="hljs-literal">NULL</span> &amp;&amp; h.<span class="hljs-built_in">getT</span>() &lt; t) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    h.<span class="hljs-built_in">set</span>(t, material, normal, r);<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>[x] Triangle</li>
+</ul>
+<p>射线与三角形求交判断：</p>
+<ul>
+<li><p>方法1：利用重心坐标 Barycentric</p>
+<ul>
+<li><p>根据克拉默法则，若|A|=0，则方程无解，Ray不与三角形所在平面相交</p>
+<ul>
+<li>若t&lt;tmin，Ray与三角形不相交</li>
+<li>若方程有解，且t&gt;=tmin，0&lt;α&lt;1, 0&lt;β&lt;1, 0&lt;γ&lt;1，则Ray与三角形相交</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="2_triangle1.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<hr>
+<p><img src="2_triangle2.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<hr>
+<p><img src="2_triangle3.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<hr>
+<p><img src="2_triangle4.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li><p>方法2：先与三角形所在平面求交点，再判断交点是否在三角形内部</p>
+<ul>
+<li><p>如何判断三角形平面上的点是否在三角形内部？</p>
+<ul>
+<li><p>从这一点随机射出射线，与三角形有奇数个交点，则在内部，偶数个交点，在外部</p>
+<ul>
+<li>需要特判顶点</li>
+</ul>
+</li>
+<li><p>通过重心坐标判断是否在三角形内部</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>[x] <strong>Derive a subclass <code>Transform</code> from <code>Object3D</code></strong></p>
+</li>
+</ul>
+<p>对物体做变换后与Ray求交，可以通过对射线做变换实现</p>
+<p><img src="2_transform1.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<hr>
+<p><img src="2_transform2.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<p>是否要标准化变换后的方向向量：</p>
+<ul>
+<li>Normalize: tOS ≠ tWS</li>
+<li>Don’t Normalize: tOS = tWS</li>
+</ul>
+<p>纠正变换后物体的法向量：</p>
+<p><img src="2_transform5.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<hr>
+<p><img src="2_transform6.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<hr>
+<p><img src="2_transform7.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<hr>
+<p><img src="2_transform8.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<p>纠正变换后的法向量需要用到法矩阵：</p>
+<p><img src="2_normal_matrix.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<h4 id="Hint-2"><a href="#Hint-2" class="headerlink" title="Hint"></a>Hint</h4><p>MIT提供的Transform相关的代码有点反人类，习惯上对向量做变换用矩阵M左乘向量v：Mv。例如对v先后做变换M1, M2, M3的M矩阵应为：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">M</span> = M3 * M2 * M1<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+<p>但scene_parser.C中解析变换矩阵时使用如下代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">matrix *= new_transform; <span class="hljs-comment">//matrix = matrix * new_transform</span><br></code></pre></td></tr></table></figure>
+<p>然后Matrix.C中的Transform(Vec4f)代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Matrix::Transform</span><span class="hljs-params">(Vec4f &amp;v)</span> <span class="hljs-keyword">const</span> </span>&#123;<br>  Vec4f answer;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> y=<span class="hljs-number">0</span>; y&lt;<span class="hljs-number">4</span>; y++) &#123;<br>    answer.data[y] = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">4</span>; i++) &#123;<br>      answer.data[y] += data[y][i] * v[i];<br>    &#125;<br>  &#125;<br>  v = answer;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>相当与Mv，还是左乘，相当于列表中的变换顺序与我们想要的变换顺序是相反的</p>
+<hr>
+<p>对Ray进行变换时，若单位化了direction向量，则需要改变Object3D的intersect函数，以Plane为例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Plane::intersect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Ray &amp;r, Hit &amp;h, <span class="hljs-keyword">float</span> tmin)</span></span>&#123;<br>    <span class="hljs-comment">//标准化方向向量</span><br>    Vec3f dir_nor = r.<span class="hljs-built_in">getDirection</span>();<br>    <span class="hljs-keyword">float</span> dir_len = dir_nor.<span class="hljs-built_in">Length</span>();	<span class="hljs-comment">//记录变换后的方向向量长度</span><br>    dir_nor.<span class="hljs-built_in">Normalize</span>();	<span class="hljs-comment">//标准化方向向量</span><br><br>    <span class="hljs-keyword">if</span> (dir_nor.<span class="hljs-built_in">Dot3</span>(normal) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">//光线方向与平面平行</span><br>    <span class="hljs-keyword">float</span> t = (d - r.<span class="hljs-built_in">getOrigin</span>().<span class="hljs-built_in">Dot3</span>(normal)) / (dir_nor.<span class="hljs-built_in">Dot3</span>(normal));<br>  	t /= dir_len;	<span class="hljs-comment">/*******得到的t是在单位长度下的t，除以dir_len得到实际的t*******/</span><br>    <span class="hljs-keyword">if</span> (t &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">//在光线背面</span><br>    <span class="hljs-comment">//与射线相交</span><br>    <span class="hljs-keyword">if</span> (t &lt; tmin) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">if</span> (h.<span class="hljs-built_in">getMaterial</span>() != <span class="hljs-literal">NULL</span> &amp;&amp; h.<span class="hljs-built_in">getT</span>() &lt; t) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    h.<span class="hljs-built_in">set</span>(t, material, normal, r);<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li><strong>变换到世界坐标的法向量必须标准化</strong></li>
+</ul>
+<h4 id="Result-1"><a href="#Result-1" class="headerlink" title="Result"></a>Result</h4><ul>
+<li>scene 6:</li>
+</ul>
+<p><strong>maybe some bugs in normal shader?</strong></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_06_plane.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_06.tga -depth <span class="hljs-number">8</span> <span class="hljs-number">20</span> depth2_06.tga -normals normals2_06.tga<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_06.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<p><img src="2_depth2_06.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<p><img src="2_normals2_06.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li>scene 7 shade back:</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_07_sphere_triangles.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_07.tga -depth <span class="hljs-number">9</span> <span class="hljs-number">11</span> depth2_07.tga -normals normals2_07.tga -shade_back<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_07.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<p><img src="2_depth2_07.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li>scene 7 don’t shade back:</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_07_sphere_triangles.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_07_no_back.tga<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_07_no_back.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li>bunny 200 triangles:</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_09_bunny_200.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_09.tga<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_09.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li>bunny 1k triangles:</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_10_bunny_1k.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_10.tga<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_10.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li>scene 13:</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_13_rotated_squashed_sphere.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_13.tga -normals normals2_13.tga<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_13.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<p><img src="2_normals2_13.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li>scene 14:</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_14_axes_cube.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_14.tga<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_14.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li>scene 15:</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_15_crazy_transforms.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_15.tga<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_15.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+<ul>
+<li><strong>scene 16:</strong></li>
+</ul>
+<p><strong>some bugs in green sphere and purple sphere?</strong></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">.<span class="hljs-regexp">/raytracer -input src/</span>scene2_16_t_scale.txt -<span class="hljs-keyword">size</span> <span class="hljs-number">200</span> <span class="hljs-number">200</span> -output output2_16.tga -depth <span class="hljs-number">2</span> <span class="hljs-number">7</span> depth2_16.tga<br></code></pre></td></tr></table></figure>
+<p><img src="2_output2_16.png" srcset="/img/default_loading.gif" lazyload alt=""></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/23/English-Course/">
+                        <span class="hidden-mobile">英语A 笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "xsVJdJy2S5FwG6mmW2YPfvB8-gzGzoHsz",
+          app_key: "AAjqnbedJOiSfIxIGx14LnUp",
+          placeholder: "说点什么~",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true,"scale":0.7},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
